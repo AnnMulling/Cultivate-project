@@ -1,7 +1,8 @@
 //test route
 const express = require('express');
-const router = express.Router();
 const apiRouter = require('./api');
+const router = require('express').Router();
+
 
 router.use('/api', apiRouter);
 
@@ -14,4 +15,6 @@ router.get("/api/csrf/restore", (req, res) => {
     });
   });
 
-module.exports = router;
+
+
+  module.exports = router;
