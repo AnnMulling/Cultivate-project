@@ -1,7 +1,11 @@
 'use strict';
 const { List } = require('../models');
 
-/** @type {import('sequelize-cli').Migration} */
+let options = {};
+if (process.env.NODE_ENV === 'production') {
+  options.schema = process.env.SCHEMA;  // define your schema in options object
+}
+
 module.exports = {
   async up (queryInterface, Sequelize) {
     await List.bulkCreate([
@@ -190,7 +194,7 @@ module.exports = {
   },
 
   async down (queryInterface, Sequelize) {
-    options.tableName = 'List';
+    options.tableName = 'Lists';
     const Op = Sequelize.Op;
     return queryInterface.bulkDelete(options, {
       title: { [Op.in]: [
