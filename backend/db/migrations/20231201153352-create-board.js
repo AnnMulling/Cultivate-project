@@ -29,7 +29,8 @@ module.exports = {
         onDelete: 'CASCADE'
       },
       is_public: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.BOOLEAN,
+        allowNull: false
       },
       createdAt: {
         allowNull: false,

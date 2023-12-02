@@ -17,6 +17,10 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'board_id',
       });
 
+      List.belongsTo(models.User, {
+        foreignKey:  'user_id'
+      });
+
     }
   }
   List.init({
@@ -27,6 +31,10 @@ module.exports = (sequelize, DataTypes) => {
       Validator: {
         len: [5, 30]
       }
+    },
+    user_id: {
+      type: DataTypes.INTEGER,
+      allowNull: false
     },
     board_id: {
       type: DataTypes.INTEGER,
