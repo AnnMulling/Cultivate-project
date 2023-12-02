@@ -38,6 +38,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     is_public: {
       type: DataTypes.BOOLEAN,
+      allowNull: false
     }
   }, {
     sequelize,
