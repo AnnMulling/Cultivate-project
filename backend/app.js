@@ -44,8 +44,6 @@ if (!isProduction) {
  // Connect all the routes
 app.use(routes);
 
-  module.exports = app;
-
 // Catch unhandled requests and forward to error handler.
 app.use((_req, _res, next) => {
     const err = new Error("The requested resource couldn't be found.");
@@ -80,3 +78,5 @@ app.use((err, _req, res, _next) => {
       stack: isProduction ? null : err.stack
     });
   });
+
+  module.exports = app;
