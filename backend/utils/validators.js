@@ -5,12 +5,23 @@ const { handleValidationErrors } = require('./validation');
 //create board validate
 const validators = {
 
-    validateCreateBoard : [
+    validateCreateBoard: [
         check('name')
             .exists({ checkFalsy: true})
             .withMessage('Field is required'),
         check('is_public')
             .exists({ checkFalsy: true})
+            .withMessage('Field is required'),
+
+        handleValidationErrors
+    ],
+
+    validateCreateList: [
+        check('title')
+            .exists({ checkFalsy: true })
+            .withMessage('Field is required'),
+        check('column')
+            .exists({ checkFalsy: true })
             .withMessage('Field is required'),
 
         handleValidationErrors
