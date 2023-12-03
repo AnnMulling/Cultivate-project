@@ -2,6 +2,7 @@ const router = require('express').Router();
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
 const boardsRouter = require('./boards.js');
+const listRouter = require('./lists.js');
 const { setTokenCookie, restoreUser } = require('../../utils/auth.js');
 const { User } = require('../../db/models');
 
@@ -17,6 +18,9 @@ router.use('/users', usersRouter);
 
 // Board rooutes
 router.use('/boards', boardsRouter);
+
+// List routes
+router.use('/lists', listRouter);
 
 //frontend test
 router.post('/test', (req, res) => {

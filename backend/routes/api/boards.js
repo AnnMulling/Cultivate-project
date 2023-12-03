@@ -1,8 +1,10 @@
 const express = require('express')
 const router = express.Router();
 const { requireAuth } = require('../../utils/auth');
-const { reqAuthBoard } = require('../../utils/boards-validation')
-const {  validateCreateBoard } = require('../../utils/validators')
+const { reqAuthBoard } = require('../../utils/boards-validation');
+const {  validateCreateBoard, validateCreateList } = require('../../utils/validators');
+const { reqAuthList } = require('../../utils/lists-validation');
+
 
 //db
 const { User, Board, List } = require('../../db/models');
@@ -110,7 +112,7 @@ router.delete(
 );
 
 
-//lists
+//get all lists
 router.get(
     '/:boardId/lists',
     reqAuthBoard,
@@ -134,6 +136,35 @@ router.get(
 
         res.json(lists)
     }
-)
+);
+
+
+//create list
+router.post(
+    '/:boardId/lists',
+    [ requireAuth, reqAuthBoard, validateCreateList ],
+    async (req, res) => {
+        const { user } = req;
+
+        const { title,
+                column } = req.body;
+
+        const { boardId } = req.params;
+
+        const newList = await List.create({
+            user_id: user.id,
+            board_id: boardId,
+            title,
+            column
+        });
+
+        console.log('here===>');
+
+        await newList.save();
+        res.status(201);
+        res.json(newList);
+    }
+);
+
 
 module.exports = router;

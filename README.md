@@ -269,7 +269,7 @@ create and return a new list.
 * Require Authentication: true
 * Request
   * Method: POST
-  * URL: /api/boards/:boardId/lists
+  * URL: /api/boards/:boardId
   * Headers:
     * Content-Type: application/json
   * Body:
