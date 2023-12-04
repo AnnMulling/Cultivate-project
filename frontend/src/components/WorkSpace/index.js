@@ -15,9 +15,10 @@ export default function WorkSpace() {
     const history = useHistory();
     const user = useSelector((state) => state.session.user);
     const allBoards = useSelector((state) => state.boards);
+    const boardsArr = Object.values(allBoards);
     const [ isLoaded, setIsLoaded ] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
-  
+
 
 
 
@@ -41,7 +42,7 @@ export default function WorkSpace() {
     return isLoaded && (
         <>
             <h1>{user.firstName}'s Work Space</h1>
-            {Object.values(allBoards).reverse().map((board) =>
+            {boardsArr.reverse().map((board) =>
                 <div key={board.id} style={{marginBottom:20}}>
 
                     <Link to={`/boards/${board.id}`}>
