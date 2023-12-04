@@ -16,6 +16,7 @@ export default function BoardDetails(){
     const board = useSelector((state) => state.boards[boardId]);
     const user = useSelector((state) => state.session.user);
     const allLists =  useSelector((state) => state.lists);
+    const listArr = Object.values(allLists);
     const [ isLoaded, setIsLoaded ] = useState(false)
 
     // console.log('user', user);
@@ -39,7 +40,7 @@ export default function BoardDetails(){
     return isLoaded && (
         <>
             <h1>In board {board.name}</h1>
-            {Object.values(allLists).reverse().map((list) =>
+            {listArr.reverse().map((list) =>
 
                 <div key={list.id}>
                     <p>{list.title}</p>
