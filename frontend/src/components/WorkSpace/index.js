@@ -3,21 +3,21 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
 import { fetchAllBoard } from '../../store/board';
 import OpenModalButton from '../OpenModalButton';
-import OpenModalMenuItem from '../Navigation/OpenModalMenuItem';
 import CreateBoardModal from '../ModalCreate/CreateBoard';
+import DeleteBoardModal from '../ModalDelete/DeleteBoard';
 
 import './WorkSpace.css';
 
 export default function WorkSpace() {
     //get all boards
-    const ulRef = useRef();
+
     const dispatch = useDispatch();
     const history = useHistory();
     const user = useSelector((state) => state.session.user);
     const allBoards = useSelector((state) => state.boards);
     const [ isLoaded, setIsLoaded ] = useState(false);
     const [showMenu, setShowMenu] = useState(false);
-    //add board
+  
 
 
 
@@ -51,6 +51,12 @@ export default function WorkSpace() {
                     <OpenModalButton
                         modalComponent={<CreateBoardModal board={board} formType="Edit Board" />}
                         buttonText={"Edit Board"}
+                        modalClasses={["board-btn"]}
+                    />
+
+                    <OpenModalButton
+                        modalComponent={<DeleteBoardModal board={board}  />}
+                        buttonText={"Delete Board"}
                         modalClasses={["board-btn"]}
                     />
 

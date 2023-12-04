@@ -92,7 +92,7 @@ router.put(
         updatedBoard.name = name;
         updatedBoard.is_public = is_public;
 
-        updatedBoard.save();
+        await updatedBoard.save();
         res.json(updatedBoard);
     }
 );
@@ -143,25 +143,24 @@ router.get(
 );
 
 
-//create list
+//create a list
 router.post(
     '/:boardId/lists',
     [ requireAuth, reqAuthBoard, validateCreateList ],
     async (req, res) => {
         const { user } = req;
 
-        const { title,
-                column } = req.body;
+        const { title} = req.body; //add column later
 
         const { boardId } = req.params;
 
         const newList = await List.create({
             user_id: user.id,
             board_id: boardId,
-            title,
-            column
+            title
         });
 
+        console.log('in api create')
 
         await newList.save();
         res.status(201);

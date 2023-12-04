@@ -10,7 +10,7 @@ const validators = {
             .exists({ checkFalsy: true})
             .withMessage('Field is required'),
         check('is_public')
-            .exists({ checkFalsy: true})
+            .exists({checkNull: true})
             .withMessage('Field is required'),
 
         handleValidationErrors
@@ -20,12 +20,12 @@ const validators = {
         check('title')
             .exists({ checkFalsy: true })
             .withMessage('Field is required'),
-        check('column')
-            .exists({ checkFalsy: true })
-            .withMessage('Field is required'),
+        // check('column')
+        //     .exists({ checkFalsy: true })
+        //     .withMessage('Field is required'),
 
         handleValidationErrors
     ]
-}
+};
 
 module.exports = validators
