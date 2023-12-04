@@ -25,12 +25,14 @@ router.put(
     [ reqAuthList, validateCreateList ],
     async (req, res) => {
 
-        const { title, column } = req.body;
+        const { title } = req.body; //add column later
         const { listId } = req.params;
         const updatedList = await List.findByPk(listId);
 
+        console.log('in api update')
+        
         updatedList.title = title;
-        updatedList.column = column;
+        // updatedList.column = column;
 
         updatedList.save();
 

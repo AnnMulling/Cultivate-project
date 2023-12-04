@@ -40,10 +40,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    column: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    }
+    // column: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: false,
+    // }
   }, {
     sequelize,
     modelName: 'List',

@@ -36,10 +36,10 @@ module.exports = {
         },
         onDelete: 'CASCADE'
       },
-      column: {
-        type: Sequelize.INTEGER,
-        allowNull: false
-      },
+      // column: {
+      //   type: Sequelize.INTEGER,
+      //   allowNull: false
+      // },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
