@@ -30,7 +30,9 @@ router.get(
             });
 
             // console.log('all boards', boards)
-            res.json(boards);
+            res.json({
+                "Boards": boards
+            });
     }
 );
 
@@ -134,7 +136,9 @@ router.get(
             ]
         });
 
-        res.json(lists)
+        res.json({
+            "Lists": lists
+        })
     }
 );
 
@@ -158,7 +162,6 @@ router.post(
             column
         });
 
-        console.log('here===>');
 
         await newList.save();
         res.status(201);

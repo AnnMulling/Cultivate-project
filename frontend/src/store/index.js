@@ -1,9 +1,13 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import sessionReducer from "./session"
+import boardReducer from './board';
+import listReducer from './list';
 
 const rootReducer = combineReducers({
     session: sessionReducer,
+    boards: boardReducer,
+    lists: listReducer,
 });
 
 let enhancer;
