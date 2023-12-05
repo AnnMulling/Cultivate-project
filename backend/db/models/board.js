@@ -25,10 +25,10 @@ module.exports = (sequelize, DataTypes) => {
   }
   Board.init({
     name: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(30),
       unique: true,
       allowNull: false,
-      Validator: {
+      validate: {
         len: [5, 30]
       }
     },
