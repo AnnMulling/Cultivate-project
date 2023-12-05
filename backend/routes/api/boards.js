@@ -30,7 +30,7 @@ router.get(
             });
 
             // console.log('all boards', boards)
-            res.json({
+           return res.json({
                 "Boards": boards
             });
     }
@@ -51,7 +51,7 @@ router.get(
             ]
         });
 
-        res.json(board);
+        return res.json(board);
     }
 );
 
@@ -72,7 +72,7 @@ router.post(
         });
 
         res.status(201);
-        res.json(newBoard)
+       return res.json(newBoard)
 
     }
 );
@@ -93,7 +93,7 @@ router.put(
         updatedBoard.is_public = is_public;
 
         await updatedBoard.save();
-        res.json(updatedBoard);
+        return res.json(updatedBoard);
     }
 );
 
@@ -107,7 +107,7 @@ router.delete(
         const board = await Board.findByPk(boardId);
 
         await board.destroy();
-        res.json({
+        return res.json({
             message: "Successfully deleted"
         });
     }
@@ -136,7 +136,7 @@ router.get(
             ]
         });
 
-        res.json({
+        return res.json({
             "Lists": lists
         })
     }
@@ -164,7 +164,7 @@ router.post(
 
         await newList.save();
         res.status(201);
-        res.json(newList);
+        return res.json(newList);
     }
 );
 
