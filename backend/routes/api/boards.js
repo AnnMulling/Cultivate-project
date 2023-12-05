@@ -29,10 +29,16 @@ router.get(
 
             });
 
-            console.log('all boards', boards)
+            const allBoards = [];
+
+            for (let board of boards) {
+                board = board.toJSON();
+                
+                allBoards.push(board);
+            };
 
            return res.json({
-                "Boards": boards
+                "Boards": allBoards
             });
     }
 );
@@ -137,9 +143,16 @@ router.get(
             ]
         });
 
+        const allList = [];
+        for (let list of lists) {
+            list = list.toJSON();
+
+            allList.push(list);
+        };
+
         return res.json({
-            "Lists": lists
-        })
+            "Lists": allList
+        });
     }
 );
 
