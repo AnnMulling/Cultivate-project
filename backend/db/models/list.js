@@ -25,10 +25,10 @@ module.exports = (sequelize, DataTypes) => {
   }
   List.init({
     title: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(30),
       allowNull: false,
       unique: true,
-      Validator: {
+      validate: {
         len: [5, 30]
       }
     },
