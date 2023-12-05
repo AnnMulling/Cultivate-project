@@ -29,7 +29,8 @@ router.get(
 
             });
 
-            // console.log('all boards', boards)
+            console.log('all boards', boards)
+
            return res.json({
                 "Boards": boards
             });
