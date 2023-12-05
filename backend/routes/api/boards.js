@@ -29,16 +29,16 @@ router.get(
 
             });
 
-            const allBoards = [];
+            // const allBoards = [];
 
-            for (let board of boards) {
-                board = board.toJSON();
-                
-                allBoards.push(board);
-            };
+            // for (let board of boards) {
+            //     board = board.toJSON();
+
+            //     allBoards.push(board);
+            // };
 
            return res.json({
-                "Boards": allBoards
+                "Boards": boards
             });
     }
 );
@@ -78,8 +78,9 @@ router.post(
             is_public
         });
 
+        await newBoard.save();
         res.status(201);
-       return res.json(newBoard)
+        return res.json(newBoard)
 
     }
 );
@@ -143,15 +144,15 @@ router.get(
             ]
         });
 
-        const allList = [];
-        for (let list of lists) {
-            list = list.toJSON();
+        // const allList = [];
+        // for (let list of lists) {
+        //     list = list.toJSON();
 
-            allList.push(list);
-        };
+        //     allList.push(list);
+        // };
 
         return res.json({
-            "Lists": allList
+            "Lists": lists
         });
     }
 );

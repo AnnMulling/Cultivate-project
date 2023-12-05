@@ -65,6 +65,7 @@ function CreateBoardModal({ board, formType }) {
 
         if (formType === "Create Board") {
             const res = await dispatch(fetchCreateBoard(boardDetails));
+            console.log('after creaete', res)
             history.push(`/boards/${res.id}`);
 
         };

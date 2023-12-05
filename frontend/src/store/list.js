@@ -77,6 +77,7 @@ export const fetchEditList = (listId, listDetails) => async (dispatch) => {
         if (response.ok) {
             const list = await response.json();
             dispatch(createList(list));
+
             return list
         }
     }catch(error){
@@ -96,7 +97,7 @@ export const fetchDeleteList = (listId) => async (dispatch) => {
         if (response.ok) {
             const message = await response.json();
             dispatch(removeList(listId));
-
+            
             return message;
         }
 

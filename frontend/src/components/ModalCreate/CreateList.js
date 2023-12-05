@@ -3,6 +3,7 @@ import { useModal } from "../../context/Modal";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom';
 import { fetchCreateList, fetchEditList } from "../../store/list";
+import { fetchABoard } from "../../store/board"
 
 import './ModalCreate.css'
 
@@ -20,13 +21,15 @@ function CreateListModal({ board, list, formType }) {
     console.log('board', board)
     console.log(listDetails)
 
-    const handleSubmit =  (e) => {
+    const handleSubmit = async (e) => {
          e.preventDefault();
 
         if (formType === "Create List") {
-            console.log('create modal')
-            dispatch(fetchCreateList(board.id, listDetails));
-            history.push(`/boards/${board.id}`)
+            console.log('create list ', 'form', formType)
+             dispatch(fetchCreateList(board.id, listDetails))
+             .then(() => history.push(`/boards/${board.id}`) )
+
+
         };
 
         if (formType === "Edit List") {
