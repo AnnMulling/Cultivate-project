@@ -17,8 +17,6 @@ export default function WorkSpace() {
     const allBoards = useSelector((state) => state.boards);
     const boardsArr = Object.values(allBoards);
     const [ isLoaded, setIsLoaded ] = useState(false);
-    const [showMenu, setShowMenu] = useState(false);
-
 
 
 
@@ -30,7 +28,7 @@ export default function WorkSpace() {
         dispatch(fetchAllBoard())
         .then(() => setIsLoaded(true));
 
-    }, [dispatch, showMenu]);
+    }, [dispatch]);
 
 
     if(!user) {

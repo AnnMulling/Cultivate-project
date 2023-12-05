@@ -14,7 +14,7 @@ router.get(
         const { listId } = req.params;
         const list = await List.findByPk(listId);
 
-        res.json(list);
+       return res.json(list);
     }
 
 );
@@ -30,13 +30,13 @@ router.put(
         const updatedList = await List.findByPk(listId);
 
         console.log('in api update')
-        
+
         updatedList.title = title;
         // updatedList.column = column;
 
         updatedList.save();
 
-        res.json(updatedList);
+       return res.json(updatedList);
     }
 );
 
@@ -50,7 +50,7 @@ router.delete(
         const list = await List.findByPk(listId);
 
         list.destroy();
-        res.json({
+        return res.json({
             message: "Successfully deleted"
         });
     }
