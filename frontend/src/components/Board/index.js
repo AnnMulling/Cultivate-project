@@ -14,7 +14,7 @@ export default function BoardDetails(){
     const dispatch = useDispatch();
     const history = useHistory();
     const { boardId } = useParams();
-    const board = useSelector((state) => state.boards ? state.boards[boardId] : null);
+    const board = useSelector((state) => state.boards[boardId]);
     const user = useSelector((state) => state.session.user);
     const allLists =  useSelector((state) => state.lists);
     const listArr = Object.values(allLists);
@@ -27,9 +27,8 @@ export default function BoardDetails(){
     console.log('lists', listArr)
 
 
-
-
     useEffect(() => {
+
         dispatch(fetchABoard(boardId))
         dispatch(fetchAllLists(boardId))
         .then(() => setIsLoaded(true));
@@ -44,7 +43,7 @@ export default function BoardDetails(){
 
     return isLoaded && (
         <>
-            <h1>In board {board.name}</h1>
+            <h1>In board {board?.name}</h1>
             {listArr.reverse().map((list) =>
 
                 <div key={list.id}>

@@ -34,8 +34,8 @@ function CreateListModal({ board, list, formType }) {
 
         if (formType === "Edit List") {
             console.log('edit modal')
-            dispatch(fetchEditList(list.id, listDetails));
-            history.push(`/boards/${board.id}`)
+            dispatch(fetchEditList(list.id, listDetails))
+            .then(() => history.push(`/boards/${board.id}`) )
         };
 
         closeModal()
