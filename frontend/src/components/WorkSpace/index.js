@@ -18,8 +18,6 @@ export default function WorkSpace() {
     const boardsArr = Object.values(allBoards);
     const [ isLoaded, setIsLoaded ] = useState(false);
 
-
-
     console.log('user', user);
     console.log('all boards', allBoards)
 

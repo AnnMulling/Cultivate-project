@@ -60,6 +60,7 @@ export const fetchAllBoard = () => async (dispatch) => {
         const response = await csrfFetch("/api/boards/current");
         if (response.ok) {
             const boards = await response.json();
+            console.log('fetch all boards', boards)
             dispatch(getAllBoards(boards));
         };
 
