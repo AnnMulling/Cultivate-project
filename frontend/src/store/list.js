@@ -97,7 +97,7 @@ export const fetchDeleteList = (listId) => async (dispatch) => {
         if (response.ok) {
             const message = await response.json();
             dispatch(removeList(listId));
-            
+
             return message;
         }
 
@@ -123,7 +123,7 @@ const listReducer = (state = initialState, action) => {
         case CREATE_LIST:
             newState = {
                 ...state,
-                [action.payload.ids]: action.payload
+                [action.payload.id]: action.payload
             };
             return newState;
 

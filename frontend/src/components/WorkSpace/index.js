@@ -10,7 +10,6 @@ import './WorkSpace.css';
 
 export default function WorkSpace() {
     //get all boards
-
     const dispatch = useDispatch();
     const history = useHistory();
     const user = useSelector((state) => state.session.user);
@@ -32,7 +31,6 @@ export default function WorkSpace() {
     if(!user) {
         history.push("/")
     };
-
 
 
     return isLoaded && (
