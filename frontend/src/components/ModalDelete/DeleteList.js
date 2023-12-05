@@ -4,17 +4,21 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDeleteList } from "../../store/list";
 
-function DeleteListModal ({ list }) {
+function DeleteListModal ({ board , list }) {
     const dispatch = useDispatch();
     const history = useHistory();
     const { closeModal } = useModal();
     const user = useSelector((state) => state.session.user);
 
 
-    const deleteList= (e) => {
+    console.log('delete list from board', board)
+
+    const deleteList= async(e) => {
         e.preventDefault();
 
-        dispatch(fetchDeleteList(list.id));
+        dispatch(fetchDeleteList(list.id))
+        .then(() => history.push(`/boards/${board.id}`) )
+
 
         closeModal();
 

@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
       unique: true,
       allowNull: false,
       validate: {
-        len: [5, 30]
+        len: [3, 30]
       }
     },
     user_id: {

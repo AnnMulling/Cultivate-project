@@ -43,6 +43,7 @@ export default function WorkSpace() {
 
                     <Link to={`/boards/${board.id}`}>
                         <div>{board.name}</div>
+
                     </Link>
 
                     <OpenModalButton

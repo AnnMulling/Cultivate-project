@@ -38,7 +38,6 @@ const deleteBoard = (boardId) => {
 export const fetchABoard = (boardId) => async (dispatch) => {
     try {
 
-
         const response =  await csrfFetch(`/api/boards/${boardId}`);
 
         if (response.ok) {
@@ -80,8 +79,9 @@ export const fetchCreateBoard = (newBoard) => async (dispatch) => {
             body: JSON.stringify(newBoard),
         });
         if (response.ok) {
-            const board = await response.json()
+            const board = await response.json();
             dispatch(createBoard(board));
+
             return board;
         };
 
@@ -94,7 +94,7 @@ export const fetchCreateBoard = (newBoard) => async (dispatch) => {
 //Edit Board
 export const fetchEditBoard = (boardId, boardDetails) => async (dispatch) => {
     try {
-        console.log('in edit fetch', boardDetails)
+        
         const response = await csrfFetch(`/api/boards/${boardId}`, {
             method: 'PUT',
             headers: { "Content-Type": "application/json" },
@@ -153,13 +153,14 @@ const boardReducer = (state = initialState, action) => {
             action.payload.Boards.forEach((board) =>
                 newState[board.id] = board
             );
-            return newState
+            return newState;
 
-        case CREAT_BOARD:
-            newState = {
-                ...state,
-                [action.payload.id]: action.payload
-            };
+            case CREAT_BOARD:
+                newState = {
+                    ...state,
+                    [action.payload.id]: action.payload
+                };
+                console.log('reducer create board', newState)
             return newState;
 
         case REMOVE_BOARD:
