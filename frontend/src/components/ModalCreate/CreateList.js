@@ -14,6 +14,9 @@ function CreateListModal({ board, list, formType }) {
     const [ title, setTitle ] = useState(formType === "Edit List" ? list.title : " ");
     const [ errors, setErrors ] = useState({});
 
+    const disabled = Object.values(errors).length > 0;
+    const className = disabled ? "disabled-btn" : "create-btn";
+
     const listDetails = {
         title: title,
     };
@@ -58,16 +61,17 @@ function CreateListModal({ board, list, formType }) {
     return(
         <>
             <h1>Create/Edit list</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="form-create">
                 <label>Title</label>
                 <input
-                        className=""
-                        placeholder="Title"
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)} />
-                        {errors.title && <p className="errors">{errors.title}</p>}
+                    type="text"
+                    className=""
+                    placeholder="Title"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)} />
+                <div>{errors.title && <p className="errors">{errors.title}</p>}</div>
 
-                <button type="submit">{formType === "Create List" ? "Create New List" : "Save"}</button>
+                <button type="submit" className={className}>{formType === "Create List" ? "Create New List" : "Save"}</button>
             </form>
         </>
     );

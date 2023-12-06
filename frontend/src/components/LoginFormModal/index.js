@@ -3,6 +3,9 @@ import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import "./LoginForm.css";
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import SignupFormModal from '../SignupFormModal';
+
 
 function LoginFormModal() {
   const dispatch = useDispatch();
@@ -31,8 +34,8 @@ function LoginFormModal() {
 
   return (
     <>
-      <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
+      <h1 style={{fontFamily:'Montserrat'}}>Log In</h1>
+      <form onSubmit={handleSubmit} className="form-login">
         <label>
           Username or Email
           <input
@@ -52,11 +55,15 @@ function LoginFormModal() {
           />
         </label>
         {errors.credential && (
-          <p>{errors.credential}</p>
+          <p className="errors">{errors.credential}</p>
         )}
-        <button type="submit">Log In</button>
+        <button type="submit" className="login-btn">Log In</button>
       </form>
-      <button onClick={demoLogin} type="submit">DemoUser</button>
+      {/* <button onClick={demoLogin} type="submit" className="demo-btn">DemoUser</button> */}
+      <div className="demo-btn">
+        Don't have an account? Login as
+        <span onClick={demoLogin} style={{marginLeft:10, fontWeight:400, cursor:"pointer", color:"#26268f"}}>DemoUser</span>
+      </div>
     </>
   );
 }

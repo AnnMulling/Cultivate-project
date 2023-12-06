@@ -1,0 +1,17 @@
+
+.workspace {
+    border: 1px solid red;
+
+}
+
+.heading {
+   width: 100%;
+}
+
+.name {
+    font-size: 45px;
+    border: 2px solid rgb(176,200,235);
+    padding: 5px;
+    border-radius: 35px;
+    margin: 0 auto;
+}

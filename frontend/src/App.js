@@ -6,6 +6,7 @@ import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
 import WorkSpace from "./components/WorkSpace";
 import BoardDetails from "./components/Board";
+import SignupFormModal from "./components/SignupFormModal";
 
 function App() {
   const dispatch = useDispatch();
