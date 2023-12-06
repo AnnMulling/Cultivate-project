@@ -34,37 +34,44 @@ export default function WorkSpace() {
 
 
     return isLoaded && (
-        <>
-            <h1>{user.firstName}'s Work Space</h1>
-            {boardsArr.reverse().map((board) =>
-                <div key={board.id} style={{marginBottom:20}}>
 
-                    <Link to={`/boards/${board.id}`}>
-                        <div>{board.name}</div>
-
-                    </Link>
-
-                    <OpenModalButton
-                        modalComponent={<CreateBoardModal board={board} formType="Edit Board" />}
-                        buttonText={"Edit Board"}
-                        modalClasses={["board-btn"]}
-                    />
-
-                    <OpenModalButton
-                        modalComponent={<DeleteBoardModal board={board}  />}
-                        buttonText={"Delete Board"}
-                        modalClasses={["board-btn"]}
-                    />
-
+            <div className='workspace'>
+                <div className='heading'>
+                    <span className='name'>{user?.firstName}</span>
+                    <span style={{fontSize:30}}>'s Work Space</span>
                 </div>
-             )}
+                <div className='boards-container'>
+                    {boardsArr.reverse().map((board) =>
+                        <div key={board.id} style={{marginBottom:20}}>
 
-             <OpenModalButton
-                 modalComponent={<CreateBoardModal formType="Create Board" />}
-                 buttonText={"Add Board"}
-                 modalClasses={["board-btn"]}
-             />
+                            <Link to={`/boards/${board.id}`}>
+                                <div>{board.name}</div>
 
-        </>
+                            </Link>
+
+                            <OpenModalButton
+                                modalComponent={<CreateBoardModal board={board} formType="Edit Board" />}
+                                buttonText={"Edit Board"}
+                                modalClasses={["board-btn-edt"]}
+                            />
+
+                            <OpenModalButton
+                                modalComponent={<DeleteBoardModal board={board}  />}
+                                buttonText={"Delete Board"}
+                                modalClasses={["board-btn-dlt"]}
+                            />
+
+                        </div>
+                    )}
+                </div>
+
+                <OpenModalButton
+                    modalComponent={<CreateBoardModal formType="Create Board" />}
+                    buttonText={"Add Board"}
+                    modalClasses={["board-btn-crt"]}
+                />
+            </div>
+
+        
     );
 };

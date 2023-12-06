@@ -15,7 +15,7 @@ function DeleteBoardModal({ board }) {
         e.preventDefault();
 
         dispatch(fetchDeleteBoard(board.id));
-        
+
         closeModal();
 
         history.push('/workspace')
@@ -37,7 +37,7 @@ function DeleteBoardModal({ board }) {
                     <button onClick={deleteBoard}>
                         Yes (Delete Board)
                     </button>
-                    <button id="keep-btn" onClick={closeModal}>
+                    <button onClick={closeModal}>
                         No (Keep Board)
                     </button>
                 </div>

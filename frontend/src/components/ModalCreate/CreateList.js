@@ -14,6 +14,9 @@ function CreateListModal({ board, list, formType }) {
     const [ title, setTitle ] = useState(formType === "Edit List" ? list.title : " ");
     const [ errors, setErrors ] = useState({});
 
+    const disabled = Object.values(errors).length > 0;
+    const className = disabled ? "disabled-btn" : "create-btn";
+
     const listDetails = {
         title: title,
     };
@@ -21,18 +24,31 @@ function CreateListModal({ board, list, formType }) {
     console.log('board', board)
     console.log(listDetails)
 
+    useEffect(() => {
+        const errors = {};
+
+        if (title === "") {
+            errors.title = "Field is required"
+        }else if (title.length < 5 ) {
+            errors.title = "Must be at least 5 or more characters"
+        }
+
+        setErrors(errors);
+
+    }, [title]);
+
+
     const handleSubmit = async (e) => {
          e.preventDefault();
 
-        if (formType === "Create List") {
+        if (formType === "Create List"  && !Object.values(errors).length) {
             console.log('create list ', 'form', formType)
              dispatch(fetchCreateList(board.id, listDetails))
              .then(() => history.push(`/boards/${board.id}`) )
 
-
         };
 
-        if (formType === "Edit List") {
+        if (formType === "Edit List"  && !Object.values(errors).length) {
             console.log('edit modal')
             dispatch(fetchEditList(list.id, listDetails))
             .then(() => history.push(`/boards/${board.id}`) )
@@ -45,16 +61,17 @@ function CreateListModal({ board, list, formType }) {
     return(
         <>
             <h1>Create/Edit list</h1>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="form-create">
                 <label>Title</label>
                 <input
-                        className=""
-                        placeholder="Title"
-                        value={title}
-                        onChange={(e) => setTitle(e.target.value)} />
-                        {errors.title && <p className="errors">{errors.title}</p>}
+                    type="text"
+                    className=""
+                    placeholder="Title"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)} />
+                <div>{errors.title && <p className="errors">{errors.title}</p>}</div>
 
-                <button type="submit">{formType === "Create List" ? "Create New List" : "Save"}</button>
+                <button type="submit" className={className}>{formType === "Create List" ? "Create New List" : "Save"}</button>
             </form>
         </>
     );

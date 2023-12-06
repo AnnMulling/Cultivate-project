@@ -15,28 +15,28 @@ function CreateBoardModal({ board, formType }) {
     const [ name, setName ] = useState(formType === "Edit Board" ? board.name : "");
     const [ isPublic, setIsPublic ] = useState(formType === "Edit Board" ? board.is_public : null);
     const [ errors, setErrors ] = useState({});
-    const [ validForm, setValidForm ] = useState(null);
+
+    const disabled = Object.values(errors).length > 0;
+    const className = disabled ? "disabled-btn" : "create-btn";
 
 
-    const disabled = name.length < 1 || !isPublic;
-    const className = disabled ? "disabled" : "creat-board-btn"
+    useEffect(() => {
+        const errors = {}
+
+        if (name === "") {
+            errors.name = "Field is required"
+        }else if (name.length < 5 ) {
+            errors.name = "Must be at least 5 or more characters"
+        }
+
+        if (isPublic === null) {
+            errors.radio = "Field is required"
+        }
+
+        setErrors(errors);
 
 
-
-
-    // useEffect (() => {
-    //     const error = {}
-    //     let validForm;
-    //     if (name.length < 1) {
-    //         error.name = "The field is required";
-    //         validForm = false;
-    //     };
-    //     setErrors(error);
-    //     setValidForm(validForm);
-
-
-
-    // },[errors, validForm]);
+    }, [name, isPublic])
 
 
     const onRadioChange = (e) => {
@@ -52,6 +52,7 @@ function CreateBoardModal({ board, formType }) {
                 selected = null;
         }
         setIsPublic(selected);
+
     };
 
     const boardDetails = {
@@ -63,14 +64,14 @@ function CreateBoardModal({ board, formType }) {
     const handleSubmit = async (e)  => {
         e.preventDefault();
 
-        if (formType === "Create Board") {
+        if (formType === "Create Board" && !Object.values(errors).length) {
             const res = await dispatch(fetchCreateBoard(boardDetails));
             console.log('after creaete', res)
             history.push(`/boards/${res.id}`);
 
         };
 
-        if (formType === "Edit Board") {
+        if (formType === "Edit Board" && !Object.values(errors).length) {
             console.log('detail', boardDetails)
             dispatch(fetchEditBoard(board.id, boardDetails));
             history.push(`/boards/${board.id}`)
@@ -86,35 +87,46 @@ function CreateBoardModal({ board, formType }) {
 
     return (
         <>
-            <h1>Create/Edit Board</h1>
-            <form onSubmit={handleSubmit}>
-                <label>Name</label>
+            <h1 style={{fontFamily:'Montserrat'}}>{formType === "Create Board" ? "Create New Board" : "Edit Board"}</h1>
+            <form onSubmit={handleSubmit} className="form-create">
+                <label htmlFor="name">Name
                 <input
+                    type="text"
                     className=""
+                    name="name"
                     placeholder="Name"
                     value={name}
-                    onChange={(e) => setName(e.target.value)} />
-                    {errors.name && <p className="errors">{errors.name}</p>}
+                    onChange={(e) => setName(e.target.value)}
+
+                 />
+                <div>{errors.name && <p className="errors">{errors.name}</p>}</div>
+                </label>
                 <div>
                     <p>Is this a public board?</p>
-                    <input
-                        type="radio"
-                        id="Yes"
-                        value={true}
-                        checked={isPublic === true}
-                        onChange={onRadioChange}
-                    />
-                    <label htmlFor="Yes">Yes</label>
-                    <input
-                        type="radio"
-                        id="No"
-                        value={false}
-                        checked={isPublic === false}
-                        onChange={onRadioChange}
-                    />
-                    <label htmlFor="No">No</label>
+                    <label htmlFor="Yes">
+                        <span>Yes</span>
+                        <input
+                            type="radio"
+                            id="Yes"
+                            value={true}
+                            checked={isPublic === true}
+                            onChange={onRadioChange}
+                        />
+                    </label>
+
+                    <label htmlFor="No">
+                        <span>No</span>
+                        <input
+                            type="radio"
+                            id="No"
+                            value={false}
+                            checked={isPublic === false}
+                            onChange={onRadioChange}
+                        />
+                    </label>
+                    <div>{errors.radio && <p className="errors">{errors.radio}</p>}</div>
                 </div>
-                <button type="submit">{formType === "Create Board" ? "Create New Board" : "Save"}</button>
+                <button type="submit"  className={className}>{formType === "Create Board" ? "Create New Board" : "Save"}</button>
             </form>
         </>
     );
