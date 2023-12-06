@@ -21,18 +21,31 @@ function CreateListModal({ board, list, formType }) {
     console.log('board', board)
     console.log(listDetails)
 
+    useEffect(() => {
+        const errors = {};
+
+        if (title === "") {
+            errors.title = "Field is required"
+        }else if (title.length < 5 ) {
+            errors.title = "Must be at least 5 or more characters"
+        }
+
+        setErrors(errors);
+
+    }, [title]);
+
+
     const handleSubmit = async (e) => {
          e.preventDefault();
 
-        if (formType === "Create List") {
+        if (formType === "Create List"  && !Object.values(errors).length) {
             console.log('create list ', 'form', formType)
              dispatch(fetchCreateList(board.id, listDetails))
              .then(() => history.push(`/boards/${board.id}`) )
 
-
         };
 
-        if (formType === "Edit List") {
+        if (formType === "Edit List"  && !Object.values(errors).length) {
             console.log('edit modal')
             dispatch(fetchEditList(list.id, listDetails))
             .then(() => history.push(`/boards/${board.id}`) )
