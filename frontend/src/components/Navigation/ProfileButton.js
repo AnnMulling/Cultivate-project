@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from 'react-redux';
+import { Link } from "react-router-dom";
 import * as sessionActions from '../../store/session';
 import OpenModalMenuItem from './OpenModalMenuItem';
 import LoginFormModal from '../LoginFormModal';
@@ -52,8 +53,13 @@ function ProfileButton({ user }) {
             <li>{user.username}</li>
             <li>{user.firstName} {user.lastName}</li>
             <li>{user.email}</li>
+            {/* <li>
+                <Link to="/workspace">
+                      <button onClick={closeMenu} className="workspace-btn">Your WorkSpace</button>
+                </Link>
+            </li> */}
             <li>
-              <button onClick={logout}>Log Out</button>
+              <button onClick={logout} className="logout-btn">Log Out</button>
             </li>
           </>
         ) : (

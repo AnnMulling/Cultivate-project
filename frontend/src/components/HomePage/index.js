@@ -9,13 +9,13 @@ export  default function HomePage () {
 
 
     return (
-        <>
+        <div className="homepage-main">
             <h1>Homepage</h1>
             {user && (
                 <Link to="/workspace">
                     <button>Your WorkSpace</button>
                 </Link>
             )}
-        </>
+        </div>
     );
 };

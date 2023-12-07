@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, useLocation } from "react-router-dom";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
@@ -10,6 +10,7 @@ import SignupFormModal from "./components/SignupFormModal";
 
 function App() {
   const dispatch = useDispatch();
+  const location = useLocation();
   const [isLoaded, setIsLoaded] = useState(false);
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
@@ -17,9 +18,11 @@ function App() {
 
   return (
     <>
-      <Navigation isLoaded={isLoaded} />
+     {location.pathname === '/workspace'|| location.pathname === '/boards/:boardId' ? null
+        : <Navigation isLoaded={isLoaded} />}
       {isLoaded &&(
         <Switch>
+
           <Route exact path="/">
             <HomePage />
           </Route>
@@ -29,6 +32,7 @@ function App() {
           <Route path="/boards/:boardId">
             <BoardDetails/>
           </Route>
+          <Route>404 Page Does Not Exist</Route>
         </Switch>
       )}
     </>

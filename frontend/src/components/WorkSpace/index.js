@@ -36,10 +36,9 @@ export default function WorkSpace() {
     return isLoaded && (
         <div className="workspace">
             <div className="inner-workspace">
-
                 <div className="heading">
                     <span className="name">{user?.firstName}</span>
-                    <span style={{ fontSize:30, color:'#ffff', marginLeft:5 }}>'s Work Space</span>
+                    <span style={{ fontSize:30, color:'#405c86', marginLeft:5 }}>'s Work Space</span>
                 </div>
                 <div className='boards-container'>
                     {boardsArr.reverse().map((board) =>
