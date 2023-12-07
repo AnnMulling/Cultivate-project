@@ -9,7 +9,9 @@ import DeleteBoardModal from '../ModalDelete/DeleteBoard';
 import './WorkSpace.css';
 
 export default function WorkSpace() {
-    //get all boards
+    //side bar
+    const [ isOpen, setIsOpen ] = useState(false);
+
     const dispatch = useDispatch();
     const history = useHistory();
     const user = useSelector((state) => state.session.user);
@@ -27,6 +29,9 @@ export default function WorkSpace() {
 
     }, [dispatch]);
 
+    const handleBar = () => {
+        setIsOpen(!isOpen); //set to true
+    };
 
     if (!user) {
         history.push("/")
@@ -35,6 +40,39 @@ export default function WorkSpace() {
 
     return isLoaded && (
         <div className="workspace">
+            <div className={`sidebar ${isOpen ? "sidebar--open" : ""}`}>
+                <div className="trigger-bar" onClick={handleBar}>
+                    {isOpen ?
+                     <i class="fa-solid fa-chevron-left"></i> : <i class="fa-solid fa-chevron-right"></i>}
+                </div>
+
+                <Link to="/" style={{textDecoration: 'none'}}>
+                    <div className="sidebar-content">
+                        <i class="fa-solid fa-house"></i>
+                        <span style={{marginLeft:10}}>Home</span>
+                    </div>
+                </Link>
+
+                <Link to="/workspace" style={{textDecoration: 'none'}}>
+                    <div className="sidebar-content">
+                            <i class="fa-solid fa-grip"></i>
+                            <span style={{marginLeft:10}}>Boards</span>
+                    </div>
+                </Link>
+                <Link to="" style={{textDecoration: 'none'}}>
+                    <div className="sidebar-content">
+                        <i class="fa-solid fa-star"></i>
+                        <span style={{marginLeft:10}}>Starred Board</span>
+                    </div>
+                </Link>
+                <Link to="" style={{textDecoration: 'none'}}>
+                    <div className="sidebar-content">
+                        <i class="fa-solid fa-clock"></i>
+                        <span style={{marginLeft:10}}>Focus Mode</span>
+                    </div>
+                </Link>
+            </div>
+
             <div className="inner-workspace">
                 <div className="heading">
                     <span className="name">{user?.firstName}</span>
