@@ -28,7 +28,7 @@
 }
 
 .login-btn {
-    background-color: rgb(176,200,235);
+    background-color: #405c86;;
     border-radius: 20px;
     color:rgb(255, 255, 255);
     font-size: 23px;
@@ -50,4 +50,5 @@
 .demo-btn {
     margin-top: 20px;
     margin-left: 14%;
+    color: rgb(38, 38, 143)
 }

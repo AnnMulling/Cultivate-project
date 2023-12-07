@@ -12,7 +12,11 @@ function Navigation({ isLoaded }){
       <li>
         <NavLink exact to="/">Home</NavLink>
       </li>
-      <li className="search-box">Search <i class="fa-solid fa-magnifying-glass" style={{color:'#405c86'}}></i></li>
+
+        <li >
+          Search <i class="fa-solid fa-magnifying-glass" style={{color:'#405c86'}}></i>
+        </li>
+    
       {isLoaded && (
         <li>
           <ProfileButton user={sessionUser} />

@@ -1,9 +1,71 @@
 .nav-container {
-    background-blend-mode: normal;
     display: flex;
     justify-content: space-around;
+    height: max-content;
+    background: none;
 }
 
+.profile-dropdown {
+    position: absolute;
+    z-index: 1000;
+    right: 4%;
+    font-size: 14px;
+
+    top: 6.6%;
+    list-style-type: none;
+    border-radius: 12px;
+    border: 1px solid #dddddd;
+    background-color: #fbfbfb;
+    width: fit-content;
+    cursor: pointer;
+
+    padding: 15px;
+    margin-bottom: 4px;
+}
+.profile-dropdown > * {
+    margin-bottom: 10px;
+  }
+
+.logout-btn{
+  background-color: #405c86;
+  color:rgb(251, 249, 249);
+  font-size: 15px;
+  border: none;
+  border-radius: 7px;
+  margin-left: 5px;
+  margin-top: 5px;
+  cursor: pointer;
+  padding: 3px 9px;
+
+  &:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+   }
+}
+
+.workspace-btn {
+    background-color: #405c86;
+    color:rgb(251, 249, 249);
+    font-size: 15px;
+    border: none;
+    border-radius: 7px;
+    margin-left: 5px;
+    margin-top: 5px;
+    cursor: pointer;
+    padding: 3px 9px;
+    &:hover {
+     transform: scale(1.05);
+     cursor: pointer;
+    }
+}
+
+
+
+/* .search-box {
+    border: 1px solid #405c86;;
+    border-radius: 12px;
+    padding: 5px;
+} */
 
 ul li {
    list-style: none;
