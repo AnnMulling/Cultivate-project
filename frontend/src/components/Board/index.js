@@ -38,10 +38,14 @@ export default function BoardDetails(){
 
     }, [dispatch]);
 
+    //handle bar
     const handleBar = () => {
         setIsOpen(!isOpen); //set to true
     };
 
+    const addCart = () => {
+        alert("Feature Comming Soon!")
+    };
 
     if(!user) {
         history.push("/")
@@ -81,35 +85,38 @@ export default function BoardDetails(){
                     </div>
                 </Link>
             </div>
+
+            <h1 className='heading'>{board?.name}</h1>
             <div className="board-details-container">
-                <h1>{board?.name}</h1>
                 <h2>Tasks</h2>
-                {listArr.reverse().map((list) =>
-                    <div key={list.id}>
-                        <span></span>
-                        <p>{list.title}</p>
-                        <p>Created By {user.firstName}</p>
+                <div  className="list-main-container">
+                    {listArr.map((list) =>
+                        <div key={list.id} className="list-container">
+                            <h3>{list.title}</h3>
+                            <div className="card-btn-crt" onClick={addCart}><i class="fa-solid fa-circle-plus"></i>Add task</div>
+                            <p>Created By {user.firstName}</p>
 
-                        <OpenModalButton
-                        modalComponent={<CreateListModal board={board} formType="Edit List" list={list}  />}
-                        buttonText={<i class="fa-solid fa-pen-to-square"></i>}
-                        modalClasses={["list-btn-edt"]}
-                        />
+                            <OpenModalButton
+                            modalComponent={<CreateListModal board={board} formType="Edit List" list={list}  />}
+                            buttonText={<i class="fa-solid fa-pen-to-square"></i>}
+                            modalClasses={["list-btn-edt"]}
+                            />
 
-                        <OpenModalButton
-                        modalComponent={<DeleteListModal board={board} list={list} />}
-                        buttonText={<i class="fa-solid fa-trash"></i>}
-                        modalClasses={["list-btn-delete"]}
-                        />
-                    </div>
-
-
-                )}
-                <OpenModalButton
-                modalComponent={<CreateListModal board={board} formType="Create List" />}
-                buttonText={<i class="fa-solid fa-circle-plus"></i>}
-                modalClasses={["list-btn"]}
-                />
+                            <OpenModalButton
+                            modalComponent={<DeleteListModal board={board} list={list} />}
+                            buttonText={<i class="fa-solid fa-trash"></i>}
+                            modalClasses={["list-btn-delete"]}
+                            />
+                        </div>
+                    )}
+                        <div>
+                            <OpenModalButton
+                            modalComponent={<CreateListModal board={board} formType="Create List" />}
+                            buttonText={<i class="fa-solid fa-circle-plus"></i>}
+                            modalClasses={["list-btn-crt"]}
+                            />
+                        </div>
+                </div>
 
             </div>
         </>

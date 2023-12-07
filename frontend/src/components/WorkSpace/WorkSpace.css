@@ -37,8 +37,6 @@
     border: 1px solid rgba(242, 239, 239, 0.981);
     max-width: 100vw;
     min-height: 100vh;
-
-    /* margin: auto 0; */
 }
 
 
@@ -48,12 +46,14 @@
    padding: 13px;
    margin: 20px;
    border-bottom: 1px solid #ddd;
+   color: #313c67
 
 }
 
 .name {
     font-size: 45px;
-    color:  #405c86;
+    /* color:  #405c86; */
+    color: #313c67;
     background-color: #fff;
     border-radius: 35px;
     margin: 0 auto;
@@ -63,12 +63,11 @@
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
-    margin: 12px 28px;
+    margin-left: 5%;
 }
 
 .board-card-container {
     text-align: center;
-
 }
 
 .board-card {
@@ -80,7 +79,7 @@
     align-items: center;
     justify-content: space-around;
 
-    background-color: #d3e6ff;
+    background-color: #fffefe;
     padding: 15px;
     border-radius:6px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
@@ -92,7 +91,7 @@
     }
 }
 .board-btn  > *{
-    background-color: #405c86;
+    background-color: #313c67;;
     border: none;
     padding: 12px 15px;
     border-radius: 22em;
@@ -116,7 +115,7 @@
     border: none;
     padding: 15px 18px;
     border-radius: 22em;
-    color:  #405c86;
+    color:  #313c67;
     font-size: 30px;
     cursor: pointer;
     &:hover {

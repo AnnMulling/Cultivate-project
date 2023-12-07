@@ -4,6 +4,8 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDeleteList } from "../../store/list";
 
+import './ModalDelete.css'
+
 function DeleteListModal ({ board , list }) {
     const dispatch = useDispatch();
     const history = useHistory();
@@ -36,10 +38,10 @@ function DeleteListModal ({ board , list }) {
                         Are you sure you want to delete this list?
                 </h3>
                 <div>
-                    <button onClick={deleteList}>
+                    <button onClick={deleteList} className="delete-btn">
                         Yes (Delete List)
                     </button>
-                    <button id="keep-btn" onClick={closeModal}>
+                    <button id="keep-btn" onClick={closeModal} className="keep-btn">
                         No (Keep List)
                     </button>
                 </div>

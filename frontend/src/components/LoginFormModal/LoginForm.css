@@ -28,7 +28,7 @@
 }
 
 .login-btn {
-    background-color: #405c86;;
+    background-color: #313c67;;
     border-radius: 20px;
     color:rgb(255, 255, 255);
     font-size: 23px;
@@ -39,16 +39,15 @@
     margin-left: 10%;
 
     cursor: pointer;
+    &:hover {
+        background-color: #40bd93;
+    }
 
 }
 
-.login-btn:hover {
-    background-color: rgb(0, 0, 0);
-    color:#ffffff
-}
 
 .demo-btn {
     margin-top: 20px;
     margin-left: 14%;
-    color: rgb(38, 38, 143)
+
 }

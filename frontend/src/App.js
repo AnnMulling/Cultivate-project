@@ -18,7 +18,7 @@ function App() {
 
   return (
     <>
-     {location.pathname === '/workspace'|| location.pathname === '/boards/:boardId' ? null
+     {location.pathname === '/workspace'|| location.pathname?.includes('/boards') ? null
         : <Navigation isLoaded={isLoaded} />}
       {isLoaded &&(
         <Switch>
