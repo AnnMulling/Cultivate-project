@@ -4,8 +4,12 @@
     margin: 3px;
     box-sizing: border-box;
     font-size: small;
+    font-weight: 300;
 }
 
+.modal-popup {
+    z-index: 10000;
+}
 
 .form-create {
     text-align: center;

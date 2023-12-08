@@ -27,9 +27,18 @@ function LoginFormModal() {
       });
   };
 
-  const demoLogin = () => {
-    setCredential('user1');
-    setPassword('password1');
+  const demoLogin =  (e) => {
+    e.preventDefault();
+     const demoCred = {
+      credential: 'user1',
+      password: 'password1'
+     };
+
+    setCredential(demoCred["credential"]);
+    setPassword(demoCred["password"]);
+
+    dispatch(sessionActions.login(demoCred))
+    .then(closeModal)
   };
 
   return (

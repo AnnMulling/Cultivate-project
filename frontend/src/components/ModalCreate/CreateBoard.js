@@ -26,7 +26,9 @@ function CreateBoardModal({ board, formType }) {
         if (name === "") {
             errors.name = "Field is required"
         }else if (name.length < 5 ) {
-            errors.name = "Must be at least 5 or more characters"
+            errors.name = "Name must be at least 5 characters"
+        }else if (name.length > 30) {
+            errors.name = "Name must be less than 30 characters"
         }
 
         if (isPublic === null) {
@@ -86,7 +88,7 @@ function CreateBoardModal({ board, formType }) {
 
 
     return (
-        <>
+        <div className="modal-popup">
             <h1 style={{fontFamily:'Montserrat'}}>{formType === "Create Board" ? "Create New Board" : "Edit Board"}</h1>
             <form onSubmit={handleSubmit} className="form-create">
                 <label htmlFor="name">Name
@@ -128,7 +130,7 @@ function CreateBoardModal({ board, formType }) {
                 </div>
                 <button type="submit"  className={className}>{formType === "Create Board" ? "Create New Board" : "Save"}</button>
             </form>
-        </>
+        </div>
     );
 }
 
