@@ -2,9 +2,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: max-content;
+    height: 80px;
     background: none;
     margin-top: 20px 0px;;
+}
+
+.logo {
+    width: 80px;
+    height: 80px;
 }
 
 .profile-dropdown {
@@ -17,7 +22,7 @@
     list-style-type: none;
     border-radius: 12px;
     border: 1px solid #313c67;
-    background-color: #f5f5f5;;
+    background-color: #fbfbfe;;
     width: fit-content;
     cursor: pointer;
 
@@ -54,11 +59,11 @@
     background-color:#313c67;
     font-size: 15px;
     border: none;
-    border-radius: 12px;
+    border-radius: 2rem;
     margin-right: 20px;
     margin-top: 5px;
     cursor: pointer;
-    padding: 10px;
+    padding: 18px;
 
     &:hover {
         background-color: #40bd93;
