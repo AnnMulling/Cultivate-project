@@ -32,7 +32,7 @@ function DeleteListModal ({ board , list }) {
 
     return (
         <>
-            <div>
+            <div className="modal-popup">
                 <h2>Confirm Delete</h2>
                  <h3>
                         Are you sure you want to delete this list?

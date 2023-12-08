@@ -17,10 +17,12 @@ export default function WorkSpace() {
     const user = useSelector((state) => state.session.user);
     const allBoards = useSelector((state) => state.boards);
     const boardsArr = Object.values(allBoards);
-    const [isLoaded, setIsLoaded] = useState(false);
+    const [ isLoaded, setIsLoaded] = useState(false);
+    const [ starClass, setStarClass ] = useState("fa-regular fa-star")
 
     console.log('user', user);
     console.log('all boards', allBoards)
+    console.log('star class', starClass)
 
     useEffect(() => {
 
@@ -33,87 +35,102 @@ export default function WorkSpace() {
         setIsOpen(!isOpen); //set to true
     };
 
+    const handleStar = () => {
+        if (starClass === "fa-regular fa-star" ) {
+            setStarClass("fa-solid fa-star")
+        }else if (starClass === "fa-solid fa-star") {
+            setStarClass("fa-regular fa-star");
+        }
+    };
+
     if (!user) {
         history.push("/")
     };
 
 
     return isLoaded && (
-        <div className="workspace">
-            <div className={`sidebar ${isOpen ? "sidebar--open" : ""}`}>
-                <div className="trigger-bar" onClick={handleBar}>
-                    {isOpen ?
-                     <i class="fa-solid fa-chevron-left"></i> : <i class="fa-solid fa-chevron-right"></i>}
-                </div>
-
-                <Link to="/" style={{textDecoration: 'none'}}>
-                    <div className="sidebar-content">
-                        <i class="fa-solid fa-house"></i>
-                        <span style={{marginLeft:10}}>Home</span>
-                    </div>
-                </Link>
-
-                <Link to="/workspace" style={{textDecoration: 'none'}}>
-                    <div className="sidebar-content">
-                            <i class="fa-solid fa-grip"></i>
-                            <span style={{marginLeft:10}}>Boards</span>
-                    </div>
-                </Link>
-                <Link to="" style={{textDecoration: 'none'}}>
-                    <div className="sidebar-content">
-                        <i class="fa-solid fa-star"></i>
-                        <span style={{marginLeft:10}}>Starred Board</span>
-                    </div>
-                </Link>
-                <Link to="" style={{textDecoration: 'none'}}>
-                    <div className="sidebar-content">
-                        <i class="fa-solid fa-clock"></i>
-                        <span style={{marginLeft:10}}>Focus Mode</span>
-                    </div>
-                </Link>
+     <>
+        <div className={`sidebar ${isOpen ? "sidebar--open" : ""}`}>
+            <div className="trigger-bar" onClick={handleBar}>
+                {isOpen ?
+                <i class="fa-solid fa-chevron-left"></i> : <i class="fa-solid fa-chevron-right"></i>}
             </div>
 
-            <div className="inner-workspace">
-                <div className="heading">
-                    <span className="name">{user?.firstName}</span>
-                    <span style={{ fontSize:30, color:'#405c86', marginLeft:5 }}>'s Work Space</span>
+
+                <div className="sidebar-content">
+                    <i class="fa-solid fa-user"></i>
+                    <span style={{marginLeft:10}}>Hello, {user.firstName}</span>
                 </div>
-                <div className='boards-container'>
+
+
+            <Link to="/workspace" style={{textDecoration: 'none'}}>
+                <div className="sidebar-content">
+                        <i class="fa-solid fa-grip"></i>
+                        <span style={{marginLeft:10}}>Boards</span>
+                </div>
+            </Link>
+            <Link to="/workspace" style={{textDecoration: 'none'}}>
+                <div className="sidebar-content">
+                    <i class="fa-solid fa-star"></i>
+                    <span style={{marginLeft:10}}>Starred Board</span>
+                </div>
+            </Link>
+            <Link to="/workspace" style={{textDecoration: 'none'}}>
+                <div className="sidebar-content">
+                    <i class="fa-solid fa-clock"></i>
+                    <span style={{marginLeft:10}}>Focus Mode</span>
+                </div>
+            </Link>
+        </div>
+        <div className="workspace">
+
+            <div className="heading">
+                <span className="name">{user?.firstName}</span>
+                <span style={{ fontSize:30, color:'#313c67', marginLeft:5 }}>'s Work Space</span>
+            </div>
+            <div className="inner-workspace">
                     {boardsArr.reverse().map((board) =>
-                        <div className="board-card-container">
-                            <Link to={`/boards/${board.id}`} style={{ textDecoration: 'none', color: '#405c86' }}>
+                    <div className="boards-container">
+                        <Link to={`/boards/${board.id}`} style={{ textDecoration: 'none', color: '#313c67' }}>
+                            <div className="board-card-container">
                                 <div key={board.id} style={{ marginBottom: 20 }} className="board-card">
                                     {board.name}
                                 </div>
-
-                            </Link>
-
-                            <div className='board-btn'>
-                                <OpenModalButton
-                                    modalComponent={<CreateBoardModal board={board} formType="Edit Board" />}
-                                    buttonText={<i class="fa-solid fa-pen-to-square"></i>}
-                                    modalClasses={["board-btn-edt"]}
-                                />
-                                <OpenModalButton
-                                    modalComponent={<DeleteBoardModal board={board} />}
-                                    buttonText={<i class="fa-solid fa-trash"></i>}
-                                    modalClasses={["board-btn-dlt"]}
-                                />
                             </div>
+                        </Link>
+
+                        <div className="board-btn">
+                            <div className="starred-container" >
+                                <i className={starClass} onClick={handleStar}></i>
+                            </div>
+                            <OpenModalButton
+                                modalComponent={<CreateBoardModal board={board} formType="Edit Board" />}
+                                buttonText={<i class="fa-solid fa-pen-to-square"></i>}
+                                modalClasses={["board-btn-edt"]}
+                            />
+                            <OpenModalButton
+                                modalComponent={<DeleteBoardModal board={board} />}
+                                buttonText={<i class="fa-solid fa-trash"></i>}
+                                modalClasses={["board-btn-dlt"]}
+                            />
                         </div>
+
+                    </div>
+
                     )}
-                     <div className='create-board-container'>
+                    <div className='create-board-container'>
                         <OpenModalButton
                             modalComponent={<CreateBoardModal formType="Create Board" />}
                             buttonText={<i class="fa-solid fa-circle-plus"></i>}
                             modalClasses={["board-btn-crt"]}
                         />
                     </div>
-                </div>
+
 
             </div>
 
         </div>
+    </>
 
     );
 };

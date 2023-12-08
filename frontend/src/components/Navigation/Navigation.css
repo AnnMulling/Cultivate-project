@@ -1,21 +1,23 @@
 .nav-container {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
     height: max-content;
     background: none;
+    margin-top: 20px 0px;;
 }
 
 .profile-dropdown {
     position: absolute;
     z-index: 1000;
-    right: 12%;
-    font-size: 14px;
+    right: 4%;
+    font-size: 16px;
 
-    top: 6.6%;
+    top: 10%;
     list-style-type: none;
     border-radius: 12px;
-    border: 1px solid #dddddd;
-    background-color: #fbfbfb;
+    border: 1px solid #313c67;
+    background-color: #f5f5f5;;
     width: fit-content;
     cursor: pointer;
 
@@ -24,14 +26,18 @@
 }
 .profile-dropdown > * {
     margin-bottom: 10px;
+
+    /* &:hover {
+        background-color: #313c674b;
+    } */
   }
 
 .logout-btn{
-  background-color: #405c86;
+  background-color: #313c67;
   color:rgb(251, 249, 249);
   font-size: 15px;
   border: none;
-  border-radius: 7px;
+  border-radius: 5px;
   margin-left: 5px;
   margin-top: 5px;
   cursor: pointer;
@@ -44,21 +50,32 @@
 }
 
 .workspace-btn {
-    background-color: #405c86;
-    color:rgb(251, 249, 249);
+    color: rgb(251, 251, 254);
+    background-color:#313c67;
     font-size: 15px;
     border: none;
-    border-radius: 7px;
-    margin-left: 5px;
+    border-radius: 12px;
+    margin-right: 20px;
     margin-top: 5px;
     cursor: pointer;
-    padding: 3px 9px;
+    padding: 10px;
+
     &:hover {
-     transform: scale(1.05);
-     cursor: pointer;
+        background-color: #40bd93;
     }
 }
 
+.profile-btn {
+    color: rgb(251, 251, 254);
+    background-color:#313c67;
+    font-size: 15px;
+    border: none;
+    border-radius: 12px;
+    margin-right: 50px;
+    margin-top: 5px;
+    cursor: pointer;
+    padding: 9px;
+}
 
 
 /* .search-box {

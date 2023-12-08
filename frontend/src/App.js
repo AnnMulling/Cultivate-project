@@ -8,6 +8,7 @@ import WorkSpace from "./components/WorkSpace";
 import BoardDetails from "./components/Board";
 import SignupFormModal from "./components/SignupFormModal";
 
+
 function App() {
   const dispatch = useDispatch();
   const location = useLocation();
@@ -18,11 +19,12 @@ function App() {
 
   return (
     <>
-     {location.pathname === '/workspace'|| location.pathname?.includes('/boards') ? null
-        : <Navigation isLoaded={isLoaded} />}
+     {location.pathname !== '/workspace'
+       && !location.pathname?.includes('/boards')
+       && <Navigation isLoaded={isLoaded} />}
+      {/* <Navigation isLoaded={isLoaded} /> */}
       {isLoaded &&(
         <Switch>
-
           <Route exact path="/">
             <HomePage />
           </Route>

@@ -21,11 +21,11 @@ function ProfileButton({ user }) {
   useEffect(() => {
     if (!showMenu) return;
 
-    const closeMenu = (e) => {
-      if (!ulRef.current.contains(e.target)) {
-        setShowMenu(false);
-      }
-    };
+    // const closeMenu = (e) => {
+    //   if (!ulRef.current.contains(e.target)) {
+    //     setShowMenu(false);
+    //   }
+    // };
 
     document.addEventListener('click', closeMenu);
 
@@ -44,8 +44,11 @@ function ProfileButton({ user }) {
 
   return (
     <>
-      <button onClick={openMenu}>
-        <i className="fas fa-user-circle" />
+      <button onClick={openMenu} className="profile-btn">
+         <i className="fa-solid fa-user" style={{marginRight:10}}></i>
+         {showMenu ?
+          <i class="fa-solid fa-caret-down"></i> :
+          <i className="fa-solid fa-caret-up"></i>}
       </button>
       <ul className={ulClassName} ref={ulRef}>
         {user ? (
@@ -53,11 +56,7 @@ function ProfileButton({ user }) {
             <li>{user.username}</li>
             <li>{user.firstName} {user.lastName}</li>
             <li>{user.email}</li>
-            {/* <li>
-                <Link to="/workspace">
-                      <button onClick={closeMenu} className="workspace-btn">Your WorkSpace</button>
-                </Link>
-            </li> */}
+
             <li>
               <button onClick={logout} className="logout-btn">Log Out</button>
             </li>

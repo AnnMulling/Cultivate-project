@@ -1,20 +1,32 @@
+.board-page-main {
+    background-color: rgb(241,241,241);
+    box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+    border-radius: 1px;
+    border: 1px solid rgba(113 119 144 / 25%);
+
+    max-width: 100vw;
+    min-height: 100vh;
+}
+
+
 /*side bar*/
 .sidebar {
     position: fixed;
+    z-index: 100;
     top: 0;
     width: 50px;
     height: 100%;
     background-color: #f5f5f5;
-    border-radius:6px;
+    /* border-radius:6px; */
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
     transition: width 0.3s ease;
     border-right: 1px solid #e3e7f7;
     padding-top: 15px;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .sidebar-content {
-  /* margin-top: 10%; */
+
   color: #313c67;
   height: 50px;
   cursor: pointer;
@@ -60,7 +72,8 @@
 }
 
 .board-details-container {
-    margin-left: 5%;
+    margin-left: 8%;
+
 }
 
 /*board details*/
@@ -87,7 +100,7 @@
     }
 }
 
-.list-btn-edt, .list-btn-delete, .list-btn-crt {
+.list-btn-edt, .list-btn-delete {
     background-color: #313c67;;
     border: none;
     padding: 10px 12px;
@@ -104,6 +117,15 @@
 
 .list-btn-crt {
     font-size: 18px;
+    background-color: #f5f5f500;
+    border: none;
+    color:  #313c67;
+    font-size: 38px;
+    cursor: pointer;
+    &:hover {
+        transform: scale(1.09);
+
+    }
 }
 .card-btn-crt{
     color: #40bd93;

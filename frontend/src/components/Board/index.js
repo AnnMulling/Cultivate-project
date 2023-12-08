@@ -52,14 +52,19 @@ export default function BoardDetails(){
     };
 
     return isLoaded && (
-        <>
+        <div className="board-page-main">
             <div className={`sidebar ${isOpen ? "sidebar--open" : ""}`}>
                 <div className="trigger-bar" onClick={handleBar}>
                     {isOpen ?
                      <i class="fa-solid fa-chevron-left"></i> : <i class="fa-solid fa-chevron-right"></i>}
                 </div>
 
-                <Link to="/" style={{textDecoration: 'none'}}>
+                    <div className="sidebar-content">
+                        <i class="fa-solid fa-user"></i>
+                        <span style={{marginLeft:10}}>Hello, {user.firstName}</span>
+                    </div>
+
+                <Link to="/workspace" style={{textDecoration: 'none'}}>
                     <div className="sidebar-content">
                         <i class="fa-solid fa-house"></i>
                         <span style={{marginLeft:10}}>Home</span>
@@ -72,13 +77,13 @@ export default function BoardDetails(){
                             <span style={{marginLeft:10}}>Boards</span>
                     </div>
                 </Link>
-                <Link to="" style={{textDecoration: 'none'}}>
+                <Link to="/workspace" style={{textDecoration: 'none'}}>
                     <div className="sidebar-content">
                         <i class="fa-solid fa-star"></i>
                         <span style={{marginLeft:10}}>Starred Board</span>
                     </div>
                 </Link>
-                <Link to="" style={{textDecoration: 'none'}}>
+                <Link to="/workspace" style={{textDecoration: 'none'}}>
                     <div className="sidebar-content">
                         <i class="fa-solid fa-clock"></i>
                         <span style={{marginLeft:10}}>Focus Mode</span>
@@ -119,6 +124,6 @@ export default function BoardDetails(){
                 </div>
 
             </div>
-        </>
+        </div>
     );
 };

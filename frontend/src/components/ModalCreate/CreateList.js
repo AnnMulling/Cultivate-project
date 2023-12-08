@@ -30,7 +30,9 @@ function CreateListModal({ board, list, formType }) {
         if (title === "") {
             errors.title = "Field is required"
         }else if (title.length < 5 ) {
-            errors.title = "Must be at least 5 or more characters"
+            errors.title = "Title must be at least 5 characters"
+        }else if (title.length > 30) {
+            errors.title = "Title must be less than 30 characters"
         }
 
         setErrors(errors);
@@ -59,7 +61,7 @@ function CreateListModal({ board, list, formType }) {
 
 
     return(
-        <>
+        <div className="modal-popup">
             <h1>Create/Edit list</h1>
             <form onSubmit={handleSubmit} className="form-create">
                 <label>Title</label>
@@ -73,7 +75,7 @@ function CreateListModal({ board, list, formType }) {
 
                 <button type="submit" className={className}>{formType === "Create List" ? "Create New List" : "Save"}</button>
             </form>
-        </>
+        </div>
     );
 };
 

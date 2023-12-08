@@ -29,7 +29,7 @@ function DeleteBoardModal({ board }) {
 
     return (
         <>
-            <div>
+            <div className="modal-popup">
                 <h2>Confirm Delete</h2>
                  <h3>
                      <p>Lists associated with the board will also be deleted</p>
