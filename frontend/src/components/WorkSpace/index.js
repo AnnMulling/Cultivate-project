@@ -61,7 +61,7 @@ export default function WorkSpace() {
                     <i class="fa-solid fa-user"></i>
                     <span style={{marginLeft:10}}>Hello, {user.firstName}</span>
                 </div>
-            <Link to="/workspace" style={{textDecoration: 'none'}}>
+            <Link to="/" style={{textDecoration: 'none'}}>
                 <div className="sidebar-content">
                     <i class="fa-solid fa-house"></i>
                     <span style={{marginLeft:10}}>Home</span>
