@@ -38,9 +38,6 @@
 .profile-dropdown > * {
     margin-bottom: 10px;
 
-    /* &:hover {
-        background-color: #313c674b;
-    } */
   }
 
 .logout-btn{
@@ -105,4 +102,43 @@ ul li {
 
 .hidden {
     display: none;
+ }
+
+
+ @media screen and (max-width: 749px){
+    .nav-container {
+        display: flex;
+        padding: 4px;
+
+        justify-content: space-between;
+    }
+    .workspace-btn {
+        margin-left: 20px;
+    }
+    .profile-btn {
+        margin-right: 40px;
+    }
+    .profile-dropdown{
+        top: 7%;
+    }
+
+ }
+
+ @media screen and (min-width: 750px) and (max-width: 1024px ) {
+    .nav-container {
+        display: flex;
+        padding: 2px 0;
+        justify-content: space-between;
+  
+    }
+    .workspace-btn {
+        margin-left: 20px;
+    }
+    .profile-btn {
+        margin-right: 40px;
+    }
+    .profile-dropdown{
+        top: 7%;
+    }
+
  }
