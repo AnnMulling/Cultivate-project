@@ -2,14 +2,20 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 80px;
-    background: none;
-    margin-top: 20px 0px;;
+    height: 70px;
+
+    margin-top: 0;
+    padding: 30px;
+
+    background-color: #fbfbfe;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    border-radius: 12px;
 }
 
 .logo {
     width: 80px;
     height: 80px;
+    margin-left: 15px;
 }
 
 .profile-dropdown {
@@ -18,7 +24,7 @@
     right: 4%;
     font-size: 16px;
 
-    top: 10%;
+    top: 11%;
     list-style-type: none;
     border-radius: 12px;
     border: 1px solid #313c67;
@@ -57,13 +63,13 @@
 .workspace-btn {
     color: rgb(251, 251, 254);
     background-color:#313c67;
-    font-size: 15px;
+    font-size: 18px;
     border: none;
     border-radius: 2rem;
     margin-right: 20px;
     margin-top: 5px;
     cursor: pointer;
-    padding: 18px;
+    padding: 13px;
 
     &:hover {
         background-color: #40bd93;
@@ -73,13 +79,17 @@
 .profile-btn {
     color: rgb(251, 251, 254);
     background-color:#313c67;
-    font-size: 15px;
+    font-size: 18px;
     border: none;
-    border-radius: 12px;
-    margin-right: 50px;
+    border-radius: 1.5rem;
+    margin-right: 45px;
     margin-top: 5px;
     cursor: pointer;
-    padding: 9px;
+    padding: 12px;
+
+    &:hover {
+        background-color: #40bd93;
+    }
 }
 
 
