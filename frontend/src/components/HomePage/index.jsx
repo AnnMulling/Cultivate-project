@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, Link } from 'react-router-dom';
+import {  useSelector } from 'react-redux';
+import SignupFormModal from '../SignupFormModal';
+import OpenModalMenuItem from '../Navigation/OpenModalMenuItem';
+import github from '../../assets/github.png'
+import linkedIn from '../../assets/linkedIn.png'
 
 import './HomePage.css';
 
@@ -50,6 +53,12 @@ export  default function HomePage () {
                 <div className="about-container-left">
                     <p style={{fontSize:50, fontWeight:800 }}>Want to get things done?</p>
                     <p style={{fontSize:30}}>We've got you covered!</p>
+                    <div className="home-signup-btn">
+                        <OpenModalMenuItem
+                        itemText="SignUp it's Free!"
+                        modalComponent={<SignupFormModal />}
+                        />
+                    </div>
                 </div>
 
                 <div className="carousel-container">
@@ -70,7 +79,6 @@ export  default function HomePage () {
                     <p style={{fontSize:50, fontWeight:800 }}>Our Special Features</p>
                 </div>
                 <div className="feature-card-container">
-
                     <div className="feature-card">
                         <i className="fa-solid fa-users"></i>
                         <div className="feature-detail">
@@ -96,9 +104,20 @@ export  default function HomePage () {
                         <i className="fa-solid fa-sack-xmark"></i>
                         <div className="feature-detail">
                             <p>100% Free</p>
-                            <p>Completely free without any hidden charges,for the basic plan</p>
+                            <p>Completely free without any hidden charges, for the basic plan</p>
                         </div>
                     </div>
+                </div>
+            </div>
+            <div className="footer">
+                <div className="footer-content">
+                    <span>Privacy Policy</span>
+                    <span>Copyright ©2023 Cultivate</span>
+                </div>
+                <div className="footer-social-media">
+                    <span>Created by Ann Mulling</span>
+                    <span><a href="https://www.linkedin.com/in/primpraow-m-653708227/"><img src={github} alt="github-logo"/></a></span>
+                    <span><a href="https://github.com/AnnMulling"><img src={linkedIn} alt="linkedIn-logo"/></a></span>
                 </div>
             </div>
         </div>
