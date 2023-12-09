@@ -5,26 +5,27 @@ body {
     margin: 0;
     padding: 0;
 
-    background-color: rgb(228, 228, 231);
+    background-color: #e4e4e7;
 }
 
 
 .homepage-main {
     background-color: #fbfbfe;
-    border-radius: 12px;
+    /* border-radius: 12px; */
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-
+    margin: 0 auto;
     width: 100vw;
     height: 100vh;
-    /* margin: 20px auto; */
-    padding: 10px;
+    padding: 10px 0;
+
 }
 
 
 .about-container {
+    color: #313c67;
     display: flex;
     flex-direction: row;
-    margin: 10px auto;
+    margin: 50px auto;
     gap: 20px;
     /* background-color: rgb(251, 251, 254);
     border-radius: 12px;
@@ -43,6 +44,7 @@ body {
     /* box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px; */
 
     padding: 20px;
+    overflow: hidden;
 
 }
 
@@ -56,6 +58,7 @@ body {
 
     width: 100%;
     height: 100%;
+
 
 }
 
@@ -73,7 +76,60 @@ img {
     height: 100%;
 }
 
+/*section 2*/
+.features-container {
 
+    margin-top: 5%;
+    padding-bottom: 30px;
+    /* border: 1px solid #313c67; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: #e4e4e73b;
+
+}
+
+.feature-heading {
+    width: 100%;
+    text-align: center;
+    color: #313c67;
+}
+
+.feature-card-container {
+   display: flex;
+   justify-content: space-around;
+   padding: 10px;
+   width: 100%;
+}
+.feature-card {
+    color: #313c67;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: #fbfbfe;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+    border-radius: 1rem;
+    padding: 10px;
+
+    width: 250px;
+    height: 250px;
+    &:hover {
+        transform: scale(1.05);
+
+       }
+}
+.feature-card i {
+    font-size: 80px;
+    background-color: #e4e4e7f1;
+    border-radius: 50%;
+    padding: 10px;
+
+}
+.feature-detail {
+
+    text-align: center;
+}
 /* background
 
     background-image: url('../../../assesst/blue-mount.jpg');

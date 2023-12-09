@@ -9,23 +9,23 @@ export  default function HomePage () {
     const [ currentIndex, setCurrentIndex ] = useState(0);
     const images =  [
         {
-          "src": "https://picsum.photos/seed/img1/700/700",
+          "src": "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?q=80&w=2948&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           "alt": "Image 1 for carousel"
         },
         {
-          "src": "https://picsum.photos/seed/img2/700/700",
+          "src": "https://images.unsplash.com/photo-1611224923853-80b023f02d71?q=80&w=2839&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           "alt": "Image 2 for carousel"
         },
         {
-          "src": "https://picsum.photos/seed/img3/700/700",
+          "src": "https://images.unsplash.com/photo-1586282023692-6bfbd629e85d?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           "alt": "Image 3 for carousel"
         },
         {
-          "src": "https://picsum.photos/seed/img4/700/700",
+          "src": "https://images.unsplash.com/photo-1642543492457-39a2ce63bb59?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D0",
           "alt": "Image 4 for carousel"
         },
         {
-          "src": "https://picsum.photos/seed/img5/700/700",
+          "src": "https://images.unsplash.com/photo-1634245482394-1bcf5ccffcc0?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
           "alt": "Image 5 for carousel"
         }
       ];
@@ -44,28 +44,64 @@ export  default function HomePage () {
     })
 
     return (
-        <>
-            <div className="homepage-main">
 
-                <div className="about-container">
-                    <div className="about-container-left">
-                        <p style={{fontSize:50}}>Want to get things done?</p>
-                        <p style={{fontSize:30}}>We've got you cover!</p>
+        <div className="homepage-main">
+            <div className="about-container">
+                <div className="about-container-left">
+                    <p style={{fontSize:50, fontWeight:800 }}>Want to get things done?</p>
+                    <p style={{fontSize:30}}>We've got you cover!</p>
+                </div>
+
+                <div className="carousel-container">
+                {images.map((img, idx) => {
+                    return <div
+                            className="slide"
+                            style={{transform: `translate(-${currentIndex * 100}%)`}}
+                            key={idx}>
+                            <img
+                            src={img.src} alt={img.alt} />
+                            </div>
+                })}
+                </div>
+            </div>
+            <div className="features-container">
+                <div className="feature-heading">
+                    <p style={{fontSize:30 }}>Features</p>
+                    <p style={{fontSize:50, fontWeight:800 }}>Our Special Features</p>
+                </div>
+                <div className="feature-card-container">
+
+                    <div className="feature-card">
+                        <i className="fa-solid fa-users"></i>
+                        <div className="feature-detail">
+                            <p>User Friendly</p>
+                         Easy to use for people who are either beginner or professional
+                        </div>
                     </div>
-
-                    <div className="carousel-container">
-                    {images.map((img, idx) => {
-                        return <div
-                                className="slide"
-                                style={{transform: `translate(-${currentIndex * 100}%)`}}
-                                key={idx}>
-                                <img
-                                src={img.src} alt={img.alt} />
-                                </div>
-                    })}
+                    <div className="feature-card">
+                        <i className="fa-solid fa-shield-heart"></i>
+                        <div className="feature-detail">
+                            <p>Trusted Platform</p>
+                            <p>Offical site that is trusted for security</p>
+                        </div>
+                    </div>
+                    <div className="feature-card">
+                       <i className="fa-solid fa-list-check"></i>
+                       <div className="feature-detail">
+                            <p>Flexibility</p>
+                            <p>Can be opend on all existing devices</p>
+                       </div>
+                    </div>
+                    <div className="feature-card">
+                        <i className="fa-solid fa-sack-xmark"></i>
+                        <div className="feature-detail">
+                            <p>100% Free</p>
+                            <p>Completely free without any hidden charges,for the basic plan</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </>
+        </div>
+
     );
 };

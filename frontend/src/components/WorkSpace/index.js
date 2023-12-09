@@ -105,9 +105,9 @@ export default function WorkSpace() {
                         </Link>
 
                         <div className="board-btn">
-                            <div className="starred-container" >
+                            {/* <div className="starred-container" >
                                 <i className={starClass} onClick={handleStar}></i>
-                            </div>
+                            </div> */}
                             <OpenModalButton
                                 modalComponent={<CreateBoardModal board={board} formType="Edit Board" />}
                                 buttonText={<i class="fa-solid fa-pen-to-square"></i>}
