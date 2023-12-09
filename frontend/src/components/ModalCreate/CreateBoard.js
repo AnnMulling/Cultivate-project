@@ -89,7 +89,7 @@ function CreateBoardModal({ board, formType }) {
 
     return (
         <div className="modal-popup">
-            <h1 style={{fontFamily:'Montserrat'}}>{formType === "Create Board" ? "Create New Board" : "Edit Board"}</h1>
+            <h1>{formType === "Create Board" ? "Create New Board" : "Edit Board"}</h1>
             <form onSubmit={handleSubmit} className="form-create">
                 <label htmlFor="name">Name
                 <input
