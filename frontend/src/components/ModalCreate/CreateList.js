@@ -62,7 +62,7 @@ function CreateListModal({ board, list, formType }) {
 
     return(
         <div className="modal-popup">
-            <h1>Create/Edit list</h1>
+            <h1>{formType === "Create List" ? "Create New List" : "Edit List"}</h1>
             <form onSubmit={handleSubmit} className="form-create">
                 <label>Title</label>
                 <input
