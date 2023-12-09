@@ -111,3 +111,22 @@
 
     }
 }
+
+@media screen and (max-width: 749px){
+    .inner-workspace {
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+        padding-left: 5px;
+    }
+}
+
+@media screen and (min-width: 750px) and (max-width: 1024px ) {
+    .inner-workspace {
+        display: flex;
+        justify-content: space-evenly;
+        flex-wrap: wrap;
+
+        padding-left: 5px;
+    }
+}

@@ -49,7 +49,7 @@ export  default function HomePage () {
             <div className="about-container">
                 <div className="about-container-left">
                     <p style={{fontSize:50, fontWeight:800 }}>Want to get things done?</p>
-                    <p style={{fontSize:30}}>We've got you cover!</p>
+                    <p style={{fontSize:30}}>We've got you covered!</p>
                 </div>
 
                 <div className="carousel-container">

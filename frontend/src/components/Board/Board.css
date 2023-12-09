@@ -134,3 +134,30 @@
         color:#313c67;
     }
 }
+
+
+@media screen and (max-width: 749px){
+    .board-details-container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-left: 15%;
+    }
+    .list-main-container {
+        align-items: center;
+    }
+}
+
+@media screen and (min-width: 750px) and (max-width: 1024px ) {
+    .board-details-container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: wrap;
+        margin-left: 10%;
+    }
+    .list-main-container {
+        align-items: center;
+    }
+}
