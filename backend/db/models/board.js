@@ -17,7 +17,12 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'board_id'
       });
 
-      // owned by user
+      // has many cards
+      Board.hasMany(models.Card, {
+        foreignKey: 'board_id'
+      });
+      
+      // owned by a user
       Board.belongsTo(models.User, {
         foreignKey: 'user_id',
       });

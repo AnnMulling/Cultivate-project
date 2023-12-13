@@ -6,26 +6,12 @@ if (process.env.NODE_ENV === 'production') {
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
-    await queryInterface.createTable('Lists', {
+    await queryInterface.createTable('Cards', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
-      },
-      title: {
-        type: Sequelize.STRING(30),
-        allowNull: false,
-        unique: true
-      },
-      board_id: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: 'Boards',
-          key: 'id'
-        },
-        onDelete: 'CASCADE'
       },
       user_id: {
         type: Sequelize.INTEGER,
@@ -36,10 +22,28 @@ module.exports = {
         },
         onDelete: 'CASCADE'
       },
-      // column: {
-      //   type: Sequelize.INTEGER,
-      //   allowNull: false
-      // },
+      board_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Boards',
+          key: 'id'
+        },
+        onDelete: 'CASCADE'
+      },
+      list_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'Lists',
+          key: 'id'
+        },
+        onDelete: 'CASCADE'
+      },
+      description: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
@@ -53,7 +57,7 @@ module.exports = {
     }, options);
   },
   async down(queryInterface, Sequelize) {
-    options.tableName = "Lists";
-    await queryInterface.dropTable('Lists');
+    options.tableName = "Cards";
+    await queryInterface.dropTable('Cards');
   }
 };
