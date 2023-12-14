@@ -5,6 +5,7 @@ import { fetchAllBoard } from '../../store/board';
 import OpenModalButton from '../OpenModalButton';
 import CreateBoardModal from '../ModalCreate/CreateBoard';
 import DeleteBoardModal from '../ModalDelete/DeleteBoard';
+import Sidebar from '../Navigation/Sidebar_';
 
 import './WorkSpace.css';
 
@@ -31,9 +32,7 @@ export default function WorkSpace() {
 
     }, [dispatch]);
 
-    const handleBar = () => {
-        setIsOpen(!isOpen); //set to true
-    };
+   
 
     const handleStar = () => {
         if (starClass === "fa-regular fa-star" ) {
@@ -50,43 +49,9 @@ export default function WorkSpace() {
 
     return isLoaded && (
      <>
-         <div className={`sidebar ${isOpen ? "sidebar--open" : ""}`}>
-                <div className="trigger-bar" onClick={handleBar}>
-                    {isOpen ?
-                        <i class="fa-solid fa-chevron-left"></i> : <i class="fa-solid fa-chevron-right"></i>}
-                </div>
-
-
-                <div className="sidebar-content">
-                    <i class="fa-solid fa-user"></i>
-                    <span style={{ marginLeft: 15 }}>Hello, {user.firstName}</span>
-                </div>
-                <Link to="/" style={{ textDecoration: 'none' }}>
-                    <div className="sidebar-content">
-                        <i class="fa-solid fa-house"></i>
-                        <span style={{ marginLeft: 10 }}>Home</span>
-                    </div>
-                </Link>
-
-                <Link to="/workspace" style={{ textDecoration: 'none' }}>
-                    <div className="sidebar-content">
-                        <i class="fa-solid fa-grip"></i>
-                        <span style={{ marginLeft: 13 }}>Boards</span>
-                    </div>
-                </Link>
-                <Link to="/workspace" style={{ textDecoration: 'none' }}>
-                    <div className="sidebar-content">
-                        <i class="fa-solid fa-star"></i>
-                        <span style={{ marginLeft: 9 }}>Starred Board</span>
-                    </div>
-                </Link>
-                <Link to="/timer" style={{ textDecoration: 'none' }}>
-                    <div className="sidebar-content">
-                        <i class="fa-solid fa-clock"></i>
-                        <span style={{ marginLeft: 12 }}>Focus Mode</span>
-                    </div>
-                </Link>
-            </div>
+         <Sidebar
+          user={user}
+         />
 
         <div className="workspace">
 

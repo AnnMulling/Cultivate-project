@@ -6,6 +6,7 @@ import { fetchABoard, fetchAllBoard } from '../../store/board';
 import CreateListModal from '../ModalCreate/CreateList';
 import OpenModalButton from '../OpenModalButton';
 import DeleteListModal from '../ModalDelete/DeleteList';
+import Sidebar from '../Navigation/Sidebar_';
 
 import './Board.css'
 import WorkSpace from '../WorkSpace';
@@ -22,12 +23,15 @@ export default function BoardDetails(){
     const listArr = Object.values(allLists);
     const [ isLoaded, setIsLoaded ] = useState(false);
 
+    //toggle list
+    const [ editList, setEditList ] = useState(false);
+    const [ addCard , setAddCard ] = useState(false);
 
-    // console.log('user', user);
-    console.log('entering board...');
-    console.log('board id', boardId)
+
+
     console.log('board', board)
-    console.log('lists', listArr)
+    console.log('all lists', listArr)
+
 
 
     useEffect(() => {
@@ -43,9 +47,7 @@ export default function BoardDetails(){
         setIsOpen(!isOpen); //set to true
     };
 
-    const addCart = () => {
-        alert("Feature Comming Soon!")
-    };
+
 
     if(!user) {
         history.push("/")
@@ -53,43 +55,9 @@ export default function BoardDetails(){
 
     return isLoaded && (
         <div className="board-page-main">
-             <div className={`sidebar ${isOpen ? "sidebar--open" : ""}`}>
-                <div className="trigger-bar" onClick={handleBar}>
-                    {isOpen ?
-                        <i class="fa-solid fa-chevron-left"></i> : <i class="fa-solid fa-chevron-right"></i>}
-                </div>
-
-
-                <div className="sidebar-content">
-                    <i class="fa-solid fa-user"></i>
-                    <span style={{ marginLeft: 15 }}>Hello, {user.firstName}</span>
-                </div>
-                <Link to="/" style={{ textDecoration: 'none' }}>
-                    <div className="sidebar-content">
-                        <i class="fa-solid fa-house"></i>
-                        <span style={{ marginLeft: 10 }}>Home</span>
-                    </div>
-                </Link>
-
-                <Link to="/workspace" style={{ textDecoration: 'none' }}>
-                    <div className="sidebar-content">
-                        <i class="fa-solid fa-grip"></i>
-                        <span style={{ marginLeft: 13 }}>Boards</span>
-                    </div>
-                </Link>
-                <Link to="/workspace" style={{ textDecoration: 'none' }}>
-                    <div className="sidebar-content">
-                        <i class="fa-solid fa-star"></i>
-                        <span style={{ marginLeft: 9 }}>Starred Board</span>
-                    </div>
-                </Link>
-                <Link to="/timer" style={{ textDecoration: 'none' }}>
-                    <div className="sidebar-content">
-                        <i class="fa-solid fa-clock"></i>
-                        <span style={{ marginLeft: 12 }}>Focus Mode</span>
-                    </div>
-                </Link>
-            </div>
+            <Sidebar
+            user={user}
+            />
 
             <h1 className='heading'>{board?.name}</h1>
             <div className="board-details-container">
@@ -98,7 +66,8 @@ export default function BoardDetails(){
                     {listArr.map((list) =>
                         <div key={list.id} className="list-container">
                             <h3>{list.title}</h3>
-                            <div className="card-btn-crt" onClick={addCart}><i class="fa-solid fa-circle-plus"></i>Add task</div>
+
+                            <div className="card-btn-crt"><i className="fa-solid fa-circle-plus"></i>Add task</div>
                             <p>Created By {user.firstName}</p>
 
                             <OpenModalButton
@@ -112,6 +81,8 @@ export default function BoardDetails(){
                             buttonText={<i class="fa-solid fa-trash"></i>}
                             modalClasses={["list-btn-delete"]}
                             />
+
+
                         </div>
                     )}
                         <div>

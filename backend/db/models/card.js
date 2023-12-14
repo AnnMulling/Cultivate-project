@@ -11,12 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // belongs to many list
+      // belongs to many lists
       Card.belongsTo(models.List, {
         foreignKey: 'list_id'
       });
 
-      // belongs to many user
+      // belongs to many users
       Card.belongsTo(models.User, {
         foreignKey: 'user_id'
       });

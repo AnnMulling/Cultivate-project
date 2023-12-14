@@ -21,11 +21,11 @@ router.get(
                 where: {
                     user_id: user.id,
                 },
-                include: [
-                    {
-                        model: List
-                    }
-                ]
+                // include: [
+                //     {
+                //         model: List
+                //     }
+                // ]
 
             });
 
@@ -54,6 +54,7 @@ router.get(
             include: [
                 {
                     model: List,
+                    include: [ Card ]
                 }
             ]
         });
@@ -134,6 +135,9 @@ router.get(
                 board_id: boardId
             },
             include: [
+                {
+                    model: Card,
+                },
 
                 {
                     model: User,
@@ -159,7 +163,7 @@ router.get(
 );
 
 // get all cards
-//get all cards on a list own by the current user
+//get all cards on a list own by the current user ??
 router.get(
     '/:boardId/lists/:listId/cards',
     reqAuthBoard,
@@ -183,6 +187,8 @@ router.get(
                 }
             ]
         });
+
+
 
         return res.json({
              "Cards": cards
