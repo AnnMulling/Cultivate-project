@@ -61,7 +61,7 @@ export default function BoardDetails() {
                 <div className="list-main-container" >
                     {listArr.map((list, index) => (
 
-                        <List boardId={board?.id} list={list} index={index} isLoaded={isLoaded} />
+                        <List boardId={board?.id} list={list} key={list.id} index={index} isLoaded={isLoaded} />
                     ))}
                 </div>
                 <div className="add-List">
@@ -72,7 +72,7 @@ export default function BoardDetails() {
                             onClick={toggleAddingList}
                             className="list-btn-crt"
                         >
-                            <i class="fa-solid fa-circle-plus"></i>
+                            <i className="fa-solid fa-circle-plus"></i>
                         </button>
                     )}
                 </div>

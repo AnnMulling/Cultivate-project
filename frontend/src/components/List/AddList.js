@@ -15,6 +15,7 @@ export default function AddList({ boardId, toggleAddingList, addingList }) {
     const [ errors, setErrors ] = useState({});
     const [ show, setShow ] = useState(true);
 
+    console.log('show status', show)
 
 
     useEffect(() => {
@@ -29,7 +30,18 @@ export default function AddList({ boardId, toggleAddingList, addingList }) {
         }
         setErrors(errors);
 
-    }, [title, dispatch]);
+        const handleOnBlur = (e) => {
+
+            if (ref.current && !ref.current.contains(e.target)){
+                setShow(false);
+                toggleAddingList();
+            }
+        }
+
+        document.addEventListener("click", handleOnBlur)
+        return (() => document.removeEventListener("click", handleOnBlur))
+
+    }, [title, dispatch, show]);
 
 
     const handleSubmit = async (e) => {
@@ -53,9 +65,10 @@ export default function AddList({ boardId, toggleAddingList, addingList }) {
     };
 
 
-    return  (
 
-            <div className="add-list-container" onBlur={toggleAddingList}>
+    return show && (
+
+            <div className="add-list-container"  ref={ref}>
 
                 <TextareaAutosize
                     autoFocus
