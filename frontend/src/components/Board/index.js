@@ -22,11 +22,11 @@ export default function BoardDetails() {
     const [ addingList, setAddingList ] = useState(false);
     const [ show, setShow ] = useState(false);
 
-    console.log('in board component')
+    // console.log('in board component')
 
-    console.log('board', board)
-    console.log('all lists', listArr)
-     console.log('adding list', addingList)
+    // console.log('board', board)
+    // console.log('all lists', listArr)
+    //  console.log('adding list', addingList)
 
     useEffect(()  => {
 

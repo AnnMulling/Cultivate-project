@@ -21,7 +21,7 @@ export default function List({ boardId, list, index, isLoaded }) {
     const [errors, setErrors] = useState({});
 
 
-    console.log('in list component')
+    console.log('Cards', list.Cards)
 
     useEffect(() => {
 
@@ -66,38 +66,36 @@ export default function List({ boardId, list, index, isLoaded }) {
 
     return isLoaded && (
         <div className="list-container" ref={ref}>
-
-
-                    {editingTitle ? (
-                        <>
-                            <TextareaAutosize
-                                autoFocus
-                                className="list-edit-Textarea"
-                                value={title}
-                                onChange={(e) => setTitle(e.target.value)}
-                                onKeyDown={e => e.key === "Enter" && e.currentTarget.blur()}
-                                onBlur={handleOnBlur}
-                            />
-                            <div >{errors.title && <p className="errors">{errors.title}</p>}</div>
-                        </>
-                    ) : (
-                        <div
-                            onClick={() => setEditingTitle(true)}
-                        >
-                            {list.title}
-                        </div>
-                    )}
-                    <div>
-                        <OpenModalButton
-                            modalComponent={<DeleteListModal boardId={boardId} list={list} />}
-                            buttonText={<i class="fa-solid fa-trash"></i>}
-                            modalClasses={["list-btn-delete"]}
+                {editingTitle ? (
+                    <>
+                        <TextareaAutosize
+                            autoFocus
+                            className="list-edit-Textarea"
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                            onKeyDown={e => e.key === "Enter" && e.currentTarget.blur()}
+                            onBlur={handleOnBlur}
                         />
+                        <div >{errors.title && <p className="errors">{errors.title}</p>}</div>
+                    </>
+                ) : (
+                    <div
+                        onClick={() => setEditingTitle(true)}
+                    >
+                        {list.title}
                     </div>
+                )}
+                <div>
+                    <OpenModalButton
+                        modalComponent={<DeleteListModal boardId={boardId} list={list} />}
+                        buttonText={<i class="fa-solid fa-trash"></i>}
+                        modalClasses={["list-btn-delete"]}
+                    />
+                </div>
 
-                    <div>
-                        <Card />
-                    </div>
+                <div>
+                    <Card boardId={boardId} cards={list?.Cards} isLoaded={isLoaded} />
+                </div>
 
         </div>
 
