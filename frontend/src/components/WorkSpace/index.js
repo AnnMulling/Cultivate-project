@@ -32,7 +32,7 @@ export default function WorkSpace() {
 
     }, [dispatch]);
 
-   
+
 
     const handleStar = () => {
         if (starClass === "fa-regular fa-star" ) {
@@ -61,10 +61,10 @@ export default function WorkSpace() {
             </div>
             <div className="inner-workspace">
                     {boardsArr.reverse().map((board) =>
-                    <div className="boards-container">
+                    <div className="boards-container" key={board.id}>
                         <Link to={`/boards/${board.id}`} style={{ textDecoration: 'none', color: '#313c67' }}>
                             <div className="board-card-container">
-                                <div key={board.id} style={{ marginBottom: 20 }} className="board-card">
+                                <div style={{ marginBottom: 20 }} className="board-card">
                                     {board.name}
                                 </div>
                             </div>

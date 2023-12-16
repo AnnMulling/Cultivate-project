@@ -2,20 +2,19 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import TextareaAutosize from "react-textarea-autosize";
 import { fetchCreateList } from "../../store/list";
+import { fetchABoard } from '../../store/board';
 import { useHistory } from 'react-router-dom';
 
 import './List.css';
 
 
-export default function AddList({ boardId, toggleAddingList, addingList }) {
+export default function AddList({ boardId, toggleAddingList }) {
     const ref = useRef();
     const dispatch = useDispatch();
     const history = useHistory();
     const [ title, setTitle ] = useState(" ");
     const [ errors, setErrors ] = useState({});
     const [ show, setShow ] = useState(true);
-
-    console.log('show status', show)
 
 
     useEffect(() => {
@@ -55,7 +54,7 @@ export default function AddList({ boardId, toggleAddingList, addingList }) {
         if (!Object.values(errors).length) {
             console.log('add fetching...')
 
-            dispatch(fetchCreateList(boardId, listDetails))
+            await dispatch(fetchCreateList(boardId, listDetails)).then(() => dispatch(fetchABoard(boardId)))
             .then(() => history.push(`/boards/${boardId}`))
 
         } else {

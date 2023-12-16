@@ -3,6 +3,7 @@ import { useModal } from "../../context/Modal";
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDeleteList } from "../../store/list";
+import { fetchABoard } from '../../store/board';
 
 import './ModalDelete.css'
 
@@ -18,9 +19,9 @@ function DeleteListModal ({ boardId , list }) {
     const deleteList= async(e) => {
         e.preventDefault();
 
-        dispatch(fetchDeleteList(list.id))
-        .then(() => history.push(`/boards/${boardId}`) )
-
+        await dispatch(fetchDeleteList(list.id))
+        .then(() => dispatch(fetchABoard(boardId)))
+        .then(() => history.push(`/boards/${boardId}`))
 
         closeModal();
 

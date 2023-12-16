@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Link, useParams } from 'react-router-dom';
-import { fetchAllLists } from '../../store/list';
 import { fetchABoard } from '../../store/board';
-// import CreateListModal from '../ModalCreate/CreateList';
-// import OpenModalButton from '../OpenModalButton';
-// import DeleteListModal from '../ModalDelete/DeleteList';
 import Sidebar from '../Navigation/Sidebar_';
 import List from '../List/List';
 import AddList from '../List/AddList';
@@ -19,23 +15,23 @@ export default function BoardDetails() {
     const { boardId } = useParams();
     const board = useSelector((state) => state.boards[boardId]);
     const user = useSelector((state) => state.session.user);
-    const allLists = useSelector((state) => state.lists);
-    const listArr = Object.values(allLists);
+    // const allLists = useSelector((state) => state.lists);
+    const listArr = board?.Lists;
     const [isLoaded, setIsLoaded] = useState(false);
     //toggle adding list
     const [ addingList, setAddingList ] = useState(false);
     const [ show, setShow ] = useState(false);
 
+    console.log('in board component')
 
     console.log('board', board)
     console.log('all lists', listArr)
      console.log('adding list', addingList)
 
-    useEffect(() => {
+    useEffect(()  => {
 
         dispatch(fetchABoard(boardId))
-        dispatch(fetchAllLists(boardId))
-            .then(() => setIsLoaded(true));
+        .then(() => setIsLoaded(true));
 
     }, [dispatch]);
 
@@ -59,14 +55,13 @@ export default function BoardDetails() {
             <div className="board-details-container">
                 <h2>Tasks</h2>
                 <div className="list-main-container" >
-                    {listArr.map((list, index) => (
+                    {listArr.map((list, index) => {
+                        return <List boardId={boardId} list={list} index={index} isLoaded={isLoaded} />
+                    })}
 
-                        <List boardId={board?.id} list={list} key={list.id} index={index} isLoaded={isLoaded} />
-                    ))}
-                </div>
                 <div className="add-List">
                     {addingList && show ? (
-                         <AddList boardId={board.id} toggleAddingList={toggleAddingList}/>
+                         <AddList boardId={boardId} toggleAddingList={toggleAddingList}/>
                     ) : (
                         <button
                             onClick={toggleAddingList}
@@ -75,6 +70,7 @@ export default function BoardDetails() {
                             <i className="fa-solid fa-circle-plus"></i>
                         </button>
                     )}
+                </div>
                 </div>
             </div>
 

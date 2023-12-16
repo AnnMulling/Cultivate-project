@@ -55,6 +55,7 @@ export const fetchCreateList = (boardId, listDetails) => async (dispatch) => {
         if (response.ok) {
             const newList = await response.json();
             dispatch(createList(newList));
+
             return newList
         }
     }catch(error){
