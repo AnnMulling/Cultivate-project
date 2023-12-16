@@ -6,20 +6,20 @@ import { fetchDeleteList } from "../../store/list";
 
 import './ModalDelete.css'
 
-function DeleteListModal ({ board , list }) {
+function DeleteListModal ({ boardId , list }) {
     const dispatch = useDispatch();
     const history = useHistory();
     const { closeModal } = useModal();
     const user = useSelector((state) => state.session.user);
 
 
-    console.log('delete list from board', board)
+    console.log('delete list from board', boardId)
 
     const deleteList= async(e) => {
         e.preventDefault();
 
         dispatch(fetchDeleteList(list.id))
-        .then(() => history.push(`/boards/${board.id}`) )
+        .then(() => history.push(`/boards/${boardId}`) )
 
 
         closeModal();

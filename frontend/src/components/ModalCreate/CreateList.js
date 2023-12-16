@@ -71,7 +71,7 @@ function CreateListModal({ board, list, formType }) {
                     placeholder="Title"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)} />
-                <div>{errors.title && <p className="errors">{errors.title}</p>}</div>
+                <div className="errors">{errors.title && <p>{errors.title}</p>}</div>
 
                 <button type="submit" className={className}>{formType === "Create List" ? "Create New List" : "Save"}</button>
             </form>

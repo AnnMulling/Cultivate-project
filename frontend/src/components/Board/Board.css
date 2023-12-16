@@ -10,7 +10,6 @@
 
 
 
-
 .board-details-container {
     margin-left: 8%;
 
@@ -18,29 +17,8 @@
 
 /*board details*/
 
-.list-main-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-.list-container {
-    color: #313c67;
-    background: rgb(255, 255, 255);
-    box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.238);
-    border-radius: 3rem;
-    border: 1px solid rgba(242, 239, 239, 0.981);
-    padding: 15px;
-    height: max-content;
-    text-align: center;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    &:hover {
-        transform: translateY(-5px);
-        box-shadow: 2px 2px 2px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    }
-}
 
-.list-btn-edt, .list-btn-delete {
+.list-btn-delete {
     background-color: #313c67;;
     border: none;
     padding: 10px 12px;
