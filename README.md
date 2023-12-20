@@ -46,8 +46,12 @@ https://cultivate-project.onrender.com
   <h2>Working Spage</h2>
     <img width="555" alt="Screenshot 2023-12-20 at 8 53 12 AM" src="https://github.com/AnnMulling/Cultivate-project/assets/105256768/a948b61f-8b71-4951-b49b-fd9e602e0e45">
   <h2>Board</h2>
-    <img width="700" alt="Screenshot 2023-12-20 at 8 54 26 AM" src="https://github.com/AnnMulling/Cultivate-project/assets/105256768/d3378bb9-c8c7-4628-8045-b5c52706c31d">
+    <img width="555" alt="Screenshot 2023-12-20 at 8 54 26 AM" src="https://github.com/AnnMulling/Cultivate-project/assets/105256768/d3378bb9-c8c7-4628-8045-b5c52706c31d">
+  <h2>Set-time Focus Modes</h2>
+    <img width="555" alt="Screenshot 2023-12-20 at 8 59 37 AM" src="https://github.com/AnnMulling/Cultivate-project/assets/105256768/d1228fde-15b0-4779-a623-2d92d8d27b01">
+ 
 </div>
+
 
 # Connect 
 <a href="https://www.linkedin.com/in/primpraow-m-653708227/">
