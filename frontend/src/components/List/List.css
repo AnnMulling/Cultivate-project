@@ -1,30 +1,37 @@
 .list-edit-Textarea {
     /* margin: 6px 0 5px 6px; */
-    border-radius: 3rem;
+    font-family: 'DM Sans', sans-serif;
+    width: 100%;
+    border-radius: 0.5rem;
     border: none;
     resize: auto;
     outline: none;
     font-size: 15px;
     padding: 5px;
     &:focus {
+        border-radius: 0.5rem;
         font-family: 'DM Sans', sans-serif;
         color: #313c67;
         background-color: rgb(235, 235, 235);
         box-shadow: inset 0.5px 0.5px 0.5px 0.5px rgba(0, 0, 0, 0.238);
-        padding: 4px;
+        padding: 5px;
+        width: 100%;
 
     }
 }
 
 .list-add-Textarea {
+    font-family: 'DM Sans', sans-serif;
     width: 100%;
-    border-radius: 3rem;
+    border-radius: 0.5rem;
     border: none;
     resize: auto;
     outline: none;
     font-size: 15px;
     padding: 5px;
     &:focus {
+        width: 100%;
+        border-radius: 0.5rem;
         font-family: 'DM Sans', sans-serif;
         color: #313c67;
         background-color: rgb(235, 235, 235);
@@ -43,25 +50,31 @@
 
 .list-container {
     display: flex;
-    align-items: center;
-    justify-content: center;
     flex-wrap: wrap;
     color: #313c67;
 
-    width: 200px;
+    width: 250px;
 
     background: rgb(255, 255, 255);
     box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.238);
-    border-radius: 3rem;
+    border-radius: 1rem;
     border: 1px solid rgba(242, 239, 239, 0.981);
-    padding: 15px;
+    padding: 18px;
     gap: 10px;
     cursor: pointer;
-    transition: all 0.2s ease-in-out;
+    /* transition: all 0.2s ease-in-out;
     &:hover {
         transform: translateY(-5px);
         box-shadow: 2px 2px 2px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    }
+    } */
+}
+
+.list-title {
+    color: #313c67;
+    background-color: #c3c5cb58;
+    width: 100%;
+    border-radius: 0.5rem;
+    padding: 7px;
 }
 
 .add-list-container {
@@ -71,30 +84,13 @@
     flex-wrap: wrap;
     color: #313c67;
 
-    width: 200px;
+    width: 250px;
 
     background: rgb(255, 255, 255);
     box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.238);
-    border-radius: 3rem;
+    border-radius: 1rem;
     border: 1px solid rgba(242, 239, 239, 0.981);
     padding: 15px;
     gap: 10px;
     cursor: pointer;
-}
-
-/*button*/
-.create-btn {
-    background-color: #313c67;
-    border-radius: 20px;
-    color:rgb(255, 255, 255);
-    font-size: 18px;
-    border: none;
-    height: 30px;
-    width: 40%;
-    margin-top: 10px;
-    cursor: pointer;
-    &:hover {
-        transform: scale(1.09);
-
-    }
 }

@@ -1,17 +1,17 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch} from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import TextareaAutosize from "react-textarea-autosize";
 import { fetchABoard } from '../../store/board';
-import { fetchEditCard } from '../../store/card';
+import { fetchEditCard, fetchDeleteCard } from '../../store/card';
 
 
 import './Card.css'
 
 
-export default function EditCard({ boardId, card,  isLoaded, toggleEditingCard }) {
+export default function EditCard({ boardId, card,  isLoaded }) {
     //handle edit card
-    const ref = useRef();
+
     const dispatch = useDispatch();
     const history = useHistory();
     const [ editingDes, setEditingDes ] = useState(false);
@@ -35,23 +35,26 @@ export default function EditCard({ boardId, card,  isLoaded, toggleEditingCard }
         setErrors(errors);
 
 
-    }, [ref, description, dispatch]);
+    }, [ description, dispatch]);
 
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        setEditingDes(false);
 
         const cardDetails = {
             description: description
         };
 
+        setEditingDes(false);
+
+
         if (!Object.values(errors).length) {
 
             await dispatch(fetchEditCard(card.id, cardDetails))
             .then(() => dispatch(fetchABoard(boardId)))
-            .then(() => history.push(`/boards/${boardId}`));
+            .then(() => history.push(`/boards/${boardId}`))
+
 
         } else {
             setEditingDes(false);
@@ -59,39 +62,57 @@ export default function EditCard({ boardId, card,  isLoaded, toggleEditingCard }
         }
     };
 
+    const deleteCard = async (e) => {
+        e.preventDefault();
+        setEditingDes(false);
+        
+       await dispatch(fetchDeleteCard(card.id))
+        .then(() => dispatch(fetchABoard(boardId)))
+        .then(() => history.push(`/boards/${boardId}`))
+    };
+
 
 
     return isLoaded && (
-        <div className="card-container" ref={ref}>
+        <div className="card-container" >
                 {editingDes  ? (
-                    <>
+                    <div>
                         <TextareaAutosize
                             autoFocus
-                            className="list-edit-Textarea"
+                            className="card-edit-Textarea"
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
                         />
                         <div >{errors.description && <p className="errors">{errors.description}</p>}</div>
-                        <div>
-                            <button
-                                className="create-btn"
-                                onClick={handleSubmit}
-                            >
-                                Save
-                            </button>
-                            <button
-                                className="cancel-btn"
-                                onClick={() => setEditingDes(false)}
-                            >
-                                cancel
-                            </button>
-                        </div>
-                    </>
+                    <div className="card-btns">
+                        <button
+                            className="create-btn"
+                            onClick={handleSubmit}
+                        >
+                            Save
+                        </button>
+                        <button
+                            className="cancel-btn"
+                            onClick={() => setEditingDes(false)}
+                        >
+                            cancel
+                        </button>
+                        <button
+                            className="card-delete-btn"
+                            onClick={(deleteCard)}
+                        >
+                            delete
+                        </button>
+                    </div>
+
+                    </div>
                 ) : (
                     <div
                         onClick={() => setEditingDes(true)}
+                        className="card-description"
                     >
                         {card.description}
+
                     </div>
                 )}
 

@@ -13,15 +13,17 @@ import './List.css'
 
 export default function List({ boardId, list, index, isLoaded }) {
     //handle add card and edit list
-    const ref = useRef();
+    const ref = useRef(null);
     const dispatch = useDispatch();
     const history = useHistory();
     const [editingTitle, setEditingTitle] = useState(false);
     const [title, setTitle] = useState(list.title);
+    const [showDelete, setShowDelete] = useState(false);
     const [errors, setErrors] = useState({});
 
 
-    console.log('Cards', list.Cards)
+    // console.log('Cards', list.Cards)
+    // console.log('delete btn', showDelete)
 
     useEffect(() => {
 
@@ -38,23 +40,25 @@ export default function List({ boardId, list, index, isLoaded }) {
         setErrors(errors);
 
 
+
     }, [ref, title, dispatch]);
 
 
 
     const handleOnBlur = async (e) => {
         e.preventDefault();
-        setEditingTitle(false)
+
+        setEditingTitle(false);
 
         const listDetails = {
             title: title,
         };
 
         if (!Object.values(errors).length) {
-
             await dispatch(fetchEditList(list.id, listDetails))
             .then(() => dispatch(fetchABoard(boardId)))
-            .then(() => history.push(`/boards/${boardId}`));
+            .then(() => history.push(`/boards/${boardId}`))
+
 
         } else {
             setEditingTitle(false);
@@ -63,39 +67,55 @@ export default function List({ boardId, list, index, isLoaded }) {
     };
 
 
+    const handleClick = () => {
+        setEditingTitle(true)
+        setShowDelete(true)
+    }
 
     return isLoaded && (
-        <div className="list-container" ref={ref}>
-                {editingTitle ? (
-                    <>
-                        <TextareaAutosize
-                            autoFocus
-                            className="list-edit-Textarea"
-                            value={title}
-                            onChange={(e) => setTitle(e.target.value)}
-                            onKeyDown={e => e.key === "Enter" && e.currentTarget.blur()}
-                            onBlur={handleOnBlur}
-                        />
-                        <div >{errors.title && <p className="errors">{errors.title}</p>}</div>
-                    </>
-                ) : (
-                    <div
-                        onClick={() => setEditingTitle(true)}
-                    >
-                        {list.title}
-                    </div>
-                )}
-                <div>
+        <div className="list-container" >
+
+            {editingTitle ? (
+
+                <div className="list-Textarea" >
+                    <TextareaAutosize
+                        autoFocus
+                        className="list-edit-Textarea"
+                        value={title}
+                        onChange={(e) => setTitle(e.target.value)}
+                        onKeyDown={e => e.key === "Enter" && e.currentTarget.blur()}
+                        onBlur={handleOnBlur}
+                        onMouseUp={() => setShowDelete(false)}
+                    />
+                    <div >{errors.title && <p className="errors">{errors.title}</p>}</div>
+                </div>
+
+            ) : (
+
+                <div
+                    className='list-title'
+                    onClick={handleClick}
+
+                >
+                    {list.title}
+
+                </div>
+
+            )}
+            <div>
+                {showDelete && editingTitle && (
                     <OpenModalButton
-                        modalComponent={<DeleteListModal boardId={boardId} list={list} />}
+                        modalComponent={<DeleteListModal boardId={boardId} list={list} setShowDelete={setShowDelete}/>}
                         buttonText={<i class="fa-solid fa-trash"></i>}
                         modalClasses={["list-btn-delete"]}
                     />
-                </div>
+                )}
+            </div>
 
-                <div>
-                    <Card boardId={boardId} cards={list?.Cards} isLoaded={isLoaded} />
-                </div>
+            <div className="cards-container">
+                <Card list={list} boardId={boardId} cards={list?.Cards} isLoaded={isLoaded} />
+            </div>
+
 
         </div>
 

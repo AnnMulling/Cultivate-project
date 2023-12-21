@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router();
 const { reqAuthList } = require('../../utils/lists-validation');
-const { validateCreateList } = require('../../utils/validators')
+const { validateCreateList, validateCreateCard } = require('../../utils/validators')
 
 //db
 const { List, Card, User } = require('../../db/models');
@@ -65,7 +65,6 @@ router.delete(
         });
     }
 );
-
 
 
 

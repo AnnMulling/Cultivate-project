@@ -116,8 +116,8 @@ export  default function HomePage () {
                 </div>
                 <div className="footer-social-media">
                     <span>Created by Ann Mulling</span>
-                    <span><a href="https://www.linkedin.com/in/primpraow-m-653708227/" target="_blank"><img src={github} alt="github-logo"/></a></span>
-                    <span><a href="https://github.com/AnnMulling" target="_blank" ><img src={linkedIn} alt="linkedIn-logo"/></a></span>
+                    <span><a href= "https://github.com/AnnMulling" target="_blank"><img src={github} alt="github-logo"/></a></span>
+                    <span><a href="https://www.linkedin.com/in/primpraow-m-653708227/" target="_blank" ><img src={linkedIn} alt="linkedIn-logo"/></a></span>
                 </div>
             </div>
         </div>

@@ -38,7 +38,7 @@ export default function AddList({ boardId, toggleAddingList }) {
         }
 
         document.addEventListener("click", handleOnBlur)
-        return (() => document.removeEventListener("click", handleOnBlur))
+        return (() => document.removeEventListener("click", handleOnBlur));
 
     }, [title, dispatch, show]);
 
@@ -67,8 +67,7 @@ export default function AddList({ boardId, toggleAddingList }) {
 
     return show && (
 
-            <div className="add-list-container"  ref={ref}>
-
+         <div className="add-list-container"  ref={ref}>
                 <TextareaAutosize
                     autoFocus
                     className="list-add-Textarea"

@@ -20,6 +20,13 @@ const createCard = (card) => {
     };
 };
 
+const removeCard = (cardId) => {
+    return {
+        type: REMOVE_CARD,
+        payload: cardId
+    };
+};
+
 //get all cards on the list
 /// inactive : getting from list now at the moment
 
@@ -83,6 +90,26 @@ export const fetchEditCard  = (cardId, cardDetails) => async (dispatch) => {
     }
 };
 
+//delete card
+export const fetchDeleteCard = (cardId) => async (dispatch) => {
+    try {
+        const response = await csrfFetch(`/api/cards/${cardId}`, {
+            method: 'DELETE'
+        });
+
+        if (response.ok) {
+            const message = await response.json();
+            dispatch(removeCard(cardId));
+
+            return message;
+        }
+
+    }catch (error) {
+        console.log(error);
+        return error;
+    }
+}
+
 
 const initialState = {};
 
@@ -104,6 +131,10 @@ const cardReducer = (state = initialState, action) => {
             };
             return newState;
 
+        case "REMOVE_CARD":
+            newState = Object.assign({}, state);
+            delete newState[action.payload];
+            return newState;
 
         default:
             return state;

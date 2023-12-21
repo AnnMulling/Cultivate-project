@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useModal } from "../../context/Modal";
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
@@ -7,7 +7,8 @@ import { fetchABoard } from '../../store/board';
 
 import './ModalDelete.css'
 
-function DeleteListModal ({ boardId , list }) {
+function DeleteListModal ({ boardId , list, setShowDelete }) {
+
     const dispatch = useDispatch();
     const history = useHistory();
     const { closeModal } = useModal();
@@ -24,7 +25,12 @@ function DeleteListModal ({ boardId , list }) {
         .then(() => history.push(`/boards/${boardId}`))
 
         closeModal();
+    };
 
+
+    const handleClick = (e) => {
+        closeModal();
+        setShowDelete(false)
     };
 
     if(!user) {
@@ -32,7 +38,7 @@ function DeleteListModal ({ boardId , list }) {
     };
 
     return (
-        <>
+        <div>
             <div className="modal-popup">
                 <h2>Confirm Delete</h2>
                  <h3>
@@ -42,12 +48,12 @@ function DeleteListModal ({ boardId , list }) {
                     <button onClick={deleteList} className="delete-btn">
                         Yes (Delete List)
                     </button>
-                    <button id="keep-btn" onClick={closeModal} className="keep-btn">
+                    <button id="keep-btn" onClick={handleClick} className="keep-btn">
                         No (Keep List)
                     </button>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 
