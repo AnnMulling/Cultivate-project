@@ -17,10 +17,15 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'board_id',
       });
 
+      // belongs to user
       List.belongsTo(models.User, {
         foreignKey:  'user_id'
       });
-
+      
+      // has many cards
+      List.hasMany(models.Card, {
+        foreignKey: 'list_id'
+      });
     }
   }
   List.init({

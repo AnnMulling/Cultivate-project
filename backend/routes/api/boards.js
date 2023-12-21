@@ -2,12 +2,12 @@ const express = require('express')
 const router = express.Router();
 const { requireAuth } = require('../../utils/auth');
 const { reqAuthBoard } = require('../../utils/boards-validation');
-const {  validateCreateBoard, validateCreateList } = require('../../utils/validators');
+const {  validateCreateBoard, validateCreateList, validateCreateCard } = require('../../utils/validators');
 const { reqAuthList } = require('../../utils/lists-validation');
 
 
 //db
-const { User, Board, List } = require('../../db/models');
+const { User, Board, List, Card } = require('../../db/models');
 
 //all board owned by current user
 router.get(
@@ -21,11 +21,11 @@ router.get(
                 where: {
                     user_id: user.id,
                 },
-                include: [
-                    {
-                        model: List
-                    }
-                ]
+                // include: [
+                //     {
+                //         model: List
+                //     }
+                // ]
 
             });
 
@@ -54,6 +54,7 @@ router.get(
             include: [
                 {
                     model: List,
+                    include: [ Card ]
                 }
             ]
         });
@@ -135,6 +136,10 @@ router.get(
             },
             include: [
                 {
+                    model: Card,
+                },
+
+                {
                     model: User,
                     where: {
                         id: user.id
@@ -153,6 +158,40 @@ router.get(
 
         return res.json({
             "Lists": lists
+        });
+    }
+);
+
+// get all cards
+//get all cards on a list own by the current user ??
+router.get(
+    '/:boardId/lists/:listId/cards',
+    reqAuthBoard,
+    async (req, res) => {
+        const { user } = req;
+        const { boardId, listId } = req.params;
+        const cards = await Card.findAll({
+
+            where: {
+               board_id: boardId,
+               list_id: listId
+            },
+
+            include: [
+
+                {
+                    model: User,
+                    where: {
+                        id: user.id
+                    }
+                }
+            ]
+        });
+
+
+
+        return res.json({
+             "Cards": cards
         });
     }
 );
@@ -179,9 +218,36 @@ router.post(
 
         await newList.save();
         res.status(201);
+
         return res.json(newList);
     }
 );
 
+
+//create a card
+router.post(
+    '/:boardId/lists/:listId/cards',
+    [ requireAuth, reqAuthBoard, validateCreateCard],
+    async (req, res) => {
+
+        const { user } = req;
+
+        const { listId, boardId } = req.params;
+
+        const { description } = req.body;
+
+        const newCard = await Card.create({
+            user_id: user.id,
+            list_id: listId,
+            board_id: boardId,
+            description: description
+        });
+
+        await newCard.save();
+        res.status(201);
+
+        return res.json(newCard)
+    }
+)
 
 module.exports = router;

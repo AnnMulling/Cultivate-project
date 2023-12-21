@@ -1,21 +1,21 @@
-const { User, Board, List } = require('../db/models');
+const { Card, List } = require('../db/models');
 
-//check if user has permission and list exists
-const reqAuthList = async (req, res, next) => {
+//check if user has permission and card exists
+const reqAuthCard = async (req, res, next) => {
     const { user } = req;
-    const { listId } = req.params;
-    const list = await List.findByPk(listId);
+    const { cardId } = req.params;
+    const card = await Card.findByPk(cardId);
 
-    if (!list) {
+    if (!card) {
         res.status(400);
         res.json({
-            "message": "List couldn't be found"
+            "message": "Card couldn't be found"
         });
     }
 
     //add check, if board is private or public later
 
-    if (user.id === list.user_id) {
+    if (user.id === card.user_id) {
         next();
     }else {
 
@@ -28,6 +28,6 @@ const reqAuthList = async (req, res, next) => {
 
 
 module.exports = {
-    reqAuthList,
+    reqAuthCard,
 
 }

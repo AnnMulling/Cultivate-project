@@ -25,6 +25,14 @@ const validators = {
         //     .withMessage('Field is required'),
 
         handleValidationErrors
+    ],
+
+    validateCreateCard: [
+        check('description')
+            .exists({ checkFalsy: true})
+            .withMessage('Field is required'),
+
+        handleValidationErrors
     ]
 };
 

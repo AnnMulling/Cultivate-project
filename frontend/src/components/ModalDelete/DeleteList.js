@@ -1,29 +1,36 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useModal } from "../../context/Modal";
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDeleteList } from "../../store/list";
+import { fetchABoard } from '../../store/board';
 
 import './ModalDelete.css'
 
-function DeleteListModal ({ board , list }) {
+function DeleteListModal ({ boardId , list, setShowDelete }) {
+
     const dispatch = useDispatch();
     const history = useHistory();
     const { closeModal } = useModal();
     const user = useSelector((state) => state.session.user);
 
 
-    console.log('delete list from board', board)
+    console.log('delete list from board', boardId)
 
     const deleteList= async(e) => {
         e.preventDefault();
 
-        dispatch(fetchDeleteList(list.id))
-        .then(() => history.push(`/boards/${board.id}`) )
-
+        await dispatch(fetchDeleteList(list.id))
+        .then(() => dispatch(fetchABoard(boardId)))
+        .then(() => history.push(`/boards/${boardId}`))
 
         closeModal();
+    };
 
+
+    const handleClick = (e) => {
+        closeModal();
+        setShowDelete(false)
     };
 
     if(!user) {
@@ -31,7 +38,7 @@ function DeleteListModal ({ board , list }) {
     };
 
     return (
-        <>
+        <div>
             <div className="modal-popup">
                 <h2>Confirm Delete</h2>
                  <h3>
@@ -41,12 +48,12 @@ function DeleteListModal ({ board , list }) {
                     <button onClick={deleteList} className="delete-btn">
                         Yes (Delete List)
                     </button>
-                    <button id="keep-btn" onClick={closeModal} className="keep-btn">
+                    <button id="keep-btn" onClick={handleClick} className="keep-btn">
                         No (Keep List)
                     </button>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 

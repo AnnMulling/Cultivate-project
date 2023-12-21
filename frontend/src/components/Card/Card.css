@@ -1,0 +1,91 @@
+
+.cards-container {
+    width: 100%;
+
+}
+.card-container {
+    width: 100%;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+    border-bottom: 0.5px solid rgba(0, 0, 0, 0.2) ;
+}
+
+.card-description{
+    width: 100%;
+    overflow-wrap: break-word;
+}
+
+.card-edit-Textarea {
+    font-family: 'DM Sans', sans-serif;
+    width: 100%;
+    border: none;
+    resize: auto;
+    outline: none;
+    font-size: 15px;
+    margin-right: 8px;
+    &:focus {
+        width: 100%;
+        font-family: 'DM Sans', sans-serif;
+        color: #313c67;
+        background-color: rgb(235, 235, 235);
+        box-shadow: inset 0.5px 0.5px 0.5px 0.5px rgba(0, 0, 0, 0.238);
+
+        margin-right: 20px;
+
+    }
+}
+
+.card-btns {
+    display: flex;
+    gap: 10px;
+}
+
+
+/*button*/
+.create-btn {
+    background-color: #313c67;
+    border-radius: 20px;
+    color:rgb(255, 255, 255);
+    font-size: 15px;
+    border: none;
+    height: 30px;
+    width: 40%;
+    margin-top: 10px;
+    cursor: pointer;
+    &:hover {
+        transform: scale(1.09);
+
+    }
+}
+
+.cancel-btn {
+    background-color: #313c67;
+    border-radius: 20px;
+    color:rgb(255, 255, 255);
+    font-size: 15px;
+    border: none;
+    height: 30px;
+    width: 40%;
+    margin-top: 10px;
+    cursor: pointer;
+    &:hover {
+        transform: scale(1.09);
+
+    }
+}
+
+.card-delete-btn {
+    background-color: #ff5751;
+    border-radius: 20px;
+    color:rgb(255, 255, 255);
+    font-size: 15px;
+    border: none;
+    height: 30px;
+    width: 40%;
+    margin-top: 10px;
+    cursor: pointer;
+    &:hover {
+        transform: scale(1.09);
+
+    }
+}
