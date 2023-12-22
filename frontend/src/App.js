@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { Switch, Route, useLocation } from "react-router-dom";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
+import SignupFormModal from "./components/SignupFormModal";
+import LoginFormModal from "./components/LoginFormModal";
 import HomePage from "./components/HomePage";
 import WorkSpace from "./components/WorkSpace";
 import BoardDetails from "./components/Board";
@@ -10,6 +12,7 @@ import SetTime from "./components/SetTimePage";
 import SetTimeCookie from "./components/SetTimePage/CookieTime";
 import SetTimeTree from "./components/SetTimePage/TreeTime";
 import SetTimeRegular from "./components/SetTimePage/RegularTime";
+
 
 
 function App() {
