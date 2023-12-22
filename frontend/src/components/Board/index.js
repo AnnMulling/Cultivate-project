@@ -5,6 +5,7 @@ import { fetchABoard } from '../../store/board';
 import Sidebar from '../Navigation/Sidebar_';
 import List from '../List/List';
 import AddList from '../List/AddList';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 import './Board.css'
 
@@ -52,8 +53,10 @@ export default function BoardDetails() {
             />
 
             <h1 className='heading'>{board?.name}</h1>
+            <DragDropContext>
             <div className="board-details-container">
                 <h2>Tasks</h2>
+
                 <div className="list-main-container" >
                     {listArr.map((list, index) => {
                         return <List boardId={boardId} list={list} index={index} isLoaded={isLoaded} />
@@ -73,6 +76,7 @@ export default function BoardDetails() {
                 </div>
                 </div>
             </div>
+            </DragDropContext>
 
         </div>
 

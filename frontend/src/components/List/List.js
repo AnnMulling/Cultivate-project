@@ -9,6 +9,7 @@ import OpenModalButton from '../OpenModalButton';
 import Card from '../Card/Card';
 
 import './List.css'
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 
 export default function List({ boardId, list, index, isLoaded }) {
@@ -106,11 +107,19 @@ export default function List({ boardId, list, index, isLoaded }) {
                  </div>
 
                 )}
-                
+            <DragDropContext>
+                <Droppable droppableId={list?.id}>
+                    {(provided) => (
+                        <div className="cards-container" {...provided.draggableProps} ref={provided.innerRef} {...provided.dragHandleProps}>
 
-            <div className="cards-container">
-                <Card list={list} boardId={boardId} cards={list?.Cards} isLoaded={isLoaded} />
-            </div>
+                            <Card list={list} boardId={boardId} cards={list?.Cards} isLoaded={isLoaded} />
+
+                            {provided.placeholder}
+                        </div>
+                    )}
+
+                </Droppable>
+            </DragDropContext>
             <div className="list-del-container">
                 <OpenModalButton
                     modalComponent={<DeleteListModal boardId={boardId} list={list} />}

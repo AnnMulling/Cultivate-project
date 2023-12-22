@@ -6,7 +6,6 @@ import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { ModalProvider, Modal } from "./context/Modal";
-import { DragDropContext } from 'react-beautiful-dnd';
 import App from "./App";
 
 
@@ -30,14 +29,14 @@ if (process.env.NODE_ENV !== "production") {
 function Root() {
   return (
     <ModalProvider>
-        <DragDropContext>
+
           <Provider store={store}>
             <BrowserRouter>
               <App />
               <Modal />
             </BrowserRouter>
           </Provider>
-      </DragDropContext>
+  
     </ModalProvider>
   );
 }
