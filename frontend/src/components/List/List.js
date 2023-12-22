@@ -106,6 +106,7 @@ export default function List({ boardId, list, index, isLoaded }) {
                  </div>
 
                 )}
+                
 
             <div className="cards-container">
                 <Card list={list} boardId={boardId} cards={list?.Cards} isLoaded={isLoaded} />

@@ -4,7 +4,8 @@ import { useHistory } from 'react-router-dom';
 import TextareaAutosize from "react-textarea-autosize";
 import { fetchABoard } from '../../store/board';
 import { fetchEditCard, fetchDeleteCard } from '../../store/card';
-
+//dnd
+import { useDrop, useDrag } from "react-dnd"
 
 import './Card.css'
 
@@ -18,7 +19,8 @@ export default function EditCard({ boardId, card,  isLoaded }) {
     const [ description, setDescription ] = useState(card.description);
     const [ errors, setErrors ] = useState({});
 
-
+    //drag and drop
+    
 
 
     useEffect(() => {

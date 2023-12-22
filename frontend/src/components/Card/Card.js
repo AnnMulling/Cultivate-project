@@ -19,7 +19,7 @@ export default function Card ({ list, boardId, cards, isLoaded}) {
     return isLoaded && (
         <>
             <div>
-                {cards?.map((card) => {
+                {cards?.reverse().map((card) => {
                     return <EditCard card={card} boardId={boardId} isLoaded={isLoaded}  />
                 })}
             </div>
