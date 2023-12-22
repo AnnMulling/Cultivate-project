@@ -1,4 +1,14 @@
 
+.add-card {
+    color: #313c67;
+    width: 100%;
+
+    &:hover {
+        color: #40bd93;
+    }
+
+}
+
 .cards-container {
     width: 100%;
 
@@ -37,19 +47,20 @@
 
 .card-btns {
     display: flex;
-    gap: 10px;
+    justify-content: space-around;
+    align-items: center;
 }
 
 
 /*button*/
-.create-btn {
-    background-color: #313c67;
-    border-radius: 20px;
-    color:rgb(255, 255, 255);
+.card-create-btn {
+    /* background-color: #313c67; */
+    /* border-radius: 20px; */
+    color:#313c67;
     font-size: 15px;
     border: none;
-    height: 30px;
-    width: 40%;
+    /* height: 30px;
+    width: 40%; */
     margin-top: 10px;
     cursor: pointer;
     &:hover {
@@ -59,13 +70,13 @@
 }
 
 .cancel-btn {
-    background-color: #313c67;
-    border-radius: 20px;
-    color:rgb(255, 255, 255);
+    /* background-color: #313c67;
+    border-radius: 20px; */
+    color:#313c67;
     font-size: 15px;
     border: none;
-    height: 30px;
-    width: 40%;
+    /* height: 30px;
+    width: 40%; */
     margin-top: 10px;
     cursor: pointer;
     &:hover {
@@ -75,17 +86,18 @@
 }
 
 .card-delete-btn {
-    background-color: #ff5751;
-    border-radius: 20px;
-    color:rgb(255, 255, 255);
+    /* background-color: #ff5751; */
+    /* border-radius: 20px; */
+    color:#313c67;
     font-size: 15px;
     border: none;
-    height: 30px;
-    width: 40%;
+    /* height: 30px;
+    width: 40%; */
     margin-top: 10px;
     cursor: pointer;
     &:hover {
         transform: scale(1.09);
+        color: #ef443e;
 
     }
 }

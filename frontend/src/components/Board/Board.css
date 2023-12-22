@@ -18,7 +18,7 @@
 /*board details*/
 
 
-.list-btn-delete {
+/* .list-btn-delete {
     background-color: #313c67;;
     border: none;
     padding: 10px 12px;
@@ -31,7 +31,7 @@
         transform: scale(1.05);
 
     }
-}
+} */
 
 .list-btn-crt {
     font-size: 18px;

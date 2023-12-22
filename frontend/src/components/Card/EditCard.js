@@ -65,7 +65,7 @@ export default function EditCard({ boardId, card,  isLoaded }) {
     const deleteCard = async (e) => {
         e.preventDefault();
         setEditingDes(false);
-        
+
        await dispatch(fetchDeleteCard(card.id))
         .then(() => dispatch(fetchABoard(boardId)))
         .then(() => history.push(`/boards/${boardId}`))
@@ -85,24 +85,24 @@ export default function EditCard({ boardId, card,  isLoaded }) {
                         />
                         <div >{errors.description && <p className="errors">{errors.description}</p>}</div>
                     <div className="card-btns">
-                        <button
-                            className="create-btn"
+                        <div
+                            className="card-create-btn"
                             onClick={handleSubmit}
                         >
-                            Save
-                        </button>
-                        <button
+                            <i class="fa-solid fa-floppy-disk"></i>  save
+                        </div>
+                        <div
                             className="cancel-btn"
                             onClick={() => setEditingDes(false)}
                         >
-                            cancel
-                        </button>
-                        <button
+                            <i class="fa-solid fa-circle-xmark"></i> cancel
+                        </div>
+                        <div
                             className="card-delete-btn"
                             onClick={(deleteCard)}
                         >
-                            delete
-                        </button>
+                            <i class="fa-solid fa-trash"></i> delete
+                        </div>
                     </div>
 
                     </div>

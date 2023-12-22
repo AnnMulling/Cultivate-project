@@ -44,7 +44,7 @@ function SignupFormModal() {
   };
 
   return (
-    <>
+    <div className="form-main-container">
       <h1 style={{fontFamily:'Montserrat'}}>Sign Up</h1>
       <form onSubmit={handleSubmit} className="form-signup">
         <label>
@@ -111,7 +111,7 @@ function SignupFormModal() {
         )}
         <button type="submit" className="signup-btn">Sign Up</button>
       </form>
-    </>
+    </div>
   );
 }
 
