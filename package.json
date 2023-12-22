@@ -25,7 +25,9 @@
   },
   "homepage": "https://github.com/AnnMulling/Cultivate-project#readme",
   "dependencies": {
-    "faker": "^6.6.6"
+    "faker": "^6.6.6",
+    "react-dnd": "^16.0.1",
+    "react-dnd-html5-backend": "^16.0.1"
   },
   "devDependencies": {
     "@faker-js/faker": "^8.3.1"
