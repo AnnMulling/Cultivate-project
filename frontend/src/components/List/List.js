@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import TextareaAutosize from "react-textarea-autosize";
-import { fetchAllLists, fetchEditList } from "../../store/list";
+import {  fetchEditList } from "../../store/list";
 import { fetchABoard } from '../../store/board';
 import DeleteListModal from '../ModalDelete/DeleteList';
 import OpenModalButton from '../OpenModalButton';
@@ -13,20 +13,25 @@ import './List.css'
 
 export default function List({ boardId, list, index, isLoaded }) {
     //handle add card and edit list
-    const ref = useRef(null);
+    const ref = useRef();
     const dispatch = useDispatch();
     const history = useHistory();
     const [editingTitle, setEditingTitle] = useState(false);
     const [title, setTitle] = useState(list.title);
-    const [showDelete, setShowDelete] = useState(false);
+    const [showMenu, setShowMenu] = useState(false);
     const [errors, setErrors] = useState({});
-
 
     // console.log('Cards', list.Cards)
     // console.log('delete btn', showDelete)
 
+
     useEffect(() => {
 
+        // const closeMenu = (e) => {
+        //     if (!ref.current.contains(e.target)) {
+        //         setShowMenu(false);
+        //     }
+        // };
 
         const errors = {};
 
@@ -39,10 +44,11 @@ export default function List({ boardId, list, index, isLoaded }) {
         }
         setErrors(errors);
 
+        // document.addEventListener('click', closeMenu);
 
+        // return () => document.removeEventListener('click', closeMenu);
 
-    }, [ref, title, dispatch]);
-
+    }, [ title, dispatch]);
 
 
     const handleOnBlur = async (e) => {
@@ -67,14 +73,10 @@ export default function List({ boardId, list, index, isLoaded }) {
     };
 
 
-    const handleClick = () => {
-        setEditingTitle(true)
-        setShowDelete(true)
-    }
+
 
     return isLoaded && (
         <div className="list-container" >
-
             {editingTitle ? (
 
                 <div className="list-Textarea" >
@@ -85,7 +87,7 @@ export default function List({ boardId, list, index, isLoaded }) {
                         onChange={(e) => setTitle(e.target.value)}
                         onKeyDown={e => e.key === "Enter" && e.currentTarget.blur()}
                         onBlur={handleOnBlur}
-                        onMouseUp={() => setShowDelete(false)}
+
                     />
                     <div >{errors.title && <p className="errors">{errors.title}</p>}</div>
                 </div>
@@ -94,29 +96,27 @@ export default function List({ boardId, list, index, isLoaded }) {
 
                 <div
                     className='list-title'
-                    onClick={handleClick}
+                    onClick={() => setEditingTitle(true)}
+                    onMouseDown={() => setShowMenu(!showMenu)}
 
                 >
                     {list.title}
 
-                </div>
 
-            )}
-            <div>
-                {showDelete && editingTitle && (
-                    <OpenModalButton
-                        modalComponent={<DeleteListModal boardId={boardId} list={list} setShowDelete={setShowDelete}/>}
-                        buttonText={<i class="fa-solid fa-trash"></i>}
-                        modalClasses={["list-btn-delete"]}
-                    />
+                 </div>
+
                 )}
-            </div>
 
             <div className="cards-container">
                 <Card list={list} boardId={boardId} cards={list?.Cards} isLoaded={isLoaded} />
             </div>
-
-
+            <div className="list-del-container">
+                <OpenModalButton
+                    modalComponent={<DeleteListModal boardId={boardId} list={list} />}
+                    buttonText={<i className="fa-solid fa-trash"></i>}
+                    modalClasses={["list-btn-delete"]}
+                />
+            </div>
         </div>
 
     );

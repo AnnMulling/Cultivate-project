@@ -11,8 +11,6 @@ import './SetTime.css';
 export default function SetTime() {
     const user = useSelector((state) => state.session.user);
     const history = useHistory();
-  
-
 
 
     if (!user) {
@@ -27,7 +25,7 @@ export default function SetTime() {
 
             <div className="set-time-main">
                 <div className="set-time-heading">
-                    <h1> Baking or Planting ? </h1>
+                    <h1 style={{color:"#313c67"}}> How do you like to stay focus today? </h1>
                 </div>
                 <div className="set-time-cards">
                     <Link to="/timer/cookie" style={{ textDecoration: 'none', color: '#fffefe' }}>

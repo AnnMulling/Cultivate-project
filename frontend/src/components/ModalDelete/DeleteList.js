@@ -7,7 +7,7 @@ import { fetchABoard } from '../../store/board';
 
 import './ModalDelete.css'
 
-function DeleteListModal ({ boardId , list, setShowDelete }) {
+function DeleteListModal ({ boardId , list }) {
 
     const dispatch = useDispatch();
     const history = useHistory();
@@ -28,11 +28,6 @@ function DeleteListModal ({ boardId , list, setShowDelete }) {
     };
 
 
-    const handleClick = (e) => {
-        closeModal();
-        setShowDelete(false)
-    };
-
     if(!user) {
         history.push("/")
     };
@@ -48,7 +43,7 @@ function DeleteListModal ({ boardId , list, setShowDelete }) {
                     <button onClick={deleteList} className="delete-btn">
                         Yes (Delete List)
                     </button>
-                    <button id="keep-btn" onClick={handleClick} className="keep-btn">
+                    <button id="keep-btn" onClick={closeModal} className="keep-btn">
                         No (Keep List)
                     </button>
                 </div>
