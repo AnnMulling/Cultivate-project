@@ -72,7 +72,7 @@ export default function AddCard ( { boardId, listId,  toggleAddingCard } ) {
         <div className="add-card-container" ref={ref}>
              <TextareaAutosize
                 autoFocus
-                className="list-add-Textarea"
+                className="card-edit-Textarea"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
 

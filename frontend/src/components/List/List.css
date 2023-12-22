@@ -17,7 +17,7 @@
         background-color: rgb(235, 235, 235);
         box-shadow: inset 0.5px 0.5px 0.5px 0.5px rgba(0, 0, 0, 0.238);
         padding: 5px;
-        width: 100%;
+        width: 140%;
 
     }
 }
@@ -58,10 +58,11 @@
     width: 250px;
 
     background: rgb(255, 255, 255);
+
     box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.238);
-    border-radius: 1rem;
+    border-radius: 0.75rem;
     border: 1px solid rgba(242, 239, 239, 0.981);
-    padding: 18px;
+    padding: 20px;
     gap: 10px;
     cursor: pointer;
     /* transition: all 0.2s ease-in-out;
@@ -75,7 +76,10 @@
     display: flex;
     justify-content: space-between;
     color: #313c67;
-    background-color: #c3c5cb58;
+    font-weight: bold;
+    font-size: 18px;
+    /* background-color: #c3c5cb58; */
+
     width: 100%;
     border-radius: 0.5rem;
     padding: 7px;

@@ -26,6 +26,7 @@
   "homepage": "https://github.com/AnnMulling/Cultivate-project#readme",
   "dependencies": {
     "faker": "^6.6.6"
+
   },
   "devDependencies": {
     "@faker-js/faker": "^8.3.1"
