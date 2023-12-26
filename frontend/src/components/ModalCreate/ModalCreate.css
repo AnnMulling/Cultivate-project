@@ -2,7 +2,6 @@
 .error-container {
     height: 20px;
     width: 100%;
-    margin: 3px;
     position: relative;
 
 }
@@ -14,7 +13,7 @@
     font-size: small;
     font-weight: 300;
     width: 100%;
-  
+
 }
 
 .modal-popup {

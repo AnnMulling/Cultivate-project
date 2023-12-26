@@ -104,6 +104,7 @@
 }
 
 .list-del-container {
+    height: 20px;
     width: 100%;
     text-align: right;
 }
@@ -111,15 +112,15 @@
 .list-btn-delete {
 
     background-color: #313c67;;
-      border: none;
-      padding: 4px 5px;
-      border-radius: 22em;
-      color:  #f5f5f5;
-      font-size: 8px;
-      cursor: pointer;
+    border: none;
+    padding: 4px 5px;
+    border-radius: 22em;
+    color:  #f5f5f5;
+    font-size: 8px;
+    cursor: pointer;
 
-      &:hover {
-          transform: scale(1.05);
-          background-color: #ef443e;
-      }
+    &:hover {
+        transform: scale(1.05);
+        background-color: #ef443e;
+    }
 }

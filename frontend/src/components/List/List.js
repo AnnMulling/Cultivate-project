@@ -19,7 +19,7 @@ export default function List({ boardId, list, index, isLoaded }) {
     const history = useHistory();
     const [editingTitle, setEditingTitle] = useState(false);
     const [title, setTitle] = useState(list.title);
-    const [showMenu, setShowMenu] = useState(false);
+    const [showDelete, setShowDelete] = useState(false);
     const [errors, setErrors] = useState({});
 
     // console.log('Cards', list.Cards)
@@ -28,26 +28,15 @@ export default function List({ boardId, list, index, isLoaded }) {
 
     useEffect(() => {
 
-        // const closeMenu = (e) => {
-        //     if (!ref.current.contains(e.target)) {
-        //         setShowMenu(false);
-        //     }
-        // };
-
         const errors = {};
 
-        if (title === "") {
-            errors.title = "Field is required"
-        } else if (title.length < 5) {
+        if (title.length < 5) {
             errors.title = "Title must be at least 5 characters"
         } else if (title.length > 30) {
             errors.title = "Title must be less than 30 characters"
         }
         setErrors(errors);
 
-        // document.addEventListener('click', closeMenu);
-
-        // return () => document.removeEventListener('click', closeMenu);
 
     }, [ title, dispatch]);
 
@@ -77,7 +66,11 @@ export default function List({ boardId, list, index, isLoaded }) {
 
 
     return isLoaded && (
-        <div className="list-container" >
+        <div
+        className="list-container"
+        onMouseEnter={() => setShowDelete(true)}
+        onMouseLeave={() => setShowDelete(false)}
+        >
             {editingTitle ? (
 
                 <div className="list-Textarea" >
@@ -90,7 +83,7 @@ export default function List({ boardId, list, index, isLoaded }) {
                         onBlur={handleOnBlur}
 
                     />
-                    <div >{errors.title && <p className="errors">{errors.title}</p>}</div>
+                    <div>{errors.title && <p className="errors">{errors.title}</p>}</div>
                 </div>
 
             ) : (
@@ -98,7 +91,7 @@ export default function List({ boardId, list, index, isLoaded }) {
                 <div
                     className='list-title'
                     onClick={() => setEditingTitle(true)}
-                    onMouseDown={() => setShowMenu(!showMenu)}
+
 
                 >
                     {list.title}
@@ -121,11 +114,13 @@ export default function List({ boardId, list, index, isLoaded }) {
                 </Droppable>
             </DragDropContext>
             <div className="list-del-container">
-                <OpenModalButton
-                    modalComponent={<DeleteListModal boardId={boardId} list={list} />}
-                    buttonText={<i className="fa-solid fa-trash"></i>}
-                    modalClasses={["list-btn-delete"]}
-                />
+            {showDelete && (
+                    <OpenModalButton
+                        modalComponent={<DeleteListModal boardId={boardId} list={list} />}
+                        buttonText={<i className="fa-solid fa-trash"></i>}
+                        modalClasses={["list-btn-delete"]}
+                    />
+                    )}
             </div>
         </div>
 
