@@ -45,10 +45,8 @@
 
 .list-main-container {
     display: flex;
-    flex-wrap: wrap;
     align-items: flex-start;
-    gap: 10px;
-    margin-left: 8%;
+
     width: 100%;
     height: 100%;
 }

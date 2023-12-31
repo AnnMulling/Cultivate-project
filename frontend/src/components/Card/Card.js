@@ -32,7 +32,7 @@ export default function Card ({ list, boardId, cards, isLoaded}) {
                     <AddCard boardId={boardId} listId={list?.id} toggleAddingCard={toggleAddingCard}/>
                 ) : (
                     <div onClick={toggleAddingCard} className="add-card">
-                         <i class="fa-solid fa-circle-plus"></i> Add Card
+                         <i className="fa-solid fa-circle-plus"></i> Add Card
                     </div>
                 ) }
             </div>

@@ -12,7 +12,7 @@ import './List.css'
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
 
 
-export default function List({ boardId, list, index, isLoaded }) {
+export default function List({ boardId, list, isLoaded }) {
     //handle add card and edit list
     const ref = useRef();
     const dispatch = useDispatch();
