@@ -19,9 +19,12 @@ export default function Card ({ list, boardId, cards, isLoaded}) {
     return isLoaded && (
         <>
             <div>
-                {cards?.map((card, index) => {
-                    return <EditCard card={card} index={index} boardId={boardId} isLoaded={isLoaded}  />
-                })}
+
+                {cards?.map((card, index) =>
+                <div key={card.id}>
+                     <EditCard card={card} index={index} boardId={boardId} isLoaded={isLoaded}  />
+                </div>
+                )}
             </div>
 
             <div >

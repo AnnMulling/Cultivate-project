@@ -109,21 +109,13 @@ export default function EditCard({ card, index, boardId,  isLoaded }) {
 
                         </div>
                     ) : (
-                        <Draggable draggableId={card?.id} index={index}>
-                            {(provided) => (
 
-                                <div
-                                    onClick={() => setEditingDes(true)}
-                                    className="card-description"
-                                    ref={provided.innerRef}
-                                    {...provided.dragHandleProps}
-                                    {...provided.draggableProps}
+                        <div
+                            onClick={() => setEditingDes(true)}
+                            className="card-description"
+                        > {card.description}
+                        </div>
 
-                                > {card.description}
-
-                                </div>
-                            )}
-                        </Draggable>
                     )}
 
 

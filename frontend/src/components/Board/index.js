@@ -5,7 +5,7 @@ import { fetchABoard } from '../../store/board';
 import Sidebar from '../Navigation/Sidebar_';
 import List from '../List/List';
 import AddList from '../List/AddList';
-import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 import './Board.css'
 
@@ -20,8 +20,8 @@ export default function BoardDetails() {
     const listArr = board?.Lists;
     const [isLoaded, setIsLoaded] = useState(false);
     //toggle adding list
-    const [ addingList, setAddingList ] = useState(false);
-    const [ show, setShow ] = useState(false);
+    const [addingList, setAddingList] = useState(false);
+    const [show, setShow] = useState(false);
 
     // console.log('in board component')
 
@@ -29,10 +29,10 @@ export default function BoardDetails() {
     // console.log('all lists', listArr)
     //  console.log('adding list', addingList)
 
-    useEffect(()  => {
+    useEffect(() => {
 
         dispatch(fetchABoard(boardId))
-        .then(() => setIsLoaded(true));
+            .then(() => setIsLoaded(true));
 
     }, [dispatch]);
 
@@ -47,38 +47,62 @@ export default function BoardDetails() {
     };
 
     return isLoaded && (
-        <div className="board-page-main">
-            <Sidebar
-                user={user}
-            />
+        <DragDropContext
+            onDragEnd={() => {
+                console.log('dnd event occured');
 
-            <h1 className='heading'>{board?.name}</h1>
-            <DragDropContext>
-            <div className="board-details-container">
-                <h2>Tasks</h2>
+            }}>
+            <div className="board-page-main">
+                <Sidebar user={user} />
 
-                <div className="list-main-container" >
-                    {listArr.map((list, index) => {
-                        return <List boardId={boardId} list={list} index={index} isLoaded={isLoaded} />
-                    })}
+                <Droppable droppableId={boardId} type="group">
+                    {(provided) => (
+                        <div
+                            {...provided.droppableProps}
+                            ref={provided.innerRef}>
 
-                <div className="add-List">
-                    {addingList && show ? (
-                         <AddList boardId={boardId} toggleAddingList={toggleAddingList}/>
-                    ) : (
-                        <button
-                            onClick={toggleAddingList}
-                            className="list-btn-crt"
-                        >
-                            <i className="fa-solid fa-circle-plus"></i>
-                        </button>
+                            <h1 className='heading'>{board?.name}</h1>
+
+
+                            <div className="list-main-container" >
+                                {listArr.map((list, index) =>
+                                    <Draggable
+                                        draggableId={list.id.toString()}
+                                        index={index}
+                                        key={list.id}
+                                    >
+                                        {(provided) => (
+                                            <div
+                                                {...provided.dragHandleProps}
+                                                {...provided.draggableProps}
+                                                ref={provided.innerRef}
+                                            >
+                                                <List boardId={boardId} list={list} index={index} isLoaded={isLoaded} />
+                                            </div>
+                                        )}
+                                    </Draggable>
+
+                                )}
+
+                                <div className="add-List">
+                                    {addingList && show ? (
+                                        <AddList boardId={boardId} toggleAddingList={toggleAddingList} />
+                                    ) : (
+                                        <button
+                                            onClick={toggleAddingList}
+                                            className="list-btn-crt"
+                                        >
+                                            <i className="fa-solid fa-circle-plus"></i>
+                                        </button>
+                                    )}
+                                </div>
+                            </div>
+                            {provided.placeholder}
+                        </div>
                     )}
-                </div>
-                </div>
+                </Droppable>
             </div>
-            </DragDropContext>
-
-        </div>
+        </DragDropContext>
 
     );
 };
