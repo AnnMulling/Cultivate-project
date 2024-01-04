@@ -49,11 +49,9 @@ export default function WorkSpace() {
 
     return isLoaded && (
      <>
-         <Sidebar
-          user={user}
-         />
 
         <div className="workspace">
+             <Sidebar user={user} />
 
             <div className="heading">
                 <span className="name">{user?.firstName}</span>

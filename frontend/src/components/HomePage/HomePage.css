@@ -1,4 +1,4 @@
-body, html {
+html, body {
     font-family: 'DM Sans', sans-serif;
     font-size: 15px;
     box-sizing: border-box;
@@ -6,6 +6,8 @@ body, html {
     padding: 0;
 
     background-color: #e4e4e7;
+    min-width: 100%;
+    min-height: 100%;
 }
 
 

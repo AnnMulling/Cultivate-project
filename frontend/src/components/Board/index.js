@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Link, useParams } from 'react-router-dom';
-import { fetchABoard } from '../../store/board';
+import { fetchABoard, fetchMoveList } from '../../store/board';
 import Sidebar from '../Navigation/Sidebar_';
 import List from '../List/List';
 import AddList from '../List/AddList';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
 import './Board.css'
-import { fetchAllLists } from '../../store/list';
+
+
 
 
 export default function BoardDetails() {
@@ -19,13 +20,13 @@ export default function BoardDetails() {
     const user = useSelector((state) => state.session.user);
     // const allLists = useSelector((state) => state.lists);
     let listArr = board?.Lists;
-    const [ stores, setStores ] = useState(board?.Lists);
+    const [ storeList, setStoreList ] = useState(board?.Lists);
     const [ isLoaded, setIsLoaded ] = useState(false);
     //toggle adding list
     const [ addingList, setAddingList ] = useState(false);
     const [ show, setShow ] = useState(false);
 
-    // console.log(stores, '<==== stores list array')
+    console.log(board, '<==== board state')
     console.log(listArr,'<==== list array' )
 
 
@@ -47,46 +48,48 @@ export default function BoardDetails() {
     };
 
     //dnd
-    const handleDragDrop = (result) => {
+    const handleDragDrop = async (result) => {
         const { source, destination, type } = result;
 
+        const newListOrder = [...listArr]
+        const oldListIndex = source.index;
+        const newListIndex = destination.index;
+
+        console.log('new list order ===>', newListOrder)
         if (!destination) return;
-        if (source.droppableId === destination.droppableId
-            && source.index === destination.index ) return;
 
-        if (type === "group") {
-            const reorderStores = [...listArr];
-            //find index to remove(splice) the add it back to the store array again
-            const sourceIndex = source.index;
-            const destinationIndex = destination.index;
-            // remove the target from the original array
-            const [ removeItem ] = reorderStores.splice(sourceIndex, 1);
-            // add it back to the store using splice
-            reorderStores.splice(destinationIndex, 0, removeItem);
+        if (type === "LIST") {
+            // Prevent update if nothing has changed
+            if (source.index !== destination.index) {
 
-            console.log('reorder ===>', reorderStores)
-            console.log('list after reordered' , listArr)
+                const [removedList] = newListOrder.splice(oldListIndex, 1);
+                newListOrder.splice(newListIndex, 0, removedList);
 
-            listArr = [...reorderStores]
-            return listArr;
-        }
+                dispatch(fetchMoveList(newListOrder, boardId))
+
+
+            };
+        };
+
     }
 
     return isLoaded && (
-        <>
-            <Sidebar user={user} />
-            <h1 className='heading'>{board?.name}</h1>
-            <DragDropContext
-                onDragEnd={handleDragDrop}>
-            {/* <div className="board-page-main"> */}
+            <div className="board-page-main">
 
-                    <Droppable droppableId="board" direction="horizontal" type="COLUMN">
+                <Sidebar user={user} />
+
+                <div className="heading">
+                    <h1 >{board?.name}</h1>
+                </div>
+                <DragDropContext
+                    onDragEnd={handleDragDrop}>
+
+                    <Droppable droppableId={boardId} direction="horizontal" type="LIST">
                         {(provided) => (
                             <div
                                 className="board-details-container"
-                                {...provided.droppableProps}
-                                ref={provided.innerRef}>
-
+                                ref={provided.innerRef}
+                                {...provided.droppableProps}>
 
                                 {/* <div className="list-main-container" > */}
                                     {listArr.map((list, index) =>
@@ -102,12 +105,12 @@ export default function BoardDetails() {
                                                     {...provided.draggableProps}
                                                     ref={provided.innerRef}
                                                 >
-                                                    <List boardId={boardId} list={list} isLoaded={isLoaded} />
+                                                     <List boardId={boardId} list={list} isLoaded={isLoaded} />
                                                 </div>
                                             )}
                                         </Draggable>
 
-                                    )}
+                                            )}
 
                                     <div className="add-List">
                                         {addingList && show ? (
@@ -121,14 +124,12 @@ export default function BoardDetails() {
                                             </button>
                                         )}
                                     </div>
-                                {/* </div> */}
                                 {provided.placeholder}
-                            </div>
+                                </div>
+                            // </div>
                         )}
                     </Droppable>
-            {/* </div> */}
-            </DragDropContext>
-        </>
-
+                </DragDropContext>
+         </div>
     );
 };

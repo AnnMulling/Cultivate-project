@@ -106,6 +106,31 @@ router.put(
     }
 );
 
+//Movelist
+router.post(
+    '/:boardId',
+    reqAuthBoard,
+    async (req, res) => {
+        const { boardId } = req.params;
+        const  newListOrder  = req.body;
+        // console.log('newlist', newListOrder)
+        const board = await Board.findByPk(boardId, {
+            include: [
+                {
+                    model: List,
+
+                }
+            ]
+        });
+
+        board.List = newListOrder
+        console.log('newlist', board.List)
+        await board.save();
+
+        return res.json(board.List);
+    }
+)
+
 
 //delete board
 router.delete(
