@@ -48,7 +48,7 @@ export default function BoardDetails() {
     };
 
     //dnd
-    const handleDragDrop = async (result) => {
+    const handleDragDrop =  (result) => {
         const { source, destination, type } = result;
 
         const newListOrder = [...listArr]
@@ -56,24 +56,25 @@ export default function BoardDetails() {
         const newListIndex = destination.index;
 
         console.log('new list order ===>', newListOrder)
-        if (!destination) return;
+        if (!destination || !source) return;
 
         if (type === "LIST") {
             // Prevent update if nothing has changed
-            if (source.index !== destination.index) {
+            if (source.index !== destination.index ) {
 
                 const [removedList] = newListOrder.splice(oldListIndex, 1);
                 newListOrder.splice(newListIndex, 0, removedList);
 
                 dispatch(fetchMoveList(newListOrder, boardId))
 
-
             };
         };
-
+        return
     }
 
     return isLoaded && (
+        <DragDropContext
+            onDragEnd={handleDragDrop}>
             <div className="board-page-main">
 
                 <Sidebar user={user} />
@@ -81,8 +82,6 @@ export default function BoardDetails() {
                 <div className="heading">
                     <h1 >{board?.name}</h1>
                 </div>
-                <DragDropContext
-                    onDragEnd={handleDragDrop}>
 
                     <Droppable droppableId={boardId} direction="horizontal" type="LIST">
                         {(provided) => (
@@ -129,7 +128,7 @@ export default function BoardDetails() {
                             // </div>
                         )}
                     </Droppable>
-                </DragDropContext>
-         </div>
+            </div>
+        </DragDropContext>
     );
 };

@@ -64,7 +64,6 @@ export default function List({ boardId, list, isLoaded }) {
 
 
 
-
     return isLoaded && (
         <div
             key={list.id}

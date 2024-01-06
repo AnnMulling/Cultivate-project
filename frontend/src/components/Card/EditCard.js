@@ -17,12 +17,15 @@ export default function EditCard({ card, index, boardId,  isLoaded }) {
     const [ editingDes, setEditingDes ] = useState(false);
     const [ description, setDescription ] = useState(card.description);
     const [ errors, setErrors ] = useState({});
+    const savedTask = localStorage.getItem(card.id);
+    const task = JSON.parse(savedTask)
+    const [ isChecked, setIsChecked ] = useState(task);
 
     //drag and drop
 
-
-
     useEffect(() => {
+
+        localStorage.getItem(card.id);
 
         const errors = {};
 
@@ -36,9 +39,14 @@ export default function EditCard({ card, index, boardId,  isLoaded }) {
         setErrors(errors);
 
 
-    }, [ description, dispatch]);
+    }, [ description, dispatch, isChecked]);
 
+    const checkBoxHandler = (e, id) => {
+        localStorage.setItem(id, e.target.checked);
+        setIsChecked(!isChecked);
 
+        return
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -109,12 +117,28 @@ export default function EditCard({ card, index, boardId,  isLoaded }) {
 
                         </div>
                     ) : (
+                        <div className="card-sub-container">
 
-                        <div
-                            onClick={() => setEditingDes(true)}
-                            className="card-description"
-                        > {card.description}
-                        </div>
+                                <input
+                                type="checkbox"
+                                id={card.id}
+                                checked={isChecked}
+                                onChange={(e) => checkBoxHandler(e, card.id)}/>
+                                <span
+                                    onClick={() => setEditingDes(true)}
+                                    className={isChecked
+
+
+
+
+
+
+                                        ? "taskChecked" : "card-description" }
+                                >
+                                {card.description}
+                                </span>
+
+                         </div>
 
                     )}
 

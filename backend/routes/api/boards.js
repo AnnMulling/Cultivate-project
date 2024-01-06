@@ -59,6 +59,7 @@ router.get(
             ]
         });
 
+
         return res.json(board);
     }
 );
@@ -107,29 +108,32 @@ router.put(
 );
 
 //Movelist
-router.post(
-    '/:boardId',
-    reqAuthBoard,
-    async (req, res) => {
-        const { boardId } = req.params;
-        const  newListOrder  = req.body;
-        // console.log('newlist', newListOrder)
-        const board = await Board.findByPk(boardId, {
-            include: [
-                {
-                    model: List,
+//cannot assign newlkist that way, this is only create a new board object with value of newlistorder
+// router.post(
+//     '/:boardId',
+//     reqAuthBoard,
+//     async (req, res) => {
+//         const { boardId } = req.params;
+//         const  newListOrder  = req.body;
 
-                }
-            ]
-        });
+//         const board = await Board.findByPk(boardId, {
+//             include: [
+//                 {
+//                     model: List,
 
-        board.List = newListOrder
-        console.log('newlist', board.List)
-        await board.save();
+//                 }
+//             ]
+//         });
 
-        return res.json(board.List);
-    }
-)
+//         console.log('board list before', board.Lists)
+//         //cant assign like that
+//         board.Lists = newListOrder
+//         console.log('board list after', board.Lists)
+//         await board.save();
+
+//         return res.json(board);
+//     }
+// )
 
 
 //delete board

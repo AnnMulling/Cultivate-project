@@ -150,31 +150,43 @@ export const fetchDeleteBoard = (boardId) => async (dispatch) => {
     }
 };
 
+//move list manipulate backend
+// not working
+// export const fetchMoveList = (newListOrder, boardId) => async (dispatch) => {
+//     try {
+//            const response = await csrfFetch(`/api/boards/${boardId}`, {
+//               method: 'POST',
+//               headers: { "Content-Type": "application/json" },
+//               body:  JSON.stringify(newListOrder)
 
+//            });
+//            console.log('new list thunk', newListOrder)
+
+//            if (response.ok) {
+//                const board = await response.json();
+//                console.log('after fecth move ', board)
+//                dispatch(moveList(board.Lists, boardId));
+//                return;
+//            }
+
+//     }catch(error) {
+
+//         console.log(error);
+//         return error;
+//     }
+// };
+
+//move list store manipulate
 export const fetchMoveList = (newListOrder, boardId) => async (dispatch) => {
     try {
-           const response = await csrfFetch(`/api/boards/${boardId}`, {
-              method: 'POST',
-              headers: { "Content-Type": "application/json" },
-              body:  JSON.stringify(newListOrder)
+         dispatch(moveList(newListOrder, boardId));
+        return;
 
-           });
-           console.log('new list thunk', newListOrder)
-
-           if (response.ok) {
-               const lists = await response.json();
-               console.log('fetch move list ', lists)
-                dispatch(moveList(lists, boardId));
-                return lists;
-           }
-
-    }catch(error) {
-
+    }catch (error) {
         console.log(error);
-        return error;
+        return error
     }
-};
-
+}
 
 
 
@@ -190,6 +202,7 @@ const boardReducer = (state = initialState, action) => {
                 [action.payload.id]: action.payload
             }
             return newState;
+            
 
         case GET_BOARDS:
             newState = Object.assign({}, state);
@@ -205,7 +218,7 @@ const boardReducer = (state = initialState, action) => {
                 [action.payload.id]: action.payload
             };
 
-        return newState;
+            return newState;
 
 
         case REMOVE_BOARD:
@@ -215,7 +228,7 @@ const boardReducer = (state = initialState, action) => {
 
 
         case MOVE_LIST:
-            const {  newListOrder, boardId } = action.payload;
+            const { newListOrder, boardId } = action.payload;
             newState = Object.assign({}, state);
             newState[boardId].Lists = newListOrder
 
