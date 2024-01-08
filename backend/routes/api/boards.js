@@ -93,16 +93,24 @@ router.put(
     [ reqAuthBoard, validateCreateBoard ],
     async (req, res) => {
         const { name,
-                is_public } = req.body;
+                is_public,
+                star } = req.body;
+
+
+        console.log('star backend', star)
 
         const { boardId } = req.params;
 
         const updatedBoard = await Board.findByPk(boardId);
 
+
         updatedBoard.name = name;
         updatedBoard.is_public = is_public;
+        updatedBoard.star = star;
+
 
         await updatedBoard.save();
+
         return res.json(updatedBoard);
     }
 );
@@ -134,6 +142,8 @@ router.put(
 //         return res.json(board);
 //     }
 // )
+
+
 
 
 //delete board

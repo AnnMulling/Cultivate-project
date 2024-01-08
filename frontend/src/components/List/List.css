@@ -52,6 +52,7 @@
 
     width: 100%;
     height: 100%;
+
 }
 
 .list-container {
@@ -67,6 +68,7 @@
     border-radius: 0.75rem;
     border: 1px solid rgba(242, 239, 239, 0.981);
     padding: 20px;
+    padding-left: 10px;
     gap: 10px;
     cursor: pointer;
     /* transition: all 0.2s ease-in-out;

@@ -46,7 +46,7 @@ export default function Sidebar({ user }) {
                     <span style={{ marginLeft: 13 }}>Boards</span>
                 </div>
             </Link>
-            <Link to="/workspace" style={{ textDecoration: 'none' }}>
+            <Link to="/starred" style={{ textDecoration: 'none' }}>
                 <div className="sidebar-content">
                     <i className="fa-solid fa-star"></i>
                     <span style={{ marginLeft: 9 }}>Starred Board</span>

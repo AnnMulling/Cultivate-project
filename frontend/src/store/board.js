@@ -202,13 +202,16 @@ const boardReducer = (state = initialState, action) => {
                 [action.payload.id]: action.payload
             }
             return newState;
-            
+
 
         case GET_BOARDS:
             newState = Object.assign({}, state);
-            action.payload.Boards.forEach((board) =>
+            action.payload.Boards?.forEach((board) =>
                 newState[board.id] = board
+
             );
+
+            console.log('new state all boards', newState)
             return newState;
 
 

@@ -17,7 +17,7 @@ function CreateBoardModal({ board, formType }) {
     const [errors, setErrors] = useState({});
 
     const disabled = Object.values(errors).length > 0;
-    const className = disabled ? "disabled-btn" : "create-btn";
+    const className = disabled ? "disabled-btn" : "create-btn-board";
 
 
     useEffect(() => {
@@ -59,7 +59,8 @@ function CreateBoardModal({ board, formType }) {
 
     const boardDetails = {
         name: name,
-        is_public: isPublic
+        is_public: isPublic,
+        // star: null,
     };
 
 
@@ -68,13 +69,13 @@ function CreateBoardModal({ board, formType }) {
 
         if (formType === "Create Board" && !Object.values(errors).length) {
             const res = await dispatch(fetchCreateBoard(boardDetails));
-            console.log('after creaete', res)
+
             history.push(`/boards/${res.id}`);
 
         };
 
         if (formType === "Edit Board" && !Object.values(errors).length) {
-            console.log('detail', boardDetails)
+            
             dispatch(fetchEditBoard(board.id, boardDetails));
             history.push(`/boards/${board.id}`)
         };
@@ -134,7 +135,7 @@ function CreateBoardModal({ board, formType }) {
                         {errors.radio && <p className="errors">{errors.radio}</p>}
                     </div>
                 </div>
-                <button type="submit" className={className}>{formType === "Create Board" ? "Create New Board" : "Save"}</button>
+                <button type="submit" className={className}>{formType === "Create Board" ? "Create Board" : "Save"}</button>
             </form>
         </div>
     );

@@ -41,12 +41,28 @@
 
 .create-btn {
     background-color: #313c67;
-    border-radius: 20px;
+    border-radius: 12px;
     color:rgb(255, 255, 255);
-    font-size: 15px;
+    font-size: 12px;
+    border: none;
+    height: 30px;
+    width: 30%;
+    margin-top: 10px;
+    cursor: pointer;
+    &:hover {
+        transform: scale(1.00);
+
+    }
+}
+
+.create-btn-board {
+    background-color: #313c67;
+    border-radius: 15px;
+    color:rgb(255, 255, 255);
+    font-size: 20px;
     border: none;
     height: 50px;
-    width: 40%;
+    width: 30%;
     margin-top: 10px;
     cursor: pointer;
     &:hover {
@@ -58,7 +74,7 @@
 
 .disabled-btn {
     background-color: rgb(161, 166, 174);
-    border-radius: 20px;
+    border-radius: 15px;
     color:rgb(255, 255, 255);
     font-size: 20px;
     border: none;

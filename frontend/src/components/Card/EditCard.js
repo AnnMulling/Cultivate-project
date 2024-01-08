@@ -42,8 +42,14 @@ export default function EditCard({ card, index, boardId,  isLoaded }) {
     }, [ description, dispatch, isChecked]);
 
     const checkBoxHandler = (e, id) => {
-        localStorage.setItem(id, e.target.checked);
-        setIsChecked(!isChecked);
+        //if item not exist set
+        if (!task) {
+            localStorage.setItem(id, e.target.checked);
+            setIsChecked(true)
+        }else {
+            localStorage.removeItem(id)
+            setIsChecked(false);
+        }
 
         return
     }

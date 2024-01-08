@@ -1,5 +1,4 @@
 'use strict';
-
 const {
   Model,
   Validator
@@ -21,11 +20,12 @@ module.exports = (sequelize, DataTypes) => {
       Board.hasMany(models.Card, {
         foreignKey: 'board_id'
       });
-      
+
       // owned by a user
       Board.belongsTo(models.User, {
         foreignKey: 'user_id',
       });
+
     }
   }
   Board.init({
@@ -44,6 +44,10 @@ module.exports = (sequelize, DataTypes) => {
     is_public: {
       type: DataTypes.BOOLEAN,
       allowNull: false
+    },
+    star: {
+      type: DataTypes.BOOLEAN,
+      allowNull: true
     }
   }, {
     sequelize,
