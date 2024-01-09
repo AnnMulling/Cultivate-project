@@ -19,7 +19,7 @@ export default function EditCard({ card, index, boardId,  isLoaded }) {
     const [ errors, setErrors ] = useState({});
     const savedTask = localStorage.getItem(card.id);
     const task = JSON.parse(savedTask)
-    const [ isChecked, setIsChecked ] = useState(task);
+    const [ isChecked, setIsChecked ] = useState(task ? task : false);
 
     //drag and drop
 
@@ -43,15 +43,17 @@ export default function EditCard({ card, index, boardId,  isLoaded }) {
 
     const checkBoxHandler = (e, id) => {
         //if item not exist set
+
         if (!task) {
             localStorage.setItem(id, e.target.checked);
-            setIsChecked(e.target.checked)
+
         }else {
             localStorage.removeItem(id)
-            setIsChecked(e.target.checked);
+
         }
 
-        return
+        setIsChecked(e.target.checked)
+
     }
 
     const handleSubmit = async (e) => {
@@ -129,7 +131,7 @@ export default function EditCard({ card, index, boardId,  isLoaded }) {
                                 type="checkbox"
                                 id={card.id}
                                 checked={isChecked}
-                                onChange={(e) => checkBoxHandler(e, card.id)}/>
+                                onChange={(e) => checkBoxHandler(e, card.id ) }/>
                                 <span
                                     onClick={() => setEditingDes(true)}
                                     className={isChecked  ? "taskChecked" : "card-description" }

@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'list_id'
       });
 
-      // belongs to many users
+      // belongs to a user
       Card.belongsTo(models.User, {
         foreignKey: 'user_id'
       });

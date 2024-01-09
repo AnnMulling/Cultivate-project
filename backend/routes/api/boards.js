@@ -116,32 +116,33 @@ router.put(
 );
 
 //Movelist
-//cannot assign newlkist that way, this is only create a new board object with value of newlistorder
-// router.post(
-//     '/:boardId',
-//     reqAuthBoard,
-//     async (req, res) => {
-//         const { boardId } = req.params;
-//         const  newListOrder  = req.body;
+router.post(
+    '/:boardId',
+    reqAuthBoard,
+    async (req, res) => {
+        const { boardId } = req.params;
+        const  newListOrder  = req.body;
 
-//         const board = await Board.findByPk(boardId, {
-//             include: [
-//                 {
-//                     model: List,
+        const board = await Board.findByPk(boardId, {
+            include: [
+                {
+                    model: List,
 
-//                 }
-//             ]
-//         });
+                }
+            ]
+        });
 
-//         console.log('board list before', board.Lists)
-//         //cant assign like that
-//         board.Lists = newListOrder
-//         console.log('board list after', board.Lists)
-//         await board.save();
+        board.Lists = newListOrder
 
-//         return res.json(board);
-//     }
-// )
+        console.log('board list after', board.Lists)
+        await board.save();
+
+        return res.json(board.Lists);
+    }
+)
+
+//move list get
+
 
 
 
