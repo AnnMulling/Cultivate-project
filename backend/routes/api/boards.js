@@ -21,11 +21,11 @@ router.get(
                 where: {
                     user_id: user.id,
                 },
-                // include: [
-                //     {
-                //         model: List
-                //     }
-                // ]
+                include: [
+                    {
+                        model: List
+                    }
+                ]
 
             });
 
@@ -207,7 +207,6 @@ router.get(
     '/:boardId/lists/:listId/cards',
     reqAuthBoard,
     async (req, res) => {
-        const { user } = req;
         const { boardId, listId } = req.params;
         const cards = await Card.findAll({
 
@@ -216,15 +215,15 @@ router.get(
                list_id: listId
             },
 
-            include: [
+            // include: [
 
-                {
-                    model: User,
-                    where: {
-                        id: user.id
-                    }
-                }
-            ]
+            //     {
+            //         model: User,
+            //         where: {
+            //             id: user.id
+            //         }
+            //     }
+            // ]
         });
 
 
@@ -264,29 +263,29 @@ router.post(
 
 
 //create a card
-router.post(
-    '/:boardId/lists/:listId/cards',
-    [ requireAuth, reqAuthBoard, validateCreateCard],
-    async (req, res) => {
+// router.post(
+//     '/:boardId/lists/:listId/cards',
+//     [ requireAuth, reqAuthBoard, validateCreateCard],
+//     async (req, res) => {
 
-        const { user } = req;
+//         const { user } = req;
 
-        const { listId, boardId } = req.params;
+//         const { listId, boardId } = req.params;
 
-        const { description } = req.body;
+//         const { description } = req.body;
 
-        const newCard = await Card.create({
-            user_id: user.id,
-            list_id: listId,
-            board_id: boardId,
-            description: description
-        });
+//         const newCard = await Card.create({
+//             user_id: user.id,
+//             list_id: listId,
+//             board_id: boardId,
+//             description: description
+//         });
 
-        await newCard.save();
-        res.status(201);
+//         await newCard.save();
+//         res.status(201);
 
-        return res.json(newCard)
-    }
-)
+//         return res.json(newCard)
+//     }
+// )
 
 module.exports = router;

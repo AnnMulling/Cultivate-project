@@ -5,12 +5,15 @@ import AddCard from './AddCard';
 import EditCard from './EditCard';
 
 import './Card.css'
+import { fetchAllCards } from '../../store/card';
 
-export default function Card ({ list, boardId, cards, isLoaded}) {
+export default function Card ({ list, boardId, cards, isLoaded }) {
     const ref = useRef();
     const dispatch = useDispatch();
     const history = useHistory();
     const [ addingCard, setAddingCard ] = useState(false);
+
+    // console.log('all card array', cards)
 
     const toggleAddingCard = () => {
         setAddingCard(!addingCard)

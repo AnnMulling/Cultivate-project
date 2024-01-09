@@ -32,9 +32,8 @@ export default function WorkSpace() {
 
 
 
-    const handleStar = async (e, id, star, name, isPublic) => {
+    const handleStar = async (e, id, name, isPublic) => {
         e.preventDefault();
-        console.log('star before', star)
 
         if (e.target.className === "fa-solid fa-star") {
             e.target.className = "fa-regular fa-star"
@@ -89,7 +88,7 @@ export default function WorkSpace() {
                         </Link>
 
                         <div className="board-btn">
-                            <div className="starred-container" onClick={(e) => handleStar(e, board.id, board.star, board.name, board.is_public)}>
+                            <div className="starred-container" onClick={(e) => handleStar(e, board.id, board.name, board.is_public)}>
                                 { board.star === true ?
                                 <i className="fa-solid fa-star"></i> :
                                 <i className="fa-regular fa-star"></i> }

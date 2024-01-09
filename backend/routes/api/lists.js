@@ -49,6 +49,36 @@ router.put(
     }
 );
 
+//create a card
+router.post(
+    '/:listId/cards',
+    [ requireAuth, reqAuthList, validateCreateCard],
+    async (req, res) => {
+
+        const { user } = req;
+
+        const { listId } = req.params;
+
+        const { board_id, description } = req.body;
+
+        
+        const newCard = await Card.create({
+            user_id: user.id,
+            list_id: listId,
+            board_id: board_id,
+            description: description
+        });
+
+
+
+        await newCard.save();
+
+        console.log('after card created', newCard)
+        res.status(201);
+
+        return res.json(newCard)
+    }
+)
 
 // delete a list
 router.delete(
@@ -65,6 +95,8 @@ router.delete(
         });
     }
 );
+
+
 
 
 

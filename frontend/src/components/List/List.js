@@ -22,9 +22,6 @@ export default function List({ boardId, list, isLoaded }) {
     const [showDelete, setShowDelete] = useState(false);
     const [errors, setErrors] = useState({});
 
-    // console.log('Cards', list.Cards)
-    // console.log('delete btn', showDelete)
-
 
     useEffect(() => {
 
@@ -99,7 +96,7 @@ export default function List({ boardId, list, isLoaded }) {
             )}
 
             <div className="cards-container" >
-                <Card list={list} boardId={boardId} cards={list?.Cards} isLoaded={isLoaded} />
+                <Card list={list} boardId={boardId} cards={list?.Cards}  isLoaded={isLoaded} />
             </div>
 
             <div className="list-del-container">

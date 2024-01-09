@@ -1,10 +1,11 @@
 import { csrfFetch } from "./csrf";
+import { fetchABoard } from "./board";
 
 const GET_LISTS = "list/getAllLists";
 const REMOVE_LIST = "list/removeList";
 const EDIT_LIST = "list/editList";
 const CREATE_LIST = "list/createList";
-const LOAD_LIST = "lsit/loadList";
+const LOAD_LIST = "list/loadList";
 
 const getAllLists = (lists) => {
     return {
@@ -38,11 +39,13 @@ const removeList = (list) => {
 export const fetchAList = (listId) => async (dispatch) => {
     try {
 
-        const response =  await csrfFetch(`/api/list/${listId}`);
+        const response =  await csrfFetch(`/api/lists/${listId}`);
 
         if (response.ok) {
             const list = await response.json();
             dispatch(loadList(list));
+
+            return list;
         };
 
     }catch(error) {
@@ -80,6 +83,7 @@ export const fetchCreateList = (boardId, listDetails) => async (dispatch) => {
         if (response.ok) {
             const newList = await response.json();
             dispatch(createList(newList));
+            dispatch(fetchABoard(boardId));
 
             return newList
         }
@@ -161,7 +165,7 @@ const listReducer = (state = initialState, action) => {
                 [action.payload.id]: action.payload
             };
             return newState;
-            
+
 
         case REMOVE_LIST:
             newState = Object.assign({}, state);

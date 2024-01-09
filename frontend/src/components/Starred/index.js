@@ -9,6 +9,9 @@ export default function Starred () {
     const dispatch = useDispatch();
     const history = useHistory();
     const user = useSelector((state) => state.session.user);
+    const allBoards = useSelector((state) => state.boards);
+
+    
 
 
     return (

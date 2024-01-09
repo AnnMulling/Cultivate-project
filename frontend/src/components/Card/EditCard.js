@@ -45,10 +45,10 @@ export default function EditCard({ card, index, boardId,  isLoaded }) {
         //if item not exist set
         if (!task) {
             localStorage.setItem(id, e.target.checked);
-            setIsChecked(true)
+            setIsChecked(e.target.checked)
         }else {
             localStorage.removeItem(id)
-            setIsChecked(false);
+            setIsChecked(e.target.checked);
         }
 
         return
@@ -132,14 +132,7 @@ export default function EditCard({ card, index, boardId,  isLoaded }) {
                                 onChange={(e) => checkBoxHandler(e, card.id)}/>
                                 <span
                                     onClick={() => setEditingDes(true)}
-                                    className={isChecked
-
-
-
-
-
-
-                                        ? "taskChecked" : "card-description" }
+                                    className={isChecked  ? "taskChecked" : "card-description" }
                                 >
                                 {card.description}
                                 </span>

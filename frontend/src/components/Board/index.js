@@ -20,7 +20,9 @@ export default function BoardDetails() {
     const user = useSelector((state) => state.session.user);
     // const allLists = useSelector((state) => state.lists);
     let listArr = board?.Lists;
+    //dnd
     const [ storeList, setStoreList ] = useState(board?.Lists);
+
     const [ isLoaded, setIsLoaded ] = useState(false);
     //toggle adding list
     const [ addingList, setAddingList ] = useState(false);
