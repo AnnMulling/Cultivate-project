@@ -5,12 +5,15 @@ import AddCard from './AddCard';
 import EditCard from './EditCard';
 
 import './Card.css'
+import { fetchAllCards } from '../../store/card';
 
-export default function Card ({ list, boardId, cards, isLoaded}) {
+export default function Card ({ list, boardId, cards, isLoaded }) {
     const ref = useRef();
     const dispatch = useDispatch();
     const history = useHistory();
     const [ addingCard, setAddingCard ] = useState(false);
+
+    // console.log('all card array', cards)
 
     const toggleAddingCard = () => {
         setAddingCard(!addingCard)
@@ -19,9 +22,12 @@ export default function Card ({ list, boardId, cards, isLoaded}) {
     return isLoaded && (
         <>
             <div>
-                {cards?.map((card, index) => {
-                    return <EditCard card={card} index={index} boardId={boardId} isLoaded={isLoaded}  />
-                })}
+
+                {cards?.map((card, index) =>
+                <div key={card.id}>
+                     <EditCard card={card} index={index} boardId={boardId} isLoaded={isLoaded}  />
+                </div>
+                )}
             </div>
 
             <div >
@@ -29,7 +35,7 @@ export default function Card ({ list, boardId, cards, isLoaded}) {
                     <AddCard boardId={boardId} listId={list?.id} toggleAddingCard={toggleAddingCard}/>
                 ) : (
                     <div onClick={toggleAddingCard} className="add-card">
-                         <i class="fa-solid fa-circle-plus"></i> Add Card
+                         <i className="fa-solid fa-circle-plus"></i> Add Card
                     </div>
                 ) }
             </div>

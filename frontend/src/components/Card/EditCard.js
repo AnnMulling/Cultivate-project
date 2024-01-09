@@ -17,12 +17,15 @@ export default function EditCard({ card, index, boardId,  isLoaded }) {
     const [ editingDes, setEditingDes ] = useState(false);
     const [ description, setDescription ] = useState(card.description);
     const [ errors, setErrors ] = useState({});
+    const savedTask = localStorage.getItem(card.id);
+    const task = JSON.parse(savedTask)
+    const [ isChecked, setIsChecked ] = useState(task);
 
     //drag and drop
 
-
-
     useEffect(() => {
+
+        localStorage.getItem(card.id);
 
         const errors = {};
 
@@ -36,9 +39,20 @@ export default function EditCard({ card, index, boardId,  isLoaded }) {
         setErrors(errors);
 
 
-    }, [ description, dispatch]);
+    }, [ description, dispatch, isChecked]);
 
+    const checkBoxHandler = (e, id) => {
+        //if item not exist set
+        if (!task) {
+            localStorage.setItem(id, e.target.checked);
+            setIsChecked(e.target.checked)
+        }else {
+            localStorage.removeItem(id)
+            setIsChecked(e.target.checked);
+        }
 
+        return
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -109,21 +123,22 @@ export default function EditCard({ card, index, boardId,  isLoaded }) {
 
                         </div>
                     ) : (
-                        <Draggable draggableId={card?.id} index={index}>
-                            {(provided) => (
+                        <div className="card-sub-container">
 
-                                <div
+                                <input
+                                type="checkbox"
+                                id={card.id}
+                                checked={isChecked}
+                                onChange={(e) => checkBoxHandler(e, card.id)}/>
+                                <span
                                     onClick={() => setEditingDes(true)}
-                                    className="card-description"
-                                    ref={provided.innerRef}
-                                    {...provided.dragHandleProps}
-                                    {...provided.draggableProps}
+                                    className={isChecked  ? "taskChecked" : "card-description" }
+                                >
+                                {card.description}
+                                </span>
 
-                                > {card.description}
+                         </div>
 
-                                </div>
-                            )}
-                        </Draggable>
                     )}
 
 

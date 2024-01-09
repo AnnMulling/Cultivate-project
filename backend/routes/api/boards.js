@@ -21,11 +21,11 @@ router.get(
                 where: {
                     user_id: user.id,
                 },
-                // include: [
-                //     {
-                //         model: List
-                //     }
-                // ]
+                include: [
+                    {
+                        model: List
+                    }
+                ]
 
             });
 
@@ -58,6 +58,7 @@ router.get(
                 }
             ]
         });
+
 
         return res.json(board);
     }
@@ -92,19 +93,57 @@ router.put(
     [ reqAuthBoard, validateCreateBoard ],
     async (req, res) => {
         const { name,
-                is_public } = req.body;
+                is_public,
+                star } = req.body;
+
+
+        console.log('star backend', star)
 
         const { boardId } = req.params;
 
         const updatedBoard = await Board.findByPk(boardId);
 
+
         updatedBoard.name = name;
         updatedBoard.is_public = is_public;
+        updatedBoard.star = star;
+
 
         await updatedBoard.save();
+
         return res.json(updatedBoard);
     }
 );
+
+//Movelist
+//cannot assign newlkist that way, this is only create a new board object with value of newlistorder
+// router.post(
+//     '/:boardId',
+//     reqAuthBoard,
+//     async (req, res) => {
+//         const { boardId } = req.params;
+//         const  newListOrder  = req.body;
+
+//         const board = await Board.findByPk(boardId, {
+//             include: [
+//                 {
+//                     model: List,
+
+//                 }
+//             ]
+//         });
+
+//         console.log('board list before', board.Lists)
+//         //cant assign like that
+//         board.Lists = newListOrder
+//         console.log('board list after', board.Lists)
+//         await board.save();
+
+//         return res.json(board);
+//     }
+// )
+
+
 
 
 //delete board
@@ -168,7 +207,6 @@ router.get(
     '/:boardId/lists/:listId/cards',
     reqAuthBoard,
     async (req, res) => {
-        const { user } = req;
         const { boardId, listId } = req.params;
         const cards = await Card.findAll({
 
@@ -177,15 +215,15 @@ router.get(
                list_id: listId
             },
 
-            include: [
+            // include: [
 
-                {
-                    model: User,
-                    where: {
-                        id: user.id
-                    }
-                }
-            ]
+            //     {
+            //         model: User,
+            //         where: {
+            //             id: user.id
+            //         }
+            //     }
+            // ]
         });
 
 
@@ -225,29 +263,29 @@ router.post(
 
 
 //create a card
-router.post(
-    '/:boardId/lists/:listId/cards',
-    [ requireAuth, reqAuthBoard, validateCreateCard],
-    async (req, res) => {
+// router.post(
+//     '/:boardId/lists/:listId/cards',
+//     [ requireAuth, reqAuthBoard, validateCreateCard],
+//     async (req, res) => {
 
-        const { user } = req;
+//         const { user } = req;
 
-        const { listId, boardId } = req.params;
+//         const { listId, boardId } = req.params;
 
-        const { description } = req.body;
+//         const { description } = req.body;
 
-        const newCard = await Card.create({
-            user_id: user.id,
-            list_id: listId,
-            board_id: boardId,
-            description: description
-        });
+//         const newCard = await Card.create({
+//             user_id: user.id,
+//             list_id: listId,
+//             board_id: boardId,
+//             description: description
+//         });
 
-        await newCard.save();
-        res.status(201);
+//         await newCard.save();
+//         res.status(201);
 
-        return res.json(newCard)
-    }
-)
+//         return res.json(newCard)
+//     }
+// )
 
 module.exports = router;

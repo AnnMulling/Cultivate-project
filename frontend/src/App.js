@@ -5,6 +5,7 @@ import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import SignupFormModal from "./components/SignupFormModal";
 import LoginFormModal from "./components/LoginFormModal";
+import Starred from "./components/Starred";
 import HomePage from "./components/HomePage";
 import WorkSpace from "./components/WorkSpace";
 import BoardDetails from "./components/Board";
@@ -28,8 +29,10 @@ function App() {
      {location.pathname !== '/workspace'
        && !location.pathname.includes('/timer')
        && !location.pathname?.includes('/boards')
+       && !location.pathname.includes('/starred')
        && <Navigation isLoaded={isLoaded} />}
       {/* <Navigation isLoaded={isLoaded} /> */}
+
       {isLoaded &&(
         <Switch>
           <Route exact path="/">
@@ -40,6 +43,9 @@ function App() {
           </Route>
           <Route path="/boards/:boardId">
             <BoardDetails/>
+          </Route>
+          <Route path="/starred">
+            <Starred />
           </Route>
           <Route exact path="/timer">
             <SetTime />
@@ -54,6 +60,7 @@ function App() {
             <SetTimeTree/>
           </Route>
           <Route>404 Page Does Not Exist</Route>
+
         </Switch>
       )}
     </>

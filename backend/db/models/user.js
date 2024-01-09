@@ -24,6 +24,11 @@ module.exports = (sequelize, DataTypes) => {
       User.hasMany(models.Card, {
         foreignKey: 'user_id'
       });
+
+      //user has many priorities
+      User.hasMany(models.Prioritize, {
+        foreignKey: 'user_id'
+      });
     }
   }
   User.init({

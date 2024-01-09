@@ -17,7 +17,7 @@ export default function AddCard ( { boardId, listId,  toggleAddingCard } ) {
     const [ show, setShow ] = useState(true)
     const [ errors, setErrors ] = useState({});
 
-    console.log('board', boardId)
+
 
     useEffect(() => {
         const errors = {};
@@ -44,22 +44,20 @@ export default function AddCard ( { boardId, listId,  toggleAddingCard } ) {
 
     }, [dispatch, show, description])
 
-    const handleSubmit =  async (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         toggleAddingCard();
 
         const cardDetails = {
+            board_id: boardId,
             description: description,
         };
 
         if (!Object.values(errors).length) {
-            console.log('add fetching...')
-
-            await dispatch(fetchCreateCard(boardId, listId, cardDetails))
-            .then(() => dispatch(fetchAList(listId)))
-            .then(() => dispatch(fetchABoard(boardId)))
+             await dispatch(fetchCreateCard(listId, cardDetails))
+            // .then(() => dispatch(fetchAList(listId)))
+            // .then(() => dispatch(fetchABoard(boardId)))
             .then(() => history.push(`/boards/${boardId}`))
-
         } else {
             toggleAddingCard();
             setDescription(" ")

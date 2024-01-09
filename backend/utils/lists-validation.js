@@ -17,6 +17,7 @@ const reqAuthList = async (req, res, next) => {
 
     if (user.id === list.user_id) {
         next();
+        
     }else {
 
         const err = new Error ('Authorization required');

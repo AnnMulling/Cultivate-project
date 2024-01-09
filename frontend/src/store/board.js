@@ -4,7 +4,8 @@ const GET_BOARDS = "board/getAllBoards";
 const REMOVE_BOARD = "board/removeBoard";
 const EDIT_BOARD = "board/editBoard";
 const CREAT_BOARD = "board/createBoard";
-const LOAD_BOARD = "board/loadBoard"
+const LOAD_BOARD = "board/loadBoard";
+const MOVE_LIST = "board/moveList";
 
 const loadBoard = (board) => {
     return {
@@ -34,6 +35,18 @@ const deleteBoard = (boardId) => {
     };
 };
 
+export const moveList = (newListOrder, boardId) => {
+
+    return {
+        type: MOVE_LIST,
+        payload: {
+            newListOrder: newListOrder,
+            boardId: boardId ,
+
+        }
+    };
+};
+
 //get a board
 export const fetchABoard = (boardId) => async (dispatch) => {
     try {
@@ -43,7 +56,9 @@ export const fetchABoard = (boardId) => async (dispatch) => {
         if (response.ok) {
             const board = await response.json();
             dispatch(loadBoard(board));
+            return board;
         };
+
 
     }catch(error) {
         console.log(error);
@@ -94,7 +109,7 @@ export const fetchCreateBoard = (newBoard) => async (dispatch) => {
 //Edit Board
 export const fetchEditBoard = (boardId, boardDetails) => async (dispatch) => {
     try {
-        
+
         const response = await csrfFetch(`/api/boards/${boardId}`, {
             method: 'PUT',
             headers: { "Content-Type": "application/json" },
@@ -135,11 +150,51 @@ export const fetchDeleteBoard = (boardId) => async (dispatch) => {
     }
 };
 
+//move list manipulate backend
+// not working
+// export const fetchMoveList = (newListOrder, boardId) => async (dispatch) => {
+//     try {
+//            const response = await csrfFetch(`/api/boards/${boardId}`, {
+//               method: 'POST',
+//               headers: { "Content-Type": "application/json" },
+//               body:  JSON.stringify(newListOrder)
+
+//            });
+//            console.log('new list thunk', newListOrder)
+
+//            if (response.ok) {
+//                const board = await response.json();
+//                console.log('after fecth move ', board)
+//                dispatch(moveList(board.Lists, boardId));
+//                return;
+//            }
+
+//     }catch(error) {
+
+//         console.log(error);
+//         return error;
+//     }
+// };
+
+//move list store manipulate
+export const fetchMoveList = (newListOrder, boardId) => async (dispatch) => {
+    try {
+         dispatch(moveList(newListOrder, boardId));
+        return;
+
+    }catch (error) {
+        console.log(error);
+        return error
+    }
+}
+
+
 
 const initialState = {};
 
 const boardReducer = (state = initialState, action) => {
     let newState;
+
     switch (action.type) {
         case LOAD_BOARD:
             newState = {
@@ -148,25 +203,40 @@ const boardReducer = (state = initialState, action) => {
             }
             return newState;
 
+
         case GET_BOARDS:
             newState = Object.assign({}, state);
-            action.payload.Boards.forEach((board) =>
+            action.payload.Boards?.forEach((board) =>
                 newState[board.id] = board
+
             );
+
+            console.log('new state all boards', newState)
             return newState;
 
-            case CREAT_BOARD:
-                newState = {
-                    ...state,
-                    [action.payload.id]: action.payload
-                };
-                console.log('reducer create board', newState)
+
+        case CREAT_BOARD:
+            newState = {
+                ...state,
+                [action.payload.id]: action.payload
+            };
+
             return newState;
+
 
         case REMOVE_BOARD:
             newState = Object.assign({}, state);
             delete newState[action.payload];
             return newState;
+
+
+        case MOVE_LIST:
+            const { newListOrder, boardId } = action.payload;
+            newState = Object.assign({}, state);
+            newState[boardId].Lists = newListOrder
+
+            return newState;
+
         default:
             return state;
     };

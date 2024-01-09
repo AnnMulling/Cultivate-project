@@ -15,51 +15,61 @@ module.exports = {
         name: 'Monday',
         user_id: 1,
         is_public: true,
+        star: true,
       },
       {
         name: 'Tuesday',
         user_id: 1,
         is_public: true,
+        star: false,
       },
       {
         name: 'Wednesday',
         user_id: 1,
         is_public: true,
+        star: true,
       },
       {
         name: 'Friday Dinner',
         user_id: 2,
-        is_public: false
+        is_public: false,
+        star: true,
       },
       {
         name: 'Saturday Birthday Party',
         user_id: 2,
-        is_public: false
+        is_public: false,
+        star: true,
       },
       {
         name: 'Sunday Brunch',
         user_id: 2,
-        is_public: false
+        is_public: false,
+        star: true,
       },
       {
         name: 'Capestone Project',
         user_id: 3,
         is_public: true,
+        star: true,
       },
       {
         name: 'Product RoadMap',
         user_id: 3,
-        is_public: true
+        is_public: true,
+        star: false,
       },
       {
         name: 'Christmas',
         user_id: 4,
-        is_public: false
+        is_public: false,
+        star: true,
       },
       {
         name: 'New-Year-Resolution',
         user_id: 4,
-        is_public: false
+        is_public: false,
+        star: true,
       },
     ], { validate: true })
   },

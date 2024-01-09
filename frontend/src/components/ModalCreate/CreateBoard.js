@@ -12,12 +12,12 @@ function CreateBoardModal({ board, formType }) {
     const history = useHistory();
     const user = useSelector((state) => state.session.user);
 
-    const [ name, setName ] = useState(formType === "Edit Board" ? board.name : "");
-    const [ isPublic, setIsPublic ] = useState(formType === "Edit Board" ? board.is_public : null);
-    const [ errors, setErrors ] = useState({});
+    const [name, setName] = useState(formType === "Edit Board" ? board.name : "");
+    const [isPublic, setIsPublic] = useState(formType === "Edit Board" ? board.is_public : null);
+    const [errors, setErrors] = useState({});
 
     const disabled = Object.values(errors).length > 0;
-    const className = disabled ? "disabled-btn" : "create-btn";
+    const className = disabled ? "disabled-btn" : "create-btn-board";
 
 
     useEffect(() => {
@@ -25,9 +25,9 @@ function CreateBoardModal({ board, formType }) {
 
         if (name === "") {
             errors.name = "Field is required"
-        }else if (name.length < 5 ) {
+        } else if (name.length < 5) {
             errors.name = "Name must be at least 5 characters"
-        }else if (name.length > 30) {
+        } else if (name.length > 30) {
             errors.name = "Name must be less than 30 characters"
         }
 
@@ -59,22 +59,23 @@ function CreateBoardModal({ board, formType }) {
 
     const boardDetails = {
         name: name,
-        is_public: isPublic
+        is_public: isPublic,
+        // star: null,
     };
 
 
-    const handleSubmit = async (e)  => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
         if (formType === "Create Board" && !Object.values(errors).length) {
             const res = await dispatch(fetchCreateBoard(boardDetails));
-            console.log('after creaete', res)
+
             history.push(`/boards/${res.id}`);
 
         };
 
         if (formType === "Edit Board" && !Object.values(errors).length) {
-            console.log('detail', boardDetails)
+            
             dispatch(fetchEditBoard(board.id, boardDetails));
             history.push(`/boards/${board.id}`)
         };
@@ -82,7 +83,7 @@ function CreateBoardModal({ board, formType }) {
         closeModal();
     };
 
-    if(!user) {
+    if (!user) {
         history.push("/")
     };
 
@@ -91,19 +92,23 @@ function CreateBoardModal({ board, formType }) {
         <div className="modal-popup">
             <h1>{formType === "Create Board" ? "Create New Board" : "Edit Board"}</h1>
             <form onSubmit={handleSubmit} className="form-create">
-                <label htmlFor="name">Name
-                <input
-                    type="text"
-                    className=""
-                    name="name"
-                    placeholder="Name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
+                <div className="fields-container">
+                    <label htmlFor="name">Name
+                        <input
+                            type="text"
+                            className=""
+                            name="name"
+                            placeholder="Name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
 
-                 />
-                <div>{errors.name && <p className="errors">{errors.name}</p>}</div>
-                </label>
-                <div>
+                        />
+                    </label>
+                    <div className="error-container">
+                        {errors.name && <p className="errors">{errors.name}</p>}
+                    </div>
+                </div>
+                <div className="fields-container">
                     <p>Is this a public board?</p>
                     <label htmlFor="Yes">
                         <span>Yes</span>
@@ -126,9 +131,11 @@ function CreateBoardModal({ board, formType }) {
                             onChange={onRadioChange}
                         />
                     </label>
-                    <div>{errors.radio && <p className="errors">{errors.radio}</p>}</div>
+                    <div className="error-container">
+                        {errors.radio && <p className="errors">{errors.radio}</p>}
+                    </div>
                 </div>
-                <button type="submit"  className={className}>{formType === "Create Board" ? "Create New Board" : "Save"}</button>
+                <button type="submit" className={className}>{formType === "Create Board" ? "Create Board" : "Save"}</button>
             </form>
         </div>
     );
