@@ -75,7 +75,7 @@ export const fetchAllBoard = () => async (dispatch) => {
         const response = await csrfFetch("/api/boards/current");
         if (response.ok) {
             const boards = await response.json();
-            console.log('fetch all boards', boards)
+           
             dispatch(getAllBoards(boards));
         };
 
@@ -156,7 +156,7 @@ export const fetchDeleteBoard = (boardId) => async (dispatch) => {
 export const fetchMoveList = (newListOrder, boardId) => async (dispatch) => {
     try {
            const response = await csrfFetch(`/api/boards/${boardId}`, {
-              method: 'POST',
+              method: 'PATCH',
               headers: { "Content-Type": "application/json" },
               body:  JSON.stringify(newListOrder)
 
@@ -167,7 +167,7 @@ export const fetchMoveList = (newListOrder, boardId) => async (dispatch) => {
                const board = await response.json();
                dispatch(moveList(board, boardId));
 
-               return;
+               return board;
            }
 
     }catch(error) {
