@@ -25,13 +25,8 @@ export default function BoardDetails() {
     const [ addingList, setAddingList ] = useState(false);
     const [ show, setShow ] = useState(false);
 
-    console.log(board, '<==== board state')
-    console.log(listArr,'<==== list array' )
-
-    useEffect(() => {
-
-    }, [listArr])
-
+    // console.log(board, '<==== board state')
+    // console.log(listArr,'<==== list array' )
 
     useEffect(() => {
 
@@ -58,7 +53,6 @@ export default function BoardDetails() {
         const oldListIndex = source.index;
         const newListIndex = destination.index;
 
-        console.log('new list order ===>', newListOrder)
         if (!destination || !source) return;
 
         if (type === "LIST") {

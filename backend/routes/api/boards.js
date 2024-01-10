@@ -116,13 +116,13 @@ router.put(
 );
 
 //Movelist
-router.post(
+router.patch(
     '/:boardId',
     reqAuthBoard,
     async (req, res) => {
         const { boardId } = req.params;
         const  newListOrder  = req.body;
-
+        // console.log('new order', newListOrder)
         const board = await Board.findByPk(boardId, {
             include: [
                 {
@@ -132,11 +132,14 @@ router.post(
             ]
         });
 
+
+       
+
         board.Lists = newListOrder
 
-        console.log('board list after', board.Lists)
         await board.save();
 
+        // console.log('board list after', board)
         return res.json(board.Lists);
     }
 )

@@ -25,7 +25,7 @@ export default function Sidebar({ user }) {
         <div className={`sidebar ${isOpen ? "sidebar--open" : ""}`}>
             <div className="trigger-bar" onClick={handleBar}>
                 {isOpen ?
-                    <i class="fa-solid fa-chevron-left"></i> : <i className="fa-solid fa-chevron-right"></i>}
+                    <i className="fa-solid fa-chevron-left"></i> : <i className="fa-solid fa-chevron-right"></i>}
             </div>
 
 
