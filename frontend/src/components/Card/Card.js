@@ -12,7 +12,7 @@ export default function Card ({ list, boardId, cards, isLoaded }) {
     const dispatch = useDispatch();
     const history = useHistory();
     const [ addingCard, setAddingCard ] = useState(false);
-    
+
 
     // console.log('all card array', cards)
 
@@ -22,7 +22,7 @@ export default function Card ({ list, boardId, cards, isLoaded }) {
 
     return isLoaded && (
         <>
-            {cards.map((card, index) =>
+            {cards.reverse().map((card, index) =>
                 <div className="cards-container" key={card.id}>
                     <EditCard card={card} index={index} boardId={boardId} isLoaded={isLoaded}  />
                 </div>
