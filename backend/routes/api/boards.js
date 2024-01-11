@@ -64,12 +64,8 @@ router.get(
                 }
             ],
             order: [
-                [
-                    { model: List, as: 'Lists' },
-                    { model: Card, as: 'Cards' },
-                    'id',
-                    'ASC'
-                ]
+                [ { model: List,  as:'Lists' }, 'createdAt', 'ASC'],
+                [ { model: List,  as:'Lists' } , { model: Card, as: 'Cards' }, 'createdAt', 'ASC']
             ]
         });
         return res.json(board);
