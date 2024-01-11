@@ -22,7 +22,7 @@ export default function Card ({ list, boardId, cards, isLoaded }) {
 
     return isLoaded && (
         <>
-            {cards.reverse().map((card, index) =>
+            {cards.map((card, index) =>
                 <div className="cards-container" key={card.id}>
                     <EditCard card={card} index={index} boardId={boardId} isLoaded={isLoaded}  />
                 </div>

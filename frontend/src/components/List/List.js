@@ -65,8 +65,9 @@ export default function List({ boardId, list, isLoaded }) {
         <div
             key={list.id}
             className="list-container"
-            onMouseEnter={() => setShowDelete(true)}
-            onMouseLeave={() => setShowDelete(false)}
+            onMouseEnter={() => setShowDelete((prev) => true)}
+            onMouseLeave={() => setShowDelete((prev) => false)}
+            onHover
         >
             {editingTitle ? (
 
