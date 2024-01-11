@@ -50,6 +50,13 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Card',
+
+    defaultScope: {
+      attributes: {
+        include: ["id", "createdAt", "updatedAt"]
+      }
+    }
+    
   });
   return Card;
 };

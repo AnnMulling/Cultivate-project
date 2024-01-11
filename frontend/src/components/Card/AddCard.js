@@ -8,7 +8,7 @@ import { useHistory } from 'react-router-dom';
 
 import './Card.css'
 
-export default function AddCard ( { boardId, listId,  toggleAddingCard } ) {
+export default function AddCard ( { boardId, listId,  toggleAddingCard, isLoaded } ) {
     const ref = useRef();
     const dispatch = useDispatch();
     const history = useHistory();
@@ -49,12 +49,12 @@ export default function AddCard ( { boardId, listId,  toggleAddingCard } ) {
         toggleAddingCard();
 
         const cardDetails = {
-            board_id: boardId,
+            // board_id: boardId,
             description: description,
         };
 
         if (!Object.values(errors).length) {
-             await dispatch(fetchCreateCard(listId, cardDetails))
+             await dispatch(fetchCreateCard(boardId, listId, cardDetails))
             // .then(() => dispatch(fetchAList(listId)))
             // .then(() => dispatch(fetchABoard(boardId)))
             .then(() => history.push(`/boards/${boardId}`))
@@ -66,7 +66,7 @@ export default function AddCard ( { boardId, listId,  toggleAddingCard } ) {
 
     }
 
-    return show &&(
+    return isLoaded && show &&(
         <div className="add-card-container" ref={ref}>
              <TextareaAutosize
                 autoFocus
@@ -78,9 +78,9 @@ export default function AddCard ( { boardId, listId,  toggleAddingCard } ) {
                 <div >{errors.description && <p className="errors">{errors.description}</p>}</div>
             <button
                 className="create-btn"
-                onClick={handleSubmit}
+                onClick={(e) => handleSubmit(e)}
             >
-                Add Card
+                Add
             </button>
         </div>
     );

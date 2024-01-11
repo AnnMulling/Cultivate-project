@@ -12,6 +12,7 @@ export default function Card ({ list, boardId, cards, isLoaded }) {
     const dispatch = useDispatch();
     const history = useHistory();
     const [ addingCard, setAddingCard ] = useState(false);
+    
 
     // console.log('all card array', cards)
 
@@ -21,18 +22,15 @@ export default function Card ({ list, boardId, cards, isLoaded }) {
 
     return isLoaded && (
         <>
-            <div>
-
-                {cards?.map((card, index) =>
-                <div key={card.id}>
-                     <EditCard card={card} index={index} boardId={boardId} isLoaded={isLoaded}  />
+            {cards.map((card, index) =>
+                <div className="cards-container" key={card.id}>
+                    <EditCard card={card} index={index} boardId={boardId} isLoaded={isLoaded}  />
                 </div>
-                )}
-            </div>
+            )}
 
             <div >
                 {addingCard ? (
-                    <AddCard boardId={boardId} listId={list?.id} toggleAddingCard={toggleAddingCard}/>
+                    <AddCard boardId={boardId} listId={list?.id} toggleAddingCard={toggleAddingCard} isLoaded={isLoaded}/>
                 ) : (
                     <div onClick={toggleAddingCard} className="add-card">
                          <i className="fa-solid fa-circle-plus"></i> Add Card

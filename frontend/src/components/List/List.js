@@ -48,9 +48,9 @@ export default function List({ boardId, list, isLoaded }) {
         };
 
         if (!Object.values(errors).length) {
-            await dispatch(fetchEditList(list.id, listDetails))
-                .then(() => dispatch(fetchABoard(boardId)))
-                .then(() => history.push(`/boards/${boardId}`))
+            await dispatch(fetchEditList(boardId, list.id, listDetails))
+                // .then(() => dispatch(fetchABoard(boardId)))
+             .then(() => history.push(`/boards/${boardId}`))
 
 
         } else {
@@ -76,7 +76,7 @@ export default function List({ boardId, list, isLoaded }) {
                         className="list-edit-Textarea"
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
-                        onKeyDown={e => e.key === "Enter" && e.currentTarget.blur()}
+                        onKeyDown={(e) => e.key === "Enter" && e.currentTarget.blur()}
                         onBlur={handleOnBlur}
 
                     />
@@ -96,7 +96,7 @@ export default function List({ boardId, list, isLoaded }) {
             )}
 
             <div className="cards-container" >
-                <Card list={list} boardId={boardId} cards={list?.Cards}  isLoaded={isLoaded} />
+                <Card list={list} boardId={boardId} cards={list?.Cards} isLoaded={isLoaded} />
             </div>
 
             <div className="list-del-container">

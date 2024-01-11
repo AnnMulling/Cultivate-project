@@ -57,6 +57,7 @@ export const fetchABoard = (boardId) => async (dispatch) => {
         if (response.ok) {
             const board = await response.json();
             dispatch(loadBoard(board));
+
             return board;
         };
 
@@ -75,7 +76,7 @@ export const fetchAllBoard = () => async (dispatch) => {
         const response = await csrfFetch("/api/boards/current");
         if (response.ok) {
             const boards = await response.json();
-           
+
             dispatch(getAllBoards(boards));
         };
 
@@ -198,10 +199,12 @@ const boardReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case LOAD_BOARD:
-            newState = {
-                ...state,
-                [action.payload.id]: action.payload
-            }
+            newState = Object.assign({}, state,
+                       {[action.payload.id]: action.payload})
+            // newState = {
+            //     ...state,
+            //     [action.payload.id]: action.payload
+            // }
             return newState;
 
 

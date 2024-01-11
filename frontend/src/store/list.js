@@ -95,7 +95,7 @@ export const fetchCreateList = (boardId, listDetails) => async (dispatch) => {
 
 
 //edit a list
-export const fetchEditList = (listId, listDetails) => async (dispatch) => {
+export const fetchEditList = (boardId, listId, listDetails) => async (dispatch) => {
     try {
 
         const response = await csrfFetch(`/api/lists/${listId}`, {
@@ -107,7 +107,7 @@ export const fetchEditList = (listId, listDetails) => async (dispatch) => {
         if (response.ok) {
             const list = await response.json();
             dispatch(createList(list));
-
+            dispatch(fetchABoard(boardId));
             return list
         }
     }catch(error){
@@ -144,10 +144,12 @@ const listReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case LOAD_LIST:
-            newState = {
-                ...state,
-                [action.payload.id]: [action.payload]
-            };
+            newState = Object.assign({}, state,
+                      { [action.payload.id]: action.payload})
+            // newState = {
+            //     ...state,
+            //     [action.payload.id]: action.payload
+            // };
             return newState;
 
 

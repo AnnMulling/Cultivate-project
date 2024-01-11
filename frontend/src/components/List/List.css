@@ -79,8 +79,8 @@
 }
 
 .list-title {
-    display: flex;
-    justify-content: space-between;
+    /* display: flex;
+    justify-content: space-between; */
     color: #313c67;
     font-weight: bold;
     font-size: 18px;

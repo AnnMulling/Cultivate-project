@@ -52,9 +52,9 @@ export default function AddList({ boardId, toggleAddingList }) {
         };
 
         if (!Object.values(errors).length) {
-             dispatch(fetchCreateList(boardId, listDetails))
+            await dispatch(fetchCreateList(boardId, listDetails))
             // .then(() => dispatch(fetchABoard(boardId)))
-            // history.push(`/boards/${boardId}`)
+            history.push(`/boards/${boardId}`)
 
         } else {
             toggleAddingList();

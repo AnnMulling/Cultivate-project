@@ -18,9 +18,9 @@ router.get(
             include: [
                 {
                     model: Card,
-                    where: {
-                        list_id: listId,
-                    }
+                    // where: {
+                    //     list_id: listId,
+                    // }
                 }
             ]
         });
@@ -61,22 +61,20 @@ router.post(
 
         const { board_id, description } = req.body;
 
-        
-        const newCard = await Card.create({
+
+
+       const newCard =  await Card.create({
             user_id: user.id,
-            list_id: listId,
             board_id: board_id,
+            list_id: listId,
             description: description
         });
 
-
-
         await newCard.save();
 
-        console.log('after card created', newCard)
         res.status(201);
 
-        return res.json(newCard)
+        return res.json(newCard);
     }
 )
 

@@ -92,7 +92,7 @@ export default function EditCard({ card, index, boardId,  isLoaded }) {
 
     return isLoaded && (
 
-            <div className="card-container" >
+            <div className="card-container">
                     {editingDes  ? (
                         <div>
                             <TextareaAutosize
@@ -107,19 +107,19 @@ export default function EditCard({ card, index, boardId,  isLoaded }) {
                                 className="card-create-btn"
                                 onClick={handleSubmit}
                             >
-                                <i class="fa-solid fa-floppy-disk"></i>  save
+                                <i className="fa-solid fa-floppy-disk"></i>  save
                             </div>
                             <div
                                 className="cancel-btn"
                                 onClick={() => setEditingDes(false)}
                             >
-                                <i class="fa-solid fa-circle-xmark"></i> cancel
+                                <i className="fa-solid fa-circle-xmark"></i> cancel
                             </div>
                             <div
                                 className="card-delete-btn"
                                 onClick={(deleteCard)}
                             >
-                                <i class="fa-solid fa-trash"></i> delete
+                                <i className="fa-solid fa-trash"></i> delete
                             </div>
                         </div>
 
