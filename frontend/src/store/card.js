@@ -30,6 +30,13 @@ const removeCard = (cardId) => {
     };
 };
 
+const editCard = (card) => {
+    return {
+        type: EDIT_CARD,
+        payload: card
+    }
+}
+
 //get all cards on the list
 /// inactive : getting from list now at the moment
 
@@ -55,38 +62,10 @@ export const fetchAllCards = (boardId, listId ) => async (dispatch) => {
 
 
 //create card at board
-// export const fetchCreateCard = (boardId, listId, cardDetails) =>  async (dispatch) => {
-//     try {
-
-//         const response = await csrfFetch(`/api/boards/${boardId}/lists/${listId}/cards`, {
-//             method: 'POST',
-//             headers: { "Content-Type": "application/json" },
-//             body: JSON.stringify(cardDetails),
-//         });
-
-//         if (response.ok) {
-//             const newCard = await response.json();
-//             dispatch(createCard(newCard));
-
-//             dispatch(fetchAList(listId))
-
-//             return newCard;
-//         }
-//     }catch(error) {
-//         console.log(error)
-//         return error;
-//     }
-// };
-
-//create card at list
-export const fetchCreateCard = (listId, cardDetails) =>  async (dispatch) => {
+export const fetchCreateCard = (boardId, listId, cardDetails) =>  async (dispatch) => {
     try {
-        //destructure to get board id
-        const { board_id } = cardDetails;
-        const numberBoard = parseInt(board_id)
 
-
-        const response = await csrfFetch(`/api/lists/${listId}/cards`, {
+        const response = await csrfFetch(`/api/boards/${boardId}/lists/${listId}/cards`, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(cardDetails),
@@ -96,7 +75,7 @@ export const fetchCreateCard = (listId, cardDetails) =>  async (dispatch) => {
             const newCard = await response.json();
             dispatch(createCard(newCard));
 
-            dispatch(fetchABoard(numberBoard));
+            dispatch(fetchABoard(boardId))
 
             return newCard;
         }
@@ -105,6 +84,35 @@ export const fetchCreateCard = (listId, cardDetails) =>  async (dispatch) => {
         return error;
     }
 };
+
+//create card at list
+// export const fetchCreateCard = (listId, cardDetails) =>  async (dispatch) => {
+//     try {
+//         //destructure to get board id
+//         const { board_id } = cardDetails;
+//         const numberBoard = parseInt(board_id)
+
+
+//         const response = await csrfFetch(`/api/lists/${listId}/cards`, {
+//             method: 'POST',
+//             headers: { "Content-Type": "application/json" },
+//             body: JSON.stringify(cardDetails),
+//         });
+
+//         if (response.ok) {
+//             const newCard = await response.json();
+//             dispatch(createCard(newCard));
+
+//             dispatch(fetchABoard(numberBoard));
+
+//             return newCard;
+//         }
+//     }catch(error) {
+
+//         console.log(error)
+//         return error;
+//     }
+// };
 
 //edit card
 export const fetchEditCard  = (cardId, cardDetails) => async (dispatch) => {
@@ -118,12 +126,13 @@ export const fetchEditCard  = (cardId, cardDetails) => async (dispatch) => {
 
         if (response.ok) {
             const card = await response.json();
-            dispatch(createCard(card));
+            dispatch(editCard(card));
 
             return card;
         }
 
     }catch(error) {
+
         console.log(error);
         return error;
     }
@@ -161,17 +170,25 @@ const cardReducer = (state = initialState, action) => {
             action.payload.Cards.forEach((card) => {
                 newState[card.id] = card;
             });
-            console.log('cards state===>', newState)
-
             return newState;
 
 
         case CREATE_CARD:
-            newState = {
-                ...state,
-                [action.payload.id]: [action.payload]
-            };
+            // newState = {
+            //     ...state,
+            //     [action.payload.id]: action.payload
+            // };
+            newState = Object.assign({}, state,
+                       {[action.payload.id]: action.payload})
             return newState;
+
+
+        case EDIT_CARD:
+            newState = Object.assign({}, state)
+            newState[action.payload.id] = action.payload
+                      console.log('edit card', newState)
+
+            return newState[action.payload.id]
 
         case REMOVE_CARD:
             newState = Object.assign({}, state);

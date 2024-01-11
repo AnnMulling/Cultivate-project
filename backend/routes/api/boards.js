@@ -54,12 +54,24 @@ router.get(
             include: [
                 {
                     model: List,
-                    include: [ Card ]
+                    as: 'Lists',
+                    include: [
+                        {
+                            model: Card,
+                            as: 'Cards'
+                        }
+                    ]
                 }
+            ],
+            order: [
+                [
+                    { model: List, as: 'Lists' },
+                    { model: Card, as: 'Cards' },
+                    'id',
+                    'ASC'
+                ]
             ]
         });
-
-
         return res.json(board);
     }
 );
@@ -133,7 +145,7 @@ router.patch(
         });
 
 
-       
+
 
         board.Lists = newListOrder
 
@@ -256,7 +268,6 @@ router.post(
             title
         });
 
-        console.log('in api create')
 
         await newList.save();
         res.status(201);
@@ -266,30 +277,30 @@ router.post(
 );
 
 
-//create a card
-// router.post(
-//     '/:boardId/lists/:listId/cards',
-//     [ requireAuth, reqAuthBoard, validateCreateCard],
-//     async (req, res) => {
+// create a card
+router.post(
+    '/:boardId/lists/:listId/cards',
+    [ requireAuth, reqAuthBoard, validateCreateCard],
+    async (req, res) => {
 
-//         const { user } = req;
+        const { user } = req;
 
-//         const { listId, boardId } = req.params;
+        const { listId, boardId } = req.params;
 
-//         const { description } = req.body;
+        const { description } = req.body;
 
-//         const newCard = await Card.create({
-//             user_id: user.id,
-//             list_id: listId,
-//             board_id: boardId,
-//             description: description
-//         });
+        const newCard = await Card.create({
+            user_id: user.id,
+            list_id: listId,
+            board_id: boardId,
+            description: description
+        });
 
-//         await newCard.save();
-//         res.status(201);
+        await newCard.save();
+        res.status(201);
 
-//         return res.json(newCard)
-//     }
-// )
+        return res.json(newCard)
+    }
+)
 
 module.exports = router;

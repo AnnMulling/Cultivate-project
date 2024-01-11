@@ -25,7 +25,7 @@ export default function BoardDetails() {
     const [ addingList, setAddingList ] = useState(false);
     const [ show, setShow ] = useState(false);
 
-    // console.log(board, '<==== board state')
+    console.log(board, '<==== board state')
     // console.log(listArr,'<==== list array' )
 
     useEffect(() => {
@@ -97,6 +97,7 @@ export default function BoardDetails() {
                                             {(provided) => (
                                                 <div
                                                     // className="list-main-container"
+                                                    key={list.id}
                                                     {...provided.dragHandleProps}
                                                     {...provided.draggableProps}
                                                     ref={provided.innerRef}

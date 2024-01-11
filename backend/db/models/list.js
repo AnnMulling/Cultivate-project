@@ -21,7 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       List.belongsTo(models.User, {
         foreignKey:  'user_id'
       });
-      
+
       // has many cards
       List.hasMany(models.Card, {
         foreignKey: 'list_id'
@@ -52,6 +52,13 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'List',
+
+    defaultScope: {
+      attributes: {
+        include: ["id", "createdAt", "updatedAt"]
+      }
+    }
+    
   });
   return List;
 };

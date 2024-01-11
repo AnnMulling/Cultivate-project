@@ -43,7 +43,7 @@
     background-color: #313c67;
     border-radius: 12px;
     color:rgb(255, 255, 255);
-    font-size: 12px;
+    font-size: 15px;
     border: none;
     height: 30px;
     width: 30%;
@@ -59,9 +59,9 @@
     background-color: #313c67;
     border-radius: 15px;
     color:rgb(255, 255, 255);
-    font-size: 20px;
+    font-size: 15px;
     border: none;
-    height: 50px;
+    height: 30px;
     width: 30%;
     margin-top: 10px;
     cursor: pointer;
@@ -76,10 +76,10 @@
     background-color: rgb(161, 166, 174);
     border-radius: 15px;
     color:rgb(255, 255, 255);
-    font-size: 20px;
+    font-size: 15px;
     border: none;
-    height: 50px;
-    width: 40%;
+    height: 30px;
+    width: 30%;
     margin-top: 10px;
 
     cursor: not-allowed;
