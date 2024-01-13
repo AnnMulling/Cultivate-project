@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import {  useSelector } from 'react-redux';
-import SignupFormModal from '../SignupFormModal';
-import OpenModalMenuItem from '../Navigation/OpenModalMenuItem';
+import { Link } from "react-router-dom";
+import Footer from '../Footer';
+
+//img
 import github from '../../assets/github.png'
 import linkedIn from '../../assets/linkedIn.png'
 
@@ -53,12 +55,11 @@ export  default function HomePage () {
                 <div className="about-container-left">
                     <p style={{fontSize:50, fontWeight:800 }}>Want to get things done?</p>
                     <p style={{fontSize:30}}>We've got you covered!</p>
-                    <div className="home-signup-btn">
-                        <OpenModalMenuItem
-                        itemText="SignUp it's Free!"
-                        modalComponent={<SignupFormModal />}
-                        />
-                    </div>
+                    <Link to="/signup" style={{ textDecoration: 'none' }}>
+                        <div className="home-signup-btn">
+                            Signup it's Free!
+                        </div>
+                    </Link>
                 </div>
 
                 <div className="carousel-container">
@@ -109,17 +110,7 @@ export  default function HomePage () {
                     </div>
                 </div>
             </div>
-            <div className="footer">
-                <div className="footer-content">
-                    <span>Privacy Policy</span>
-                    <span>Copyright ©2023 Cultivate</span>
-                </div>
-                <div className="footer-social-media">
-                    <span>Created by Ann Mulling</span>
-                    <span><a href= "https://github.com/AnnMulling" target="_blank"><img src={github} alt="github-logo"/></a></span>
-                    <span><a href="https://www.linkedin.com/in/primpraow-m-653708227/" target="_blank" ><img src={linkedIn} alt="linkedIn-logo"/></a></span>
-                </div>
-            </div>
+           <Footer />
         </div>
 
     );

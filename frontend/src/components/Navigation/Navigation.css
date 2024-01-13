@@ -24,10 +24,11 @@
     right: 4%;
     font-size: 16px;
 
-    top: 11%;
+    top: 110px;
     list-style-type: none;
     border-radius: 12px;
     border: 1px solid #313c67;
+    color: #313c67;
     background-color: #fbfbfe;;
     width: fit-content;
     cursor: pointer;
@@ -129,7 +130,7 @@ ul li {
         display: flex;
         padding: 2px 0;
         justify-content: space-between;
-  
+
     }
     .workspace-btn {
         margin-left: 20px;
