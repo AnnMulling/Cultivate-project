@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
 import { fetchAllBoard, fetchEditBoard } from '../../store/board';
@@ -67,16 +67,13 @@ export default function WorkSpace() {
 
 
     return isLoaded && (
-     <>
-
         <div className="workspace">
              <Sidebar user={user} />
-
+            <div className="inner-workspace">
             <div className="heading">
                 <span className="name">{user?.firstName}</span>
                 <span style={{ fontSize:30, color:'#313c67', marginLeft:5 }}>'s Work Space</span>
             </div>
-            <div className="inner-workspace">
                     {boardsArr.map((board) =>
                     <div className="boards-container" key={board.id}>
                         <Link to={`/boards/${board.id}`} style={{ textDecoration: 'none', color: '#313c67' }}>
@@ -121,7 +118,5 @@ export default function WorkSpace() {
             </div>
 
         </div>
-    </>
-
     );
 };

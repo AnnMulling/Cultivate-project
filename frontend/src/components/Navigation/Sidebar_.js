@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useHistory, Link, useParams } from 'react-router-dom';
+import React, {  useState } from 'react';
+import { useHistory, Link } from 'react-router-dom';
 
 import './Sidebar.css';
 

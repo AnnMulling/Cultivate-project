@@ -10,7 +10,7 @@ import './Footer.css';
 
 export default function Footer () {
     return (
-        <div className="footer">
+        <Footer className="footer">
                 <div className="footer-content">
                     <span>Privacy Policy</span>
                     <span>Copyright ©2024 Cultivate</span>
@@ -20,6 +20,6 @@ export default function Footer () {
                     <span><a href= "https://github.com/AnnMulling" target="_blank"><img src={github} alt="github-logo"/></a></span>
                     <span><a href="https://www.linkedin.com/in/primpraow-m-653708227/" target="_blank" ><img src={linkedIn} alt="linkedIn-logo"/></a></span>
                 </div>
-        </div>
+        </Footer>
     );
 }

@@ -1,5 +1,9 @@
 .set-time-main {
-    margin-left: 10%;
+    background-color: #ECF0F7;
+    width: 100vw;
+    height: 100vh;
+    margin: 20px;
+    border-radius: 15px;
 }
 .set-time-heading {
     width: 100%;

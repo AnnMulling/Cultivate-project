@@ -3,9 +3,9 @@ import { useHistory, Link } from 'react-router-dom';
 import OpenModalButton from '../OpenModalButton';
 import DeleteTime from '../ModalDelete/DeleteTime';
 import { useSelector } from 'react-redux';
-import smallTree from '../../assets/smallTree.png'
-import deadTree from '../../assets/deadTree.png'
-import bigTree from '../../assets/bigTree.png'
+import smallTree from '../../assets/set-time/smallTree.png'
+import deadTree from '../../assets/set-time/deadTree.png'
+import bigTree from '../../assets/set-time/bigTree.png'
 
 import './SetTime.css'
 

@@ -1,9 +1,9 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import cookieDone from '../../assets/cookieDone.png';
-import smallTree from '../../assets/smallTree.png'
-import star from '../../assets/star.png'
+import cookieDone from '../../assets/set-time/cookieDone.png';
+import smallTree from '../../assets/set-time/smallTree.png'
+import star from '../../assets/set-time/star.png'
 import Sidebar from '../Navigation/Sidebar_';
 
 import './SetTime.css';

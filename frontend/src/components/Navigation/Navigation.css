@@ -2,14 +2,11 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 70px;
-
-    margin-top: 0;
-    padding: 30px;
-
+    height: 20px;
+    margin: 0px;
+    padding: 40px 20px;
     background-color: #fbfbfe;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-    border-radius: 12px;
+
 }
 
 .logo {
@@ -23,16 +20,14 @@
     z-index: 1000;
     right: 4%;
     font-size: 16px;
-
-    top: 110px;
+    top: 80px;
     list-style-type: none;
-    border-radius: 12px;
-    border: 1px solid #313c67;
+    border-radius: 15px;
+    border: .5px solid #313c67;
     color: #313c67;
     background-color: #fbfbfe;;
     width: fit-content;
     cursor: pointer;
-
     padding: 15px;
     margin-bottom: 4px;
 }
@@ -63,7 +58,7 @@
     background-color:#313c67;
     font-size: 18px;
     border: none;
-    border-radius: 2rem;
+    border-radius: 15px;
     margin-right: 20px;
     margin-top: 5px;
     cursor: pointer;
@@ -79,7 +74,7 @@
     background-color:#313c67;
     font-size: 18px;
     border: none;
-    border-radius: 1.5rem;
+    border-radius: 12px;
     margin-right: 45px;
     margin-top: 5px;
     cursor: pointer;

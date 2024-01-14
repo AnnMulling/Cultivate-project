@@ -10,6 +10,7 @@ import LoginFormModal from "../LoginFormModal";
 //img
 import logo from '../../assets/c-plain.png'
 import google from '../../assets/google.png'
+import task from '../../assets/splash/task-hand.png'
 
 import "./SignupPage.css";
 
@@ -54,10 +55,28 @@ function SignupPage() {
 
     return (
         <div className="signup-page">
+            <Link to="/" style={{ textDecoration: 'none' }}><img src={logo} alt="logo" className="signup-logo" /></Link>
             <div className="signup-page-inner">
+                <div className="signup-left">
+                    <div className="signup-left-details">
+                        <p style={{ marginLeft: 80 }}>
+                            <span style={{fontSize: 60, fontFamily: 'Rubik', color: '#EE8F66', marginRight: 10}}>More</span>
+                            Productivity
+                        </p>
+                        <p style={{ marginLeft: 50 }}>
+                            <span  style={{fontSize: 45, fontFamily: 'Rubik', color: '#EE8F66', marginRight: 10 }}>Less</span>
+                            Stress
+                        </p>
+                    </div>
+                    <div className="signup-left-img">
+                        <img src={task} alt="task" />
+                        <p>Get things done your way  with
+                             <Link to="/" style={{ textDecoration: 'none', color: '#3B4454', fontWeight: 'bold', marginLeft: 10 }}>Caltivate</Link>
+                        </p>
+                    </div>
+                </div>
                 <div className="form-container">
-                    <Link to="/" style={{ textDecoration: 'none' }}><img src={logo} alt="logo" className="logo" /></Link>
-                    <h2 style={{ fontFamily: 'Montserrat' }}>Sign Up to continue</h2>
+                    <h2 style={{ fontFamily: 'Montserrat', marginTop: 15 }}>Sign Up to continue</h2>
                     <form onSubmit={handleSubmit} className="form-signup">
                         <label>
                             Email
