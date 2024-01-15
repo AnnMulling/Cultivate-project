@@ -1,15 +1,33 @@
-.set-time-main {
-    margin-left: 10%;
-}
-.set-time-heading {
-    width: 100%;
-}
 
 .set-time-main {
+    text-align: center;
+    background-color: #dbe4f3;
+    height: 100vh;
+    overflow: scroll ;
+}
+
+.set-time-main-inner {
+    margin-left: 6%;
     display: flex;
     flex-wrap: wrap;
-    text-align: center;
+    overflow: scroll;
 }
+
+.set-time-heading {
+    width: 100%;
+    margin: 50px 0;
+    height: 40px;
+    font-size: 20px;
+}
+
+.set-time-heading span {
+    font-size: 30px;
+    background-color: #ffffff;
+    color: #313c67;
+    border-radius: 35px;
+    padding: 9px;
+}
+
 .set-time-cards {
     color: #fffefe;
     display: flex;
@@ -17,7 +35,7 @@
     align-items: center;
     cursor: pointer;
 
-    background-color:#1d274e;
+    background-color:#313c67;
     font-size: 20px;
     height: 250px;
     width: 250px;

@@ -4,6 +4,7 @@ import { Switch, Route, useLocation } from "react-router-dom";
 import * as sessionActions from "./store/session";
 import Navigation from "./components/Navigation";
 import SignupFormModal from "./components/SignupFormModal";
+import SignupPage from "./components/SignupFormModal/SignupPage";
 import LoginFormModal from "./components/LoginFormModal";
 import Starred from "./components/Starred";
 import HomePage from "./components/HomePage";
@@ -27,6 +28,7 @@ function App() {
   return (
     <>
      {location.pathname !== '/workspace'
+       && !location.pathname.includes('/signup')
        && !location.pathname.includes('/timer')
        && !location.pathname?.includes('/boards')
        && !location.pathname.includes('/starred')
@@ -37,6 +39,9 @@ function App() {
         <Switch>
           <Route exact path="/">
             <HomePage />
+          </Route>
+          <Route exact path="/signup">
+            <SignupPage />
           </Route>
           <Route exact path="/workspace">
             <WorkSpace />
@@ -60,7 +65,6 @@ function App() {
             <SetTimeTree/>
           </Route>
           <Route>404 Page Does Not Exist</Route>
-
         </Switch>
       )}
     </>

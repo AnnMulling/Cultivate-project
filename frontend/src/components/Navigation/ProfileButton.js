@@ -68,11 +68,16 @@ function ProfileButton({ user }) {
               onItemClick={closeMenu}
               modalComponent={<LoginFormModal />}
             />
-            <OpenModalMenuItem
+            {/* <OpenModalMenuItem
               itemText="Sign Up"
               onItemClick={closeMenu}
               modalComponent={<SignupFormModal />}
-            />
+            /> */}
+            <Link to="/signup" style={{ textDecoration: 'none',  color: "#313c67" }}>
+                <div>
+                    Signup
+                </div>
+            </Link>
           </>
         )}
       </ul>

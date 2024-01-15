@@ -3,11 +3,12 @@ import * as sessionActions from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import "./LoginForm.css";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
-import SignupFormModal from '../SignupFormModal';
+import { useHistory, Link } from "react-router-dom";
+
 
 
 function LoginFormModal() {
+  const history = useHistory();
   const dispatch = useDispatch();
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
@@ -27,23 +28,24 @@ function LoginFormModal() {
       });
   };
 
-  const demoLogin =  (e) => {
+  const demoLogin = (e) => {
     e.preventDefault();
-     const demoCred = {
+    const demoCred = {
       credential: 'user1',
       password: 'password1'
-     };
+    };
 
     setCredential(demoCred["credential"]);
     setPassword(demoCred["password"]);
 
     dispatch(sessionActions.login(demoCred))
-    .then(closeModal)
+      .then(closeModal)
+      .then(history.push('/workspace'))
   };
 
   return (
-    <>
-      <h1 style={{fontFamily:'Montserrat'}}>Log In</h1>
+    <div className="login-form">
+      <h1 style={{ fontFamily: 'Montserrat' }}>Log In</h1>
       <form onSubmit={handleSubmit} className="form-login">
         <label>
           Username or Email
@@ -68,12 +70,10 @@ function LoginFormModal() {
         )}
         <button type="submit" className="login-btn">Log In</button>
       </form>
-      {/* <button onClick={demoLogin} type="submit" className="demo-btn">DemoUser</button> */}
       <div className="demo-btn">
-        Don't have an account? Login as
-        <span onClick={demoLogin} style={{marginLeft:10, fontWeight:400, cursor:"pointer", color:"#26268f"}}>DemoUser</span>
+        <span>Or Login as  <span className="demo-text" onClick={demoLogin}>DemoUser</span> </span>
       </div>
-    </>
+    </div>
   );
 }
 

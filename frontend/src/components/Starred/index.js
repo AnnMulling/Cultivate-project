@@ -24,43 +24,46 @@ export default function Starred () {
     },[dispatch])
 
     return isLoaded &&  (
-        <div className="workspace">
+        <div className="starred-workspace">
             <Sidebar user={user}/>
             <div className="heading">
-                <h1>Highlights</h1>
+                <span>Highlights</span>
             </div>
             <div className="inner-workspace">
+                <div className="boards-container">
                 {starredBoards.map((board) =>
-                    <div className="boards-container">
-                        <Link to={`/boards/${board.id}`} style={{ textDecoration: 'none', color: '#313c67' }}>
-                            <div className="board-card-container">
-                                <div style={{ marginBottom: 20 }} className="board-card">
-                                    {board.name}
+                        <div key={board.id}>
+                            <Link to={`/boards/${board.id}`} style={{ textDecoration: 'none', color: '#313c67' }}>
+                                <div className="board-card-container">
+                                    <div style={{ marginBottom: 20 }} className="board-card">
+                                        {board.name}
+                                    </div>
                                 </div>
-                            </div>
-                        </Link>
-                        <div className="board-btn">
-                        {/* <div className="starred-container" onClick={(e) => handleStar(e, board.id, board.name, board.is_public)}>
-                            { board.star === true ?
-                            <i className="fa-solid fa-star"></i> :
-                            <i className="fa-regular fa-star"></i> }
-                        </div> */}
+                            </Link>
 
-                        <OpenModalButton
-                            modalComponent={<CreateBoardModal board={board} formType="Edit Board" />}
-                            buttonText={<i className="fa-solid fa-pen-to-square"></i>}
-                            modalClasses={["board-btn-edt"]}
-                        />
-                        <OpenModalButton
-                            modalComponent={<DeleteBoardModal board={board} />}
-                            buttonText={<i className="fa-solid fa-trash"></i>}
-                            modalClasses={["board-btn-dlt"]}
-                        />
+                            <div className="board-btn">
+                            {/* <div className="starred-container" onClick={(e) => handleStar(e, board.id, board.name, board.is_public)}>
+                                { board.star === true ?
+                                <i className="fa-solid fa-star"></i> :
+                                <i className="fa-regular fa-star"></i> }
+                            </div> */}
+
+                            <OpenModalButton
+                                modalComponent={<CreateBoardModal board={board} formType="Edit Board" />}
+                                buttonText={<i className="fa-solid fa-pen-to-square"></i>}
+                                modalClasses={["board-btn-edt"]}
+                            />
+                            <OpenModalButton
+                                modalComponent={<DeleteBoardModal board={board} />}
+                                buttonText={<i className="fa-solid fa-trash"></i>}
+                                modalClasses={["board-btn-dlt"]}
+                            />
+                        </div>
                     </div>
+                    )}
                     </div>
 
 
-                )}
 
             </div>
 

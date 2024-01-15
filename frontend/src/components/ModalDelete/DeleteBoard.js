@@ -31,10 +31,10 @@ function DeleteBoardModal({ board }) {
         <>
             <div className="modal-popup">
                 <h2>Confirm Delete</h2>
-                 <h3>
-                     <p>Lists associated with the board will also be deleted</p>
-                        Are you sure you want to delete this Board?
-                </h3>
+
+                <p>Lists associated with the board will also be deleted</p>
+                Are you sure you want to delete this Board?
+
                 <div>
                     <button onClick={deleteBoard} className="delete-btn">
                         Yes (Delete Board)

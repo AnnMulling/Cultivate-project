@@ -3,9 +3,9 @@ import OpenModalButton from '../OpenModalButton';
 import DeleteTime from '../ModalDelete/DeleteTime';
 import { useHistory, Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import cookieStart from '../../assets/cookieStart.png'
-import cookieRaw from '../../assets/cookieRaw.png';
-import cookieDone from '../../assets/cookieDone.png';
+import cookieStart from '../../assets/set-time/cookieStart.png'
+import cookieRaw from '../../assets/set-time/cookieRaw.png';
+import cookieDone from '../../assets/set-time/cookieDone.png';
 
 
 import './SetTime.css'
