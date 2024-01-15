@@ -18,34 +18,33 @@ export default function SetTime() {
     };
 
     return (
-        <>
-            <Sidebar
-              user={user}
-            />
 
             <div className="set-time-main">
+                <Sidebar user={user} />
                 <div className="set-time-heading">
-                    <h1 style={{color:"#313c67"}}> Focus Modes</h1>
+                    <span> Focus Modes</span>
                 </div>
-                <div className="set-time-cards">
-                    <Link to="/timer/cookie" style={{ textDecoration: 'none', color: '#fffefe' }}>
-                        <img src={cookieDone} alt="cookie"/>
-                        <div>Baking</div>
-                    </Link>
-                </div>
-                <div className="set-time-cards">
-                    <Link to="/timer/tree" style={{ textDecoration: 'none', color: '#fffefe' }}>
-                        <img src={smallTree} alt="tree"/>
-                        <div>Planting</div>
-                    </Link>
-                </div>
-                <div className="set-time-cards">
-                    <Link to="/timer/reg" style={{ textDecoration: 'none', color: '#fffefe' }}>
-                        <img src={star} alt="tree"/>
-                        <div>Just Focus</div>
-                    </Link>
+                <div className="set-time-main-inner">
+                    <div className="set-time-cards">
+                        <Link to="/timer/cookie" style={{ textDecoration: 'none', color: '#fffefe' }}>
+                            <img src={cookieDone} alt="cookie"/>
+                            <div>Baking</div>
+                        </Link>
+                    </div>
+                    <div className="set-time-cards">
+                        <Link to="/timer/tree" style={{ textDecoration: 'none', color: '#fffefe' }}>
+                            <img src={smallTree} alt="tree"/>
+                            <div>Planting</div>
+                        </Link>
+                    </div>
+                    <div className="set-time-cards">
+                        <Link to="/timer/reg" style={{ textDecoration: 'none', color: '#fffefe' }}>
+                            <img src={star} alt="tree"/>
+                            <div>Just Focus</div>
+                        </Link>
+                    </div>
                 </div>
             </div>
-        </>
+
     );
 }

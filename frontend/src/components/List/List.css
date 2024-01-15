@@ -59,23 +59,16 @@
     display: flex;
     flex-wrap: wrap;
     color: #313c67;
-
     width: 250px;
-
-    background: rgb(255, 255, 255);
-
-    box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.238);
+    text-overflow: ellipsis;
+    background-color: #fbfbfe;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     border-radius: 0.75rem;
-    border: 1px solid rgba(242, 239, 239, 0.981);
     padding: 20px;
     padding-left: 10px;
-    gap: 10px;
+    gap: 16px;
     cursor: pointer;
-    /* transition: all 0.2s ease-in-out;
-    &:hover {
-        transform: translateY(-5px);
-        box-shadow: 2px 2px 2px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    } */
+
 }
 
 .list-title {
