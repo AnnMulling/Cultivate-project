@@ -6,9 +6,8 @@ import Sidebar from '../Navigation/Sidebar_';
 import List from '../List/List';
 import AddList from '../List/AddList';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import Select, { components } from 'react-select';
+import Select from 'react-select';
 import './Board.css'
-
 
 
 export default function BoardDetails() {
@@ -30,33 +29,23 @@ export default function BoardDetails() {
         { value: "#FA7B28", label: "High" },
         { value: "#E13A3A", label: "Urgent" },
       ];
+    const savedColor = localStorage.getItem("color")
+    const savedLabel = localStorage.getItem("label")
+    const [ label, setLabel ] = useState(savedLabel ? savedLabel : "");
+    const [ color, setColor ] = useState(savedColor ? savedColor : "");
 
-    const [ label, setLabel ] = useState("");
-    const [ color, setColor ] = useState("");
 
     console.log(board, '<==== board state');
 
     useEffect(() => {
 
-        const savedColor = localStorage.getItem("color")
-        setColor(savedColor);
-
-        const savedLabel = localStorage.getItem("label")
-        setLabel(savedLabel);
-
+        localStorage.getItem("color")
+        localStorage.getItem("label")
 
         dispatch(fetchABoard(boardId))
         .then(() => setIsLoaded(true));
 
-    }, [dispatch ]);
-
-    const Control = ({ children, ...props }) => (
-
-        <components.Control {...props} >
-            Task Priority: {children}
-            {console.log('control components', children,'props', props)}
-        </components.Control>
-      );
+    }, [dispatch, color, label ]);
 
 
       const customStyles = {
@@ -88,18 +77,21 @@ export default function BoardDetails() {
     };
 
    // handle task priority
-   var handleChange = (selected) => {
+   const handleChange = (selected) => {
+    //className
        //save value to local storage
        //if not exists, create
        if (!localStorage.getItem(selected.label)) {
            //using label as a key, color-value
            localStorage.setItem("color", selected.value);
-           localStorage.setItem("label", selected.label);
            setColor(selected.value);
+
+           localStorage.setItem("label", selected.label);
            setLabel(selected.label);
 
         }else {
-
+            localStorage.removeItem("color")
+            localStorage.removeItem("label")
         }
 
     };
@@ -149,11 +141,11 @@ export default function BoardDetails() {
                 <div className="board-heading">
                     <h1 >{board?.name}</h1>
                     <span style={{ marginRight: 10 }}>Created on: {new Date(board.createdAt).toLocaleDateString('en-US', options)} </span>
-                    <div>
+                    <div className="selection">
+                        Task Priority:
                         <Select
                             onChange={handleChange}
                             styles={customStyles}
-                            components={{ Control }}
                             options={selections}
                         />
                     </div>
