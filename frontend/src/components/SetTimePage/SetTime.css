@@ -1,7 +1,7 @@
 
 .set-time-main {
     text-align: center;
-    background-color: #dbe4f3;
+    background-color: #ffffff;
     height: 100vh;
     overflow: scroll ;
 }
@@ -22,10 +22,10 @@
 
 .set-time-heading span {
     font-size: 30px;
-    background-color: #ffffff;
-    color: #313c67;
+    background-color: #313c67;
+    color: #ffffff;
     border-radius: 35px;
-    padding: 9px;
+    padding: 10px;
 }
 
 .set-time-cards {
@@ -35,7 +35,7 @@
     align-items: center;
     cursor: pointer;
 
-    background-color:#313c67;
+    background-color: #313c67;
     font-size: 20px;
     height: 250px;
     width: 250px;

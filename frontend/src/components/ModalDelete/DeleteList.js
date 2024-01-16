@@ -36,9 +36,8 @@ function DeleteListModal ({ boardId , list }) {
         <div>
             <div className="modal-popup">
                 <h2>Confirm Delete</h2>
-                 <h3>
-                        Are you sure you want to delete this list?
-                </h3>
+                 <p>  Are you sure you want to delete this list? </p>
+                 
                 <div>
                     <button onClick={deleteList} className="delete-btn">
                         Yes (Delete List)

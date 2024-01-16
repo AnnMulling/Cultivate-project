@@ -13,8 +13,8 @@
         font-size: 15px;
         border-radius: 0.5rem;
         font-family: 'DM Sans', sans-serif;
-        color: #313c67;
-        background-color: rgb(235, 235, 235);
+        color: #313543;
+        background-color: rgb(255, 255, 255);
         box-shadow: inset 0.5px 0.5px 0.5px 0.5px rgba(0, 0, 0, 0.238);
         padding: 5px;
         width: 140%;
@@ -30,13 +30,14 @@
     resize: auto;
     outline: none;
     font-size: 15px;
+    color: #313543;
     padding: 5px;
     &:focus {
         width: 100%;
         border-radius: 0.5rem;
         font-family: 'DM Sans', sans-serif;
-        color: #313c67;
-        background-color: rgb(235, 235, 235);
+        color: #313543;
+        background-color: rgb(255, 255, 255);
         box-shadow: inset 0.5px 0.5px 0.5px 0.5px rgba(0, 0, 0, 0.238);
         padding: 4px;
 
@@ -58,10 +59,10 @@
 .list-container {
     display: flex;
     flex-wrap: wrap;
-    color: #313c67;
+    color: #313543;
     width: 250px;
     text-overflow: ellipsis;
-    background-color: #fbfbfe;
+    background-color: #e5e7e8;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     border-radius: 0.75rem;
     padding: 20px;
@@ -72,16 +73,12 @@
 }
 
 .list-title {
-    /* display: flex;
-    justify-content: space-between; */
     color: #313c67;
     font-weight: bold;
     font-size: 18px;
-    /* background-color: #c3c5cb58; */
-
     width: 100%;
-    border-radius: 0.5rem;
-    padding: 7px;
+    padding: 9px;
+    border-bottom: .5px solid rgba(180, 182, 191, 0.509);
 }
 
 .add-list-container {
@@ -93,7 +90,7 @@
 
     width: 250px;
 
-    background: rgb(255, 255, 255);
+    background-color: #f7f8fa;
     box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, 0.238);
     border-radius: 1rem;
     border: 1px solid rgba(242, 239, 239, 0.981);
@@ -110,7 +107,7 @@
 
 .list-btn-delete {
 
-    background-color: #313c67;;
+    background-color: #313c67;
     border: none;
     padding: 4px 5px;
     border-radius: 22em;
