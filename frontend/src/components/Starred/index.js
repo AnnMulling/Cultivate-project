@@ -26,7 +26,7 @@ export default function Starred () {
     return isLoaded &&  (
         <div className="starred-workspace">
             <Sidebar user={user}/>
-            <div className="heading">
+            <div className="starred-heading">
                 <span>Highlights</span>
             </div>
             <div className="inner-workspace">

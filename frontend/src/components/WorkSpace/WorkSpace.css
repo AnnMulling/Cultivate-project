@@ -1,53 +1,58 @@
 
 .workspace {
-    background-color: #bccbe2;
+    background-color: #ffffff;
     height: 100vh;
     overflow: scroll ;
 }
 
 .heading {
    width: 100%;
+   margin: 20px 0;
    text-align: center;
-   padding: 20px 0;
+   padding: 10px 0;
    color: #313c67;
 }
 
 .name {
     font-size: 30px;
-    color: #ffffff;
     background-color: #313c67;
+    color: #ffffff;
     border-radius: 35px;
     padding: 9px;
 }
+
 .boards-container {
     display: flex;
     flex-wrap: wrap;
     align-items: baseline;
     margin-left: 6%;
     margin-bottom: 5%;
+
 }
 
 
 .board-card-name {
+
     height: 100%;
     text-align: center;
 }
 
 
 .board-card-container {
-    width: 250px;
-    height: 250px;
+     color: #313c67;
+    width: 200px;
+    height: 200px;
     font-size: 20px;
 
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
 
-    background-color: #fffefe;
+    background-color: #EEF1F4;
     padding: 15px;
     border-radius:6px;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    box-shadow: rgba(65, 65, 79, 0.251) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     margin: 20px;
     transition: all 0.2s ease-in-out;
     &:hover {
@@ -56,7 +61,7 @@
     }
 }
 .board-btn  > *{
-    background-color:#313c67;
+    background-color:  #313c67;
     border: none;
     padding: 10px 12px;
     border-radius: 22em;
@@ -90,7 +95,7 @@
 .board-btn-crt {
     background-color: #f5f5f500;
     border: none;
-    color:  #313c67;
+    color: #313c67;
     font-size: 38px;
     cursor: pointer;
     &:hover {

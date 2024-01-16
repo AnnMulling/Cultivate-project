@@ -6,9 +6,8 @@ import Sidebar from '../Navigation/Sidebar_';
 import List from '../List/List';
 import AddList from '../List/AddList';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-
+import Select, { components } from 'react-select';
 import './Board.css'
-
 
 
 
@@ -24,17 +23,88 @@ export default function BoardDetails() {
     //toggle adding list
     const [ addingList, setAddingList ] = useState(false);
     const [ show, setShow ] = useState(false);
+    //task priority
+    const selections = [
+        { value: "#7ECFFA", label: "Low" },
+        { value: "#38CF86", label: "Medium" },
+        { value: "#FA7B28", label: "High" },
+        { value: "#E13A3A", label: "Urgent" },
+      ];
 
-    console.log(board, '<==== board state')
-    // console.log(listArr,'<==== list array' )
+    const [ label, setLabel ] = useState("");
+    const [ color, setColor ] = useState("");
+
+    console.log(board, '<==== board state');
 
     useEffect(() => {
+
+        const savedColor = localStorage.getItem("color")
+        setColor(savedColor);
+
+        const savedLabel = localStorage.getItem("label")
+        setLabel(savedLabel);
+
 
         dispatch(fetchABoard(boardId))
         .then(() => setIsLoaded(true));
 
-    }, [dispatch]);
+    }, [dispatch ]);
 
+    const Control = ({ children, ...props }) => (
+
+        <components.Control {...props} >
+            Task Priority: {children}
+            {console.log('control components', children,'props', props)}
+        </components.Control>
+      );
+
+
+      const customStyles = {
+        singleValue: (base) => ({
+          ...base,
+          padding: "5px 10px",
+          borderRadius: 5,
+          background: color,
+          color: "white",
+          display: "flex",
+          width: "fit-content",
+        }),
+        control: () => ({
+            width: "fit-content",
+            display: "flex",
+            alignItems: "center",
+        }),
+        container: (base) => ({
+            ...base,
+            width: "fit-content"
+        })
+
+      };
+
+    const options = {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+    };
+
+   // handle task priority
+   var handleChange = (selected) => {
+       //save value to local storage
+       //if not exists, create
+       if (!localStorage.getItem(selected.label)) {
+           //using label as a key, color-value
+           localStorage.setItem("color", selected.value);
+           localStorage.setItem("label", selected.label);
+           setColor(selected.value);
+           setLabel(selected.label);
+
+        }else {
+
+        }
+
+    };
+
+    //change style selection
 
     const toggleAddingList = () => {
         setAddingList(!addingList);
@@ -76,8 +146,17 @@ export default function BoardDetails() {
 
                 <Sidebar user={user} />
 
-                <div className="heading">
+                <div className="board-heading">
                     <h1 >{board?.name}</h1>
+                    <span style={{ marginRight: 10 }}>Created on: {new Date(board.createdAt).toLocaleDateString('en-US', options)} </span>
+                    <div>
+                        <Select
+                            onChange={handleChange}
+                            styles={customStyles}
+                            components={{ Control }}
+                            options={selections}
+                        />
+                    </div>
                 </div>
 
                     <Droppable droppableId={boardId} direction="horizontal" type="LIST">

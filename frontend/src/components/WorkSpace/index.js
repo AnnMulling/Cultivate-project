@@ -70,10 +70,10 @@ export default function WorkSpace() {
     return isLoaded && (
         <div className="workspace">
                 <Sidebar user={user} />
-            {/* <div className="inner-workspace"> */}
+
                 <div className="heading">
                     <span className="name">{user?.firstName}</span>
-                    <span style={{ fontSize:30, color:'#313c67', marginLeft:5 }}>'s Work Space</span>
+                    <span style={{ fontSize:30, marginLeft:5 }}>'s Work Space</span>
                 </div>
 
                 <div className="boards-container">
@@ -115,8 +115,6 @@ export default function WorkSpace() {
                             />
                         </div>
                     </div>
-            {/* </div> */}
-
         </div>
     );
 };
