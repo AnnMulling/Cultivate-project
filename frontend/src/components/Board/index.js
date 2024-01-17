@@ -49,20 +49,17 @@ export default function BoardDetails() {
 
 
     const customStyles = {
+     
         singleValue: (base) => ({
-          ...base,
-          padding: "5px 10px",
-          borderRadius: 5,
-          color: "white",
-          display: "flex",
-          width: "fit-content",
+            ...base,
+          display: "none",
         }),
         control: (base) => ({
             ...base,
             border: "none",
             boxShadow: "none",
+        }),
 
-        })
       };
 
     const options = {
@@ -131,7 +128,7 @@ export default function BoardDetails() {
           Task Priority:
           <span
           className="show-selection"
-          style={{ background: color }}>{label} </span>
+          style={{ background: color ? color : "#B3B8C8" }}>{label} </span>
           {children}
         </components.Control>
       );
@@ -153,6 +150,7 @@ export default function BoardDetails() {
                             styles={customStyles}
                             options={selections}
                             components={{ Control }}
+                            isSearchable={false}
                         />
                     </div>
                 </div>

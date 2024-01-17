@@ -39,9 +39,9 @@
 
 
 .board-card-container {
-     color: #313c67;
-    width: 200px;
-    height: 200px;
+    color: #313c67;
+    width: 240px;
+    height: 240px;
     font-size: 20px;
 
     display: flex;
@@ -49,7 +49,7 @@
     justify-content: center;
     align-items: center;
 
-    background-color: #EEF1F4;
+    background-color: #eff0f3;
     padding: 15px;
     border-radius:6px;
     box-shadow: rgba(65, 65, 79, 0.251) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;

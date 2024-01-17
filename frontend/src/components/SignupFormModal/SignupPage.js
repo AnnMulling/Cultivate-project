@@ -60,7 +60,7 @@ function SignupPage() {
                 <div className="signup-left">
                     <div className="signup-left-details">
                         <p style={{ marginLeft: 80 }}>
-                            <span style={{fontSize: 60, fontFamily: 'Rubik', color: '#EE8F66', marginRight: 10}}>More</span>
+                            <span style={{fontSize: 60, fontFamily: 'Rubik', color: '#FC9228', marginRight: 10}}>More</span>
                             Productivity
                         </p>
                         <p style={{ marginLeft: 50 }}>
@@ -71,7 +71,7 @@ function SignupPage() {
                     <div className="signup-left-img">
                         <img src={task} alt="task" />
                         <p>Get things done your way  with
-                             <Link to="/" style={{ textDecoration: 'none', color: '#3B4454', fontWeight: 'bold', marginLeft: 10 }}>Caltivate</Link>
+                             <Link to="/" style={{ textDecoration: 'none', color: '#FC9228', fontWeight: 'bold', marginLeft: 10 }}>Caltivate</Link>
                         </p>
                     </div>
                 </div>
