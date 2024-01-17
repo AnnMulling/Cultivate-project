@@ -42,14 +42,15 @@ https://cultivate-project.onrender.com
 # Details 
 <div>
   <h2>Landing Page</h2>
-    <img width="555" alt="Screenshot 2023-12-20 at 8 51 48 AM" src="https://github.com/AnnMulling/Cultivate-project/assets/105256768/4e1cd4c1-a3ba-422e-adef-2332117f9103">
-  <h2>Working Spage</h2>
+    <img width="700" height="500" alt="Screenshot 2024-01-17 at 12 20 13 PM" src="https://github.com/AnnMulling/Cultivate-project/assets/105256768/ecb0bdf7-52cd-49d1-9038-53b08d316fcd">
+  <h2>Working Space</h2>
     <img width="555" alt="Screenshot 2023-12-20 at 8 53 12 AM" src="https://github.com/AnnMulling/Cultivate-project/assets/105256768/a948b61f-8b71-4951-b49b-fd9e602e0e45">
   <h2>Board</h2>
-    <img width="555" alt="Screenshot 2023-12-20 at 8 54 26 AM" src="https://github.com/AnnMulling/Cultivate-project/assets/105256768/d3378bb9-c8c7-4628-8045-b5c52706c31d">
+    <img width="555" alt="Screenshot 2024-01-17 at 12 15 59 PM" src="https://github.com/AnnMulling/Cultivate-project/assets/105256768/0eb9fc3d-83d4-4067-b027-e68141b5813a">
+  <h2>Prioritized Board</h2>
+    <img width="555" alt="Screenshot 2024-01-17 at 12 18 50 PM" src="https://github.com/AnnMulling/Cultivate-project/assets/105256768/bff2af85-ded9-49f5-9855-14612879b4c1">
   <h2>Set-time Focus Modes</h2>
-    <img width="555" alt="Screenshot 2023-12-20 at 8 59 37 AM" src="https://github.com/AnnMulling/Cultivate-project/assets/105256768/d1228fde-15b0-4779-a623-2d92d8d27b01">
- 
+    <img width="555" alt="Screenshot 2024-01-17 at 12 19 37 PM" src="https://github.com/AnnMulling/Cultivate-project/assets/105256768/10bf16dc-1e8e-4a74-874a-77750693db2f">
 </div>
 
 
