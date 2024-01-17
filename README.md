@@ -45,16 +45,20 @@ https://cultivate-project.onrender.com
     <img width="700" height="500" alt="Screenshot 2024-01-17 at 12 20 13 PM" src="https://github.com/AnnMulling/Cultivate-project/assets/105256768/ecb0bdf7-52cd-49d1-9038-53b08d316fcd">
   <h2>Working Space</h2>
     <img width="555" alt="Screenshot 2023-12-20 at 8 53 12 AM" src="https://github.com/AnnMulling/Cultivate-project/assets/105256768/a948b61f-8b71-4951-b49b-fd9e602e0e45">
-  <h2>Board</h2>
+  <h2>All Boards</h2>
     <img width="555" alt="Screenshot 2024-01-17 at 12 15 59 PM" src="https://github.com/AnnMulling/Cultivate-project/assets/105256768/0eb9fc3d-83d4-4067-b027-e68141b5813a">
-  <h2>Prioritized Board</h2>
+  <h2>Higlighted Boards</h2>
     <img width="555" alt="Screenshot 2024-01-17 at 12 18 50 PM" src="https://github.com/AnnMulling/Cultivate-project/assets/105256768/bff2af85-ded9-49f5-9855-14612879b4c1">
   <h2>Set-time Focus Modes</h2>
     <img width="555" alt="Screenshot 2024-01-17 at 12 19 37 PM" src="https://github.com/AnnMulling/Cultivate-project/assets/105256768/10bf16dc-1e8e-4a74-874a-77750693db2f">
 </div>
 
-
-# Connect 
+# Future Implementation Goals
+1. Calendar and collaboration
+2. OAuth Login with Google Account
+3. React Drag and Drop
+   
+# Connect  
 <a href="https://www.linkedin.com/in/primpraow-m-653708227/">
   <img src="https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" alt="badge"/>
 </a>
