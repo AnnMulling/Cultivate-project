@@ -70,6 +70,15 @@
     align-items: center;
 }
 
+.show-selection {
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    width: fit-content;
+    margin-left: 10px;
+}
+
 
 @media screen and (max-width: 749px){
     .board-details-container {

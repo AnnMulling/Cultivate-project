@@ -6,9 +6,9 @@ import Sidebar from '../Navigation/Sidebar_';
 import List from '../List/List';
 import AddList from '../List/AddList';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import Select from 'react-select';
-import './Board.css'
+import Select, {components} from 'react-select';
 
+import './Board.css'
 
 export default function BoardDetails() {
     const dispatch = useDispatch();
@@ -48,26 +48,21 @@ export default function BoardDetails() {
     }, [dispatch, color, label ]);
 
 
-      const customStyles = {
+    const customStyles = {
         singleValue: (base) => ({
           ...base,
           padding: "5px 10px",
           borderRadius: 5,
-          background: color,
           color: "white",
           display: "flex",
           width: "fit-content",
         }),
-        control: () => ({
-            width: "fit-content",
-            display: "flex",
-            alignItems: "center",
-        }),
-        container: (base) => ({
+        control: (base) => ({
             ...base,
-            width: "fit-content"
-        })
+            border: "none",
+            boxShadow: "none",
 
+        })
       };
 
     const options = {
@@ -131,6 +126,16 @@ export default function BoardDetails() {
         return
     }
 
+    const Control = ({ children, ...props }) => (
+        <components.Control {...props}>
+          Task Priority:
+          <span
+          className="show-selection"
+          style={{ background: color }}>{label} </span>
+          {children}
+        </components.Control>
+      );
+
     return isLoaded && (
         <DragDropContext
             onDragEnd={handleDragDrop}>
@@ -142,11 +147,12 @@ export default function BoardDetails() {
                     <h1 >{board?.name}</h1>
                     <span style={{ marginRight: 10 }}>Created on: {new Date(board.createdAt).toLocaleDateString('en-US', options)} </span>
                     <div className="selection">
-                        Task Priority:
+
                         <Select
                             onChange={handleChange}
                             styles={customStyles}
                             options={selections}
+                            components={{ Control }}
                         />
                     </div>
                 </div>
