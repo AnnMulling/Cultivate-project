@@ -61,9 +61,9 @@ export default function Sidebar({ user }) {
                 </div>
             </Link>
 
-            <div className="sidebar-content" onClick={handleLogout} >
-                 <i style={{ marginRight: 12 }} className="fa-solid fa-right-from-bracket"></i>
-                <span>Logout</span>
+            <div className="sidebar-content logout-sidebar" onClick={handleLogout} >
+                 <i className="fa-solid fa-right-from-bracket"></i>
+                <span  style={{ marginLeft: 12 }}>Logout</span>
             </div>
         </div>
     )

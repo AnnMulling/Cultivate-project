@@ -1,5 +1,7 @@
 /*side bar*/
 .sidebar {
+    display: flex;
+    flex-direction: column;
     color: #313c67;
     position: absolute;
     z-index: 100;
@@ -12,7 +14,7 @@
 }
 
 .sidebar-content {
- color: #313c67;
+  color: #313c67;
   height: 50px;
   cursor: pointer;
   display: flex;
@@ -35,6 +37,16 @@
     padding-top: 15px ;
 }
 
+.logout-sidebar {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    color: #313c67;
+    &:hover {
+        background-color: transparent;
+    }
+}
 
 .sidebar span  {
     width: 0;
