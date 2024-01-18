@@ -1,0 +1,128 @@
+
+.add-card {
+    padding-left: 20px;
+    color: #b4b6bf;
+    width: 100%;
+    font-size: 20px;
+
+    &:hover {
+        /* color: #40bd93; */
+        color: #313c67;
+    }
+
+}
+.taskChecked {
+    text-decoration: line-through;
+}
+
+input[type="checkbox"] {
+    margin: 0 4%;
+    width: 16px;
+    height: 16px;
+
+}
+
+.cards-container {
+    width: 100%;
+    height: 100%;
+
+}
+
+.card-sub-container {
+    display: flex;
+    align-items: center;
+}
+.card-container {
+    width: 100%;
+    padding: 6px;
+    margin-bottom: 8px;
+    margin-right: 8px;
+    color: #313c67;
+    background-color: #ffffff;
+    border-radius: 0.25rem;
+
+}
+
+.card-description{
+    width: 100%;
+    overflow-wrap: break-word;
+}
+
+.card-edit-Textarea {
+    font-family: 'DM Sans', sans-serif;
+    width: 100%;
+    border: none;
+    resize: auto;
+    outline: none;
+    font-size: 15px;
+    margin-right: 8px;
+    background-color: rgb(255, 255, 255);
+    color: #313c67;
+    &:focus {
+        width: 100%;
+        font-family: 'DM Sans', sans-serif;
+        color: #313c67;
+        background-color: rgb(255, 255, 255);
+        /* box-shadow: inset 0.5px 0.5px 0.5px 0.5px rgba(0, 0, 0, 0.238); */
+
+        margin-right: 20px;
+
+    }
+}
+
+.card-btns {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+/*button*/
+.card-create-btn {
+    /* background-color: #313c67; */
+    /* border-radius: 20px; */
+    color: #313c67;
+    font-size: 15px;
+    border: none;
+    /* height: 30px;
+    width: 40%; */
+    margin-top: 10px;
+    cursor: pointer;
+    &:hover {
+        transform: scale(1.09);
+        color: #40bd93;
+    }
+}
+
+.cancel-btn {
+    /* background-color: #313c67;
+    border-radius: 20px; */
+    color: #313c67;
+    font-size: 15px;
+    border: none;
+    /* height: 30px;
+    width: 40%; */
+    margin-top: 10px;
+    cursor: pointer;
+    &:hover {
+        transform: scale(1.09);
+        color: #40bd93;
+    }
+}
+
+.card-delete-btn {
+    /* background-color: #ff5751; */
+    /* border-radius: 20px; */
+    color: #313c67;
+    font-size: 15px;
+    border: none;
+    /* height: 30px;
+    width: 40%; */
+    margin-top: 10px;
+    cursor: pointer;
+    &:hover {
+        transform: scale(1.09);
+        color: #ef443e;
+
+    }
+}

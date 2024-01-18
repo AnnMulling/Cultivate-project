@@ -1,0 +1,28 @@
+.starred-workspace {
+    text-align: center;
+    background-color: #ffffff;
+    height: 100vh;
+    overflow: scroll ;
+}
+
+.inner-workspace {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+
+.starred-heading {
+    width: 100%;
+    margin: 30px 0;
+    height: 40px;
+    font-size: 20px;
+}
+
+.starred-heading span {
+    font-size: 30px;
+    background-color: #313c67;
+    color: #ffffff;
+    border-radius: 35px;
+    padding: 9px;
+}

@@ -1,0 +1,53 @@
+.user-page {
+    background-color: #ECF0F7;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+}
+.date-time-cont {
+    color: #313c67cd;
+    margin-top: 0px;
+    font-size: 25px;
+}
+.date-time-cont i {
+    padding-right: 13px;
+}
+
+.user-inner {
+    margin-left: 8%;
+}
+
+.user-hello {
+    display: block;
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    width: 600px;
+    height: 500px;
+    border-radius: 12px;
+    padding: 18px;
+    margin-top: 30px;
+    color: #313c67;
+}
+
+.user-hello img {
+    position: relative;
+    top: -55%;
+    z-index: 1000;
+}
+
+
+.user-logout-btn {
+    color: rgb(251, 251, 254);
+    background-color:#313c67;
+    font-size: 18px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    padding: 12px;
+    width: 60px;
+    text-align: center;
+
+    &:hover {
+        background-color: #40bd93;
+    }
+}
