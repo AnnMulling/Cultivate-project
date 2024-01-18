@@ -1,5 +1,6 @@
 import { csrfFetch } from "./csrf";
 import { merge } from "lodash"
+import { LOGGOUT_USER } from "./session";
 
 const GET_BOARDS = "board/getAllBoards";
 const REMOVE_BOARD = "board/removeBoard";
@@ -7,6 +8,7 @@ const EDIT_BOARD = "board/editBoard";
 const CREAT_BOARD = "board/createBoard";
 const LOAD_BOARD = "board/loadBoard";
 const MOVE_LIST = "board/moveList";
+
 
 const loadBoard = (board) => {
     return {
@@ -215,7 +217,6 @@ const boardReducer = (state = initialState, action) => {
 
             );
 
-            console.log('new state all boards', newState)
             return newState;
 
 
@@ -238,8 +239,10 @@ const boardReducer = (state = initialState, action) => {
             const { newListOrder, boardId } = action.payload;
             newState = merge({}, state);
             newState[boardId].Lists = newListOrder
-
             return newState;
+
+        case LOGGOUT_USER:
+            return {}
 
         default:
             return state;

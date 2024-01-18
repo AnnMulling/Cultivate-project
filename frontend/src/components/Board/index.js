@@ -35,7 +35,6 @@ export default function BoardDetails() {
     const [ color, setColor ] = useState(savedColor ? savedColor : "");
 
 
-    console.log(board, '<==== board state');
 
     useEffect(() => {
 
@@ -49,7 +48,7 @@ export default function BoardDetails() {
 
 
     const customStyles = {
-     
+
         singleValue: (base) => ({
             ...base,
           display: "none",
@@ -70,7 +69,7 @@ export default function BoardDetails() {
 
    // handle task priority
    const handleChange = (selected) => {
-    //className
+
        //save value to local storage
        //if not exists, create
        if (!localStorage.getItem(selected.label)) {

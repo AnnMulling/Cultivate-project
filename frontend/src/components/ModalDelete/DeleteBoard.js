@@ -15,11 +15,9 @@ function DeleteBoardModal({ board }) {
 
     const deleteBoard = (e) => {
         e.preventDefault();
-
+        
         dispatch(fetchDeleteBoard(board.id));
-
         closeModal();
-
         history.push('/workspace')
     };
 

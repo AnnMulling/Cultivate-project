@@ -23,8 +23,6 @@ export default function SetTimeRegular() {
     const disabled = minute === 0 && hour === 0;
     const className = disabled ? "disabled-time-btn" : "start-time-btn"
 
-    // 00:00
-    console.log('minute', minute)
 
     useEffect(() => {
         //check minute if less than 0 then start decreasing hour (if hour > 0) set minute to 59
@@ -154,7 +152,7 @@ export default function SetTimeRegular() {
                     <button
                     className="leave-page-btn"
                     onClick={leavePage}
-                    style={{cursor: 'pointer'}}><i class="fa-solid fa-arrow-left"></i> Go Back</button>
+                    style={{cursor: 'pointer'}}><i className="fa-solid fa-arrow-left"></i> Go Back</button>
                 </Link>
             </div>
         </div>

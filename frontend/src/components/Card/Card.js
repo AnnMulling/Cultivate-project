@@ -14,8 +14,6 @@ export default function Card ({ list, boardId, cards, isLoaded }) {
     const [ addingCard, setAddingCard ] = useState(false);
 
 
-    // console.log('all card array', cards)
-
     const toggleAddingCard = () => {
         setAddingCard(!addingCard)
     };

@@ -73,7 +73,7 @@ export const fetchAllLists = (boardId) => async (dispatch) => {
 //create list
 export const fetchCreateList = (boardId, listDetails) => async (dispatch) => {
     try {
-        console.log('create fetch', listDetails)
+
         const response = await csrfFetch(`/api/boards/${boardId}/lists`, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
@@ -108,6 +108,7 @@ export const fetchEditList = (boardId, listId, listDetails) => async (dispatch) 
             const list = await response.json();
             dispatch(createList(list));
             dispatch(fetchABoard(boardId));
+            
             return list
         }
     }catch(error){

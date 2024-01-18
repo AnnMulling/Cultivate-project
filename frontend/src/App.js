@@ -6,6 +6,7 @@ import Navigation from "./components/Navigation";
 import SignupFormModal from "./components/SignupFormModal";
 import SignupPage from "./components/SignupFormModal/SignupPage";
 import LoginFormModal from "./components/LoginFormModal";
+import UserPage  from "./components/User";
 import Starred from "./components/Starred";
 import HomePage from "./components/HomePage";
 import WorkSpace from "./components/WorkSpace";
@@ -28,6 +29,7 @@ function App() {
   return (
     <>
      {location.pathname !== '/workspace'
+       && !location.pathname.includes('/user')
        && !location.pathname.includes('/signup')
        && !location.pathname.includes('/timer')
        && !location.pathname?.includes('/boards')
@@ -42,6 +44,9 @@ function App() {
           </Route>
           <Route exact path="/signup">
             <SignupPage />
+          </Route>
+          <Route exact path="/user">
+            <UserPage />
           </Route>
           <Route exact path="/workspace">
             <WorkSpace />

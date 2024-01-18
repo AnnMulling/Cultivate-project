@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import * as sessionActions from "../../store/session";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useModal } from "../../context/Modal";
 import "./LoginForm.css";
 import { useHistory, Link } from "react-router-dom";
@@ -14,18 +14,24 @@ function LoginFormModal() {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
+  const user = useSelector((state) => state.session?.user);
 
-  const handleSubmit = (e) => {
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors({});
-    return dispatch(sessionActions.login({ credential, password }))
-      .then(closeModal)
-      .catch(async (res) => {
-        const data = await res.json();
-        if (data && data.errors) {
-          setErrors(data.errors);
-        }
-      });
+
+    await dispatch(sessionActions.login({ credential, password }))
+    .then(closeModal)
+    .then(() => history.push(`/workspace`))
+
+
+    .catch(async (res) => {
+      const data = await res.json();
+      if (data && data.errors) {
+        setErrors(data.errors);
+      }
+    });
   };
 
   const demoLogin = (e) => {
@@ -40,7 +46,7 @@ function LoginFormModal() {
 
     dispatch(sessionActions.login(demoCred))
       .then(closeModal)
-      .then(history.push('/workspace'))
+      .then(() => history.push('/workspace'))
   };
 
   return (

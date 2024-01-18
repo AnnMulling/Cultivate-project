@@ -15,8 +15,8 @@ router.get(
     requireAuth,
     async (req, res) => {
             const { user } = req;
-            //get all the boards and list owned by user
 
+            //get all the boards and list owned by user
             const boards = await Board.findAll({
                 where: {
                     user_id: user.id,
@@ -36,6 +36,7 @@ router.get(
 
             //     allBoards.push(board);
             // };
+
 
            return res.json({
                 "Boards": boards
