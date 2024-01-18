@@ -49,7 +49,6 @@ export const fetchAllCards = (boardId, listId ) => async (dispatch) => {
             const cards = await response.json();
             dispatch(getAllCards(cards));
 
-            console.log('all card fetch ', cards)
             return cards
         };
 
@@ -153,6 +152,7 @@ export const fetchDeleteCard = (cardId) => async (dispatch) => {
         }
 
     }catch (error) {
+
         console.log(error);
         return error;
     }
@@ -186,7 +186,7 @@ const cardReducer = (state = initialState, action) => {
         case EDIT_CARD:
             newState = Object.assign({}, state)
             newState[action.payload.id] = action.payload
-                      console.log('edit card', newState)
+                      
 
             return newState[action.payload.id]
 

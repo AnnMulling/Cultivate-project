@@ -47,7 +47,7 @@ function ProfileButton({ user }) {
       <button onClick={openMenu} className="profile-btn">
          <i className="fa-solid fa-user" style={{marginRight:10}}></i>
          {showMenu ?
-          <i class="fa-solid fa-caret-down"></i> :
+          <i className="fa-solid fa-caret-down"></i> :
           <i className="fa-solid fa-caret-up"></i>}
       </button>
       <ul className={ulClassName} ref={ulRef}>

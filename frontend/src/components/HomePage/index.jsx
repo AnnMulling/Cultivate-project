@@ -55,11 +55,13 @@ export default function HomePage() {
                 <div className="about-container-left">
                     <p style={{ fontSize: 50, fontWeight: 800 }}>Want to get things done?</p>
                     <p style={{ fontSize: 30 }}>We've got you covered!</p>
+                    {!user && (
                     <Link to="/signup" style={{ textDecoration: 'none' }}>
                         <div className="home-signup-btn">
                             Signup it's Free!
                         </div>
-                    </Link>
+                    </Link>)}
+
                 </div>
 
                 <div className="carousel-container">

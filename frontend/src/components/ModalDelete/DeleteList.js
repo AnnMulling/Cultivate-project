@@ -15,8 +15,6 @@ function DeleteListModal ({ boardId , list }) {
     const user = useSelector((state) => state.session.user);
 
 
-    console.log('delete list from board', boardId)
-
     const deleteList= async(e) => {
         e.preventDefault();
 
@@ -37,7 +35,7 @@ function DeleteListModal ({ boardId , list }) {
             <div className="modal-popup">
                 <h2>Confirm Delete</h2>
                  <p>  Are you sure you want to delete this list? </p>
-                 
+
                 <div>
                     <button onClick={deleteList} className="delete-btn">
                         Yes (Delete List)

@@ -24,6 +24,7 @@ function SignupPage() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [errors, setErrors] = useState({});
     const { closeModal } = useModal();
+    
 
 
 

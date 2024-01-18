@@ -28,6 +28,7 @@ function App() {
   return (
     <>
      {location.pathname !== '/workspace'
+
        && !location.pathname.includes('/signup')
        && !location.pathname.includes('/timer')
        && !location.pathname?.includes('/boards')

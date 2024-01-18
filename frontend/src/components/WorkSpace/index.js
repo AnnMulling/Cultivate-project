@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
 import { fetchAllBoard, fetchEditBoard } from '../../store/board';
+import { LOGGOUT_USER } from "../../store/session";
 import OpenModalButton from '../OpenModalButton';
 import CreateBoardModal from '../ModalCreate/CreateBoard';
 import DeleteBoardModal from '../ModalDelete/DeleteBoard';
@@ -15,22 +16,24 @@ export default function WorkSpace() {
     const user = useSelector((state) => state.session.user);
     const allBoards = useSelector((state) => state.boards);
     const [ showOption, setShowOption ] = useState(false)
-
     const boardsArr = Object.values(allBoards);
     const [ isLoaded, setIsLoaded ] = useState(false);
 
-
-    console.log('user', user);
-    console.log('all boards', allBoards)
-
-
     useEffect(() => {
-
-        dispatch(fetchAllBoard())
-            .then(() => setIsLoaded(true));
+        if (user ) {
+            dispatch(fetchAllBoard())
+                .then(() => setIsLoaded(true));
+        }else {
+            dispatch(LOGGOUT_USER)
+                .then(() => history.push("/"))
+        }
 
     }, [dispatch]);
 
+
+    if (!user) {
+        history.replace("/")
+    };
 
 
     const handleStar = async (e, id, name, isPublic) => {
@@ -44,7 +47,7 @@ export default function WorkSpace() {
                 is_public: isPublic,
                 star: false
             };
-            console.log('detail star false', boardDetails)
+
             dispatch(fetchEditBoard(id, boardDetails))
 
         }else if (e.target.className === "fa-regular fa-star"){
@@ -55,15 +58,10 @@ export default function WorkSpace() {
                 is_public: isPublic,
                 star: true
             };
-            console.log('detail star true', boardDetails)
+
             dispatch(fetchEditBoard(id, boardDetails))
         }
 
-
-    };
-
-    if (!user) {
-        history.push("/")
     };
 
 

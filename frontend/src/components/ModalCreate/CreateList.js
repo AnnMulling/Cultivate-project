@@ -21,8 +21,6 @@ function CreateListModal({ board, list, formType }) {
         title: title,
     };
 
-    console.log('board', board)
-    console.log(listDetails)
 
     useEffect(() => {
         const errors = {};
@@ -44,14 +42,14 @@ function CreateListModal({ board, list, formType }) {
          e.preventDefault();
 
         if (formType === "Create List"  && !Object.values(errors).length) {
-            console.log('create list ', 'form', formType)
+
              dispatch(fetchCreateList(board.id, listDetails))
              .then(() => history.push(`/boards/${board.id}`) )
 
         };
 
         if (formType === "Edit List"  && !Object.values(errors).length) {
-            console.log('edit modal')
+
             dispatch(fetchEditList(list.id, listDetails))
             .then(() => history.push(`/boards/${board.id}`) )
         };

@@ -5,9 +5,7 @@ import './Sidebar.css';
 
 export default function Sidebar({ user }) {
     const [ isOpen, setIsOpen ] = useState(false);
-
     const history = useHistory();
-
 
      //handle bar
      const handleBar = () => {
@@ -26,7 +24,6 @@ export default function Sidebar({ user }) {
                 {isOpen ?
                     <i className="fa-solid fa-chevron-left"></i> : <i className="fa-solid fa-chevron-right"></i>}
             </div>
-
 
             <div className="sidebar-content">
                 <i className="fa-solid fa-user"></i>
