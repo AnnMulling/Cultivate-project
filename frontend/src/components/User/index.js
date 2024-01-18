@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { LOGGOUT_USER } from "../../store/session";
+import { useHistory, Link } from 'react-router-dom';
 import Sidebar from '../Navigation/Sidebar_';
 
 //img
@@ -10,7 +10,11 @@ import './User.css';
 
 export default function UserPage () {
     const user = useSelector((state) => state.session.user);
+    const history = useHistory();
 
+    if (!user) {
+        return history.push("/")
+    }
     return (
         <div className="user-page">
             <Sidebar user={user} />
@@ -18,8 +22,8 @@ export default function UserPage () {
 
                     <div className="user-hello">
                         <h1 style={{ fontSize: "55px", fontWeight: "lighter"}}>Hi, {user.firstName}!</h1>
-                        <text style={{ color: "grey", fontSize: "30px"}}>How are you doing today?</text>
-                        
+                        <p style={{ color: "grey", fontSize: "30px"}}>How are you doing today?</p>
+
                         <img style={{ marginLeft: "220px", position: "reletive"}} src={kitty} alt="kitty" />
 
 

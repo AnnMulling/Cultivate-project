@@ -1,7 +1,7 @@
 import { csrfFetch } from "./csrf";
 
-const LOGIN_USER = "session/setUser";
-export const LOGGOUT_USER = "session/removeUser";
+const LOGIN_USER = "session/loginUser";
+export const LOGGOUT_USER = "session/loggoutUser";
 
 const logginUser = (user) => {
     return {

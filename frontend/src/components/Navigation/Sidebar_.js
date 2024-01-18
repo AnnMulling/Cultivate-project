@@ -16,10 +16,10 @@ export default function Sidebar({ user }) {
     };
 
     //logout
-    const handleLogout = async (e) => {
+    const handleLogout = (e) => {
         e.preventDefault();
-        await dispatch(sessionActions.logout())
-        .then(() => history.push("/"))
+         dispatch(sessionActions.logout())
+         history.push("/")
     };
 
 
