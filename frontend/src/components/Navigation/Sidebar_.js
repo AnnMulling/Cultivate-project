@@ -1,23 +1,29 @@
 import React, {  useState } from 'react';
 import { useHistory, Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import * as sessionActions from '../../store/session';
 
 import './Sidebar.css';
 
 export default function Sidebar({ user }) {
     const [ isOpen, setIsOpen ] = useState(false);
     const history = useHistory();
+    const dispatch = useDispatch();
 
      //handle bar
      const handleBar = () => {
         setIsOpen(!isOpen); //set to true
     };
 
-    if(!user) {
-        history.push("/")
+    //logout
+    const handleLogout = async (e) => {
+        e.preventDefault();
+        await dispatch(sessionActions.logout())
+        .then(() => history.push("/"))
     };
 
 
-    return (
+    return user && (
 
         <div className={`sidebar ${isOpen ? "sidebar--open" : ""}`}>
             <div className="trigger-bar" onClick={handleBar}>
@@ -26,10 +32,10 @@ export default function Sidebar({ user }) {
             </div>
 
             <div className="sidebar-content">
-                <i className="fa-solid fa-user"></i>
+                {/* <i className="fa-solid fa-user"></i> */}
                 <span style={{ marginLeft: 15 }}>Hello, {user.firstName}</span>
             </div>
-            <Link to="/" style={{ textDecoration: 'none' }}>
+            <Link to="/user" style={{ textDecoration: 'none' }}>
                 <div className="sidebar-content">
                     <i className="fa-solid fa-house"></i>
                     <span style={{ marginLeft: 10 }}>Home</span>
@@ -54,6 +60,11 @@ export default function Sidebar({ user }) {
                     <span style={{ marginLeft: 12 }}>Focus Mode</span>
                 </div>
             </Link>
+
+            <div className="sidebar-content" onClick={handleLogout} >
+                 <i style={{ marginRight: 12 }} className="fa-solid fa-right-from-bracket"></i>
+                <span>Logout</span>
+            </div>
         </div>
     )
 }

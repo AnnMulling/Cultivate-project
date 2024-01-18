@@ -64,7 +64,6 @@ export default function WorkSpace() {
 
     };
 
-
     return isLoaded && (
         <div className="workspace">
                 <Sidebar user={user} />

@@ -1,0 +1,36 @@
+.user-page {
+    background-color: #ECF0F7;
+    height: 100vh;
+    display: flex;
+}
+
+.user-inner {
+    margin-left: 8%;
+}
+
+.user-hello {
+    display: block;
+    background-color: rgb(255, 255, 255);
+    width: 600px;
+    height: 500px;
+    border-radius: 12px;
+    padding: 18px;
+    margin-top: 30px;
+}
+
+
+.user-logout-btn {
+    color: rgb(251, 251, 254);
+    background-color:#313c67;
+    font-size: 18px;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    padding: 12px;
+    width: 60px;
+    text-align: center;
+
+    &:hover {
+        background-color: #40bd93;
+    }
+}
