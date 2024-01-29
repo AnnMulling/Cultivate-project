@@ -16,18 +16,39 @@ import SetTimeCookie from "./components/SetTimePage/CookieTime";
 import SetTimeTree from "./components/SetTimePage/TreeTime";
 import SetTimeRegular from "./components/SetTimePage/RegularTime";
 
-
+//Goggle Analytics
+import ReactGA from 'react-ga';
+import RouteChangeTracker from './Tracker'
 
 function App() {
   const dispatch = useDispatch();
   const location = useLocation();
   const [isLoaded, setIsLoaded] = useState(false);
+
+  const TRACKING_ID = "G-8M315LJ301"
+  ReactGA.initialize(TRACKING_ID);
+
+
+//Tract user creation event
+  ReactGA.event({
+    category: 'User',
+    action: 'Created an Account'
+  });
+
+//Catch exeptions
+  ReactGA.exception({
+    description: 'An error occurred',
+    fatal: true
+  });
+
+
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
   return (
     <>
+     <RouteChangeTracker/>
      {location.pathname !== '/workspace'
        && !location.pathname.includes('/user')
        && !location.pathname.includes('/signup')
@@ -37,7 +58,7 @@ function App() {
        && <Navigation isLoaded={isLoaded} />}
       {/* <Navigation isLoaded={isLoaded} /> */}
 
-      {isLoaded &&(
+      {isLoaded && (
         <Switch>
           <Route exact path="/">
             <HomePage />
