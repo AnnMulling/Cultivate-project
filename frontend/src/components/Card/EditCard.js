@@ -17,15 +17,21 @@ export default function EditCard({ card, index, boardId,  isLoaded }) {
     const [ editingDes, setEditingDes ] = useState(false);
     const [ description, setDescription ] = useState(card.description);
     const [ errors, setErrors ] = useState({});
-    const savedTask = localStorage.getItem(card.id);
+    const savedTask = localStorage.getItem(boardId)
+    const cardId = card.id
     const task = JSON.parse(savedTask)
-    const [ isChecked, setIsChecked ] = useState(task ? task : false);
+
+    const [ isChecked, setIsChecked ] =  useState((task && task[cardId])
+        ? task[cardId] : false);
 
     //drag and drop
 
     useEffect(() => {
 
-        localStorage.getItem(card.id);
+        localStorage.getItem(boardId);
+
+        // console.log('useEffect task', task)
+        // console.log('SAVED TASK', savedTask[1])
 
         const errors = {};
 
@@ -41,19 +47,18 @@ export default function EditCard({ card, index, boardId,  isLoaded }) {
 
     }, [ description, dispatch, isChecked]);
 
-    const checkBoxHandler = (e, id) => {
+    const checkBoxHandler = (e, boardId, id) => {
         //if item not exist set
 
-        if (!task) {
-            localStorage.setItem(id, e.target.checked);
+        let temp = JSON.parse(localStorage.getItem(boardId))
+        temp[id] = e.target.checked
+        // temp[id] = "true"
+        localStorage.setItem(boardId, JSON.stringify(temp));
 
-        }else {
-            localStorage.removeItem(id)
 
-        }
+
 
         setIsChecked(e.target.checked)
-
     }
 
     const handleSubmit = async (e) => {
@@ -64,7 +69,6 @@ export default function EditCard({ card, index, boardId,  isLoaded }) {
         };
 
         setEditingDes(false);
-
 
         if (!Object.values(errors).length) {
 
@@ -131,7 +135,7 @@ export default function EditCard({ card, index, boardId,  isLoaded }) {
                                 type="checkbox"
                                 id={card.id}
                                 checked={isChecked}
-                                onChange={(e) => checkBoxHandler(e, card.id ) }/>
+                                onChange={(e) => checkBoxHandler(e, boardId, card.id) }/>
                                 <span
                                     onClick={() => setEditingDes(true)}
                                     className={isChecked  ? "taskChecked" : "card-description" }
