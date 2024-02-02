@@ -25,9 +25,6 @@ function SignupPage() {
     const [errors, setErrors] = useState({});
     const { closeModal } = useModal();
     
-
-
-
     const handleSubmit = (e) => {
         e.preventDefault();
         if (password === confirmPassword) {
