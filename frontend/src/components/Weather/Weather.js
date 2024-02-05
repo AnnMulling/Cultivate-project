@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React, {useEffect, useState } from 'react';
 
 //img
 import search_icon from '../../assets/weather/search.png';
@@ -15,38 +14,31 @@ import wind_icon from '../../assets/weather/wind.png'
 import './Weather.css'
 
 const Weather  = () => {
+    const [location, setLocation] = useState("Chicago");
 
-    let apiKey = "eea3015b0aa80bdcc1872a6c045cb80f";
-
+    let apiKey = process.env.REACT_APP_API_KEY
+   
     const search = async () => {
-        const element = document.getElementsByClassName("search-bar");
 
-        console.log('element', element)
-        if (element[0].value === " ") {
-            return 0;
-        }
-        let url = `https://api.openweathermap.org/data/2.5/weather?${element[0].value}&units=imperial&appid=${apiKey}`
+        let url = `https://api.openweathermap.org/data/2.5/weather?${location}&units=imperial&appid=${apiKey}`
 
         const response = await fetch(url);
         console.log('response', response.json())
 
-        const humidity = document.getElementsByClassName("humid-rate")
-        const wind = document.getElementsByClassName("wind-rate")
-        const temperature = document.getElementsByClassName("temp")
-        const location = document.getElementsByClassName("location")
 
-        // humidity[0].innerHTML = response.main.humidity;
-        // wind[0].innerHTML = response.main.wind.gust;
-        // temperature[0].innerHTML = response.main.temp;
-        // temperature[1].innerHTML = response.main.feels_like;
-        // location[0].innerHTML = response.name;
 
     }
 
     return (
         <div className="weather-container">
             <div className="search-bar" onClick={() => search()}>
-                <input type="text" className="city-search" placeholder='Search'/>
+                <input
+                type="text"
+                className="city-search"
+                placeholder='Search'
+                value={location}
+                onChange={(e) => setLocation(e.target.value)}
+                />
                 <div className="search-icon">
                     <img src={search_icon} alt='search-icon'/>
                 </div>
