@@ -17,20 +17,18 @@ const Weather  = () => {
     const [location, setLocation] = useState("");
     const [weatherData, setWeatherdata] = useState(null);
     const [weatherIcon, setWeatherIcon] = useState("")
-    const apiKey = process.env.REACT_APP_API_KEY
-
 
 
     const fetchWeahterData = async () => {
 
-        let url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=${apiKey}`
+        let url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=${process.env.REACT_APP_API_KEY}`
 
         try {
 
             location && await fetch(url)
             .then((res) => res.ok && res.json())
             .then((data) => {
-                // console.log('data', data);
+                console.log('data', data);
                 setWeatherdata(data)
                 setLocation("")
                 // console.log('weatherData', weatherData)
@@ -64,31 +62,31 @@ const Weather  = () => {
             </div>
             {weatherData ? (
                 <div className="weather-details"  style={{width: "100%", textAlign: "center"}}>
-                    {/* <div className="temp">
-                            <img src={weatherIcon} alt="clear-sky" />
-                    </div> */}
+                    <div className="temp">
+                        <img src={clear_icon} alt="clear-sky" />
+                    </div>
                     <div className="location">
-                            <h3>{weatherData.name}</h3>
+                        <h3>{weatherData.name}</h3>
                     </div>
                     <div className="humid-wind-container">
                         <div className="details">
-                           <i className="fa-solid fa-water"></i>
-                            <p>HUMIDITY {weatherData.main?.humidity}%</p>
+                        <p><i className="fa-solid fa-water" style={{ marginRight: "10px"}}>{weatherData.main?.humidity}</i></p>
+                            <p>HUMIDITY %</p>
                         </div>
                         <div className="details">
-                            <i className="fa-solid fa-temperature-three-quarters"></i>
-                            <p>Feels Like {weatherData.main?.feels_like}</p>
+                            <p><i className="fa-solid fa-temperature-three-quarters" style={{ marginRight: "10px"}}></i>{weatherData.main?.feels_like}</p>
+                            <p>Feels Like </p>
                         </div>
                         <div className="details">
-                            <i className="fa-solid fa-wind"></i>
-                            <p>WIND {weatherData.wind?.speed} MPH</p>
+                            <p><i className="fa-solid fa-wind" style={{ marginRight: "10px"}}></i>{weatherData.wind?.speed} </p>
+                            <p>WIND MPH</p>
                         </div>
                     </div>
                 </div>
             ) :
                 <div className="weather-details">
                 <div className="temp">
-                        <img src={clear_icon} alt="clear-sky" />
+                    <img src={clear_icon} alt="clear-sky" />
                 </div>
                 <div className="location" style={{width: "100%", textAlign: "center"}}>
                      <h3>{weatherData} Location</h3>
@@ -96,15 +94,15 @@ const Weather  = () => {
                 <div className="humid-wind-container">
                     <div className="details">
                         <p><i className="fa-solid fa-water" style={{ marginRight: "10px"}}></i>100</p>
-                         <p>HUMIDITY {weatherData}%</p>
+                         <p>HUMIDITY %</p>
                     </div>
                     <div className="details">
                         <p><i className="fa-solid fa-temperature-three-quarters" style={{ marginRight: "10px"}}></i>100</p>
-                        <p>Feels Like {weatherData}</p>
+                        <p>Feels Like </p>
                     </div>
                     <div className="details">
                         <p><i className="fa-solid fa-wind" style={{ marginRight: "10px"}}></i>100</p>
-                        <p>WIND {weatherData} MPH</p>
+                        <p>WIND MPH</p>
                     </div>
                 </div>
                 </div>
