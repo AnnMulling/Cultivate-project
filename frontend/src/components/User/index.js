@@ -18,20 +18,22 @@ export default function UserPage () {
     //     return history.push("/")
     // }
     return user ? (
-        <div className="user-page">
+        <>
             <Sidebar user={user} />
-            {/* <div className="user-inner"> */}
-                    <div className="user-hello">
-                        <h1 style={{ fontSize: "55px", fontWeight: "lighter"}}>Hi, {user.firstName}!</h1>
-                        <p style={{ color: "#B4B4B4", fontSize: "30px"}}>How are you doing today?</p>
-                        <DateTime/>
-                        <img style={{ marginLeft: "220px", position: "reletive"}} src={kitty} alt="kitty" />
+            <div className="user-page">
+                {/* <div className="user-inner"> */}
+                        <div className="user-hello">
+                            <h1 style={{ fontSize: "55px", fontWeight: "lighter"}}>Hi, {user.firstName}!</h1>
+                            <p style={{ color: "#B4B4B4", fontSize: "30px"}}>How are you doing today?</p>
+                            <DateTime/>
+                            <img style={{ marginLeft: "220px", position: "reletive"}} src={kitty} alt="kitty" />
 
-                    </div>
-             {/* </div> */}
+                        </div>
+                {/* </div> */}
 
-                <Weather />
+                    <Weather />
 
-        </div>
+            </div>
+        </>
     ) : null && history.push("/")
 }
