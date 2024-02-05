@@ -23,10 +23,12 @@ export default function UserPage () {
             <div className="user-page">
                 {/* <div className="user-inner"> */}
                         <div className="user-hello">
-                            <h1 style={{ fontSize: "55px", fontWeight: "lighter"}}>Hi, {user.firstName}!</h1>
+                            <h1 style={{ fontSize: "55px", fontWeight: "lighter" , marginLeft: "150px"}}>Hi, {user.firstName}!</h1>
                             <p style={{ color: "#B4B4B4", fontSize: "30px"}}>How are you doing today?</p>
                             <DateTime/>
-                            <img style={{ marginLeft: "220px", position: "reletive"}} src={kitty} alt="kitty" />
+                            <div className="user-hello-kitty">
+                                <img src={kitty} alt="kitty" />
+                            </div>
 
                         </div>
                 {/* </div> */}
