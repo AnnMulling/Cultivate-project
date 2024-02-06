@@ -4,7 +4,7 @@
     height: 100vh;
     width: 100vw;
     display: flex;
-    justify-content: space-evenly;
+    gap: 50px;
 }
 .date-time-cont {
     color: #313c67cd;

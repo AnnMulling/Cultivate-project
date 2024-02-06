@@ -1,47 +1,57 @@
-import React, {useEffect, useState } from 'react';
-
-//img
-import search_icon from '../../assets/weather/search.png';
-import clear_icon from '../../assets/weather/clear.png';
-import clound_icon from '../../assets/weather/cloud.png';
-import drizzle_icon from '../../assets/weather/drizzle.png';
-import humidity_icon from '../../assets/weather/humidity.png';
-import rain_icon from '../../assets/weather/rain.png';
-import snow_icon from '../../assets/weather/snow.png'
-import wind_icon from '../../assets/weather/wind.png'
+import React, { useEffect, useState } from 'react';
 
 
 import './Weather.css'
 
-const Weather  = () => {
+const Weather = () => {
     const [location, setLocation] = useState("");
     const [weatherData, setWeatherdata] = useState(null);
-    const [weatherIcon, setWeatherIcon] = useState("")
+    const [userlocation, setUserLocation] = useState([])
+    const [lat, setLat] = useState([])
+    const [lng, setLng] = useState([])
+
+
+    // useEffect(() => {
+
+    //     if (navigator.geolocation) {
+    //         navigator.geolocation.getCurrentPosition((position) => {
+    //             setLat(position.coords.latitude)
+    //             setLng(position.coords.longitude)
+
+    //             console.log("Latitude is:", lat)
+    //             console.log("Longitude is:", lng)
+    //         })
+    //     }
+    //     (error) => {
+    //         console.error('Error getting user location:', error)
+    //     }
+
+    // }, [lng, lat])
 
 
     const fetchWeahterData = async () => {
 
-        let url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=${process.env.REACT_APP_API_KEY}`
+        let url = `${process.env.REACT_APP_API_URL}/weather?q=${location}&units=imperial&appid=${process.env.REACT_APP_API_KEY}`
 
         try {
 
             location && await fetch(url)
-            .then((res) => res.ok && res.json())
-            .then((data) => {
-                console.log('data', data);
-                setWeatherdata(data)
-                setLocation("")
-                // console.log('weatherData', weatherData)
-            })
+                .then((res) => res.ok && res.json())
+                .then((data) => {
+                    console.log('data', data);
+                    setWeatherdata(data)
+                    setLocation("")
+                    // console.log('weatherData', weatherData)
+                })
 
-        }catch (error) {
+        } catch (error) {
             console.log(error)
         }
 
     };
 
 
-    const handleSubmit  = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         fetchWeahterData();
     }
@@ -49,62 +59,62 @@ const Weather  = () => {
     return (
         <div className="weather-container">
             <div className="search-bar" onClick={handleSubmit}>
-                <input
-                type="text"
-                className="city-search"
-                placeholder= "Enter city name"
-                value={location}
-                onChange={(e) => setLocation(e.target.value)}
-                />
+                    <input
+                        type="text"
+                        className="city-search"
+                        placeholder="Enter city name"
+                        value={location}
+                        onChange={(e) => setLocation(e.target.value)}
+                    />
+
                 <div className="search-icon">
                     <i className="fa-solid fa-magnifying-glass"></i>
                 </div>
             </div>
             {weatherData ? (
-                <div className="weather-details"  style={{width: "100%", textAlign: "center"}}>
-                    <div className="temp">
-                        <img src={clear_icon} alt="clear-sky" />
-                    </div>
+                <div className="weather-details" style={{ width: "100%", textAlign: "center" }}>
                     <div className="location">
-                        <h3>{weatherData.name}</h3>
+                        <p><span style={{ fontWeight: "bolder" }}>{weatherData.name}</span> | {weatherData.weather[0].description}</p>
+                        <p style={{ display: "flex", alignItems: "center"}}>
+                            <img src={`${process.env.REACT_APP_ICON_URL}/${weatherData.weather[0].icon}.png`} alt="weather-img" style={{ marginRight: "5px"}}/>
+                            {weatherData.main.temp} &deg;F
+                        </p>
                     </div>
                     <div className="humid-wind-container">
                         <div className="details">
-                        <p><i className="fa-solid fa-water" style={{ marginRight: "10px"}}>{weatherData.main?.humidity}</i></p>
+                            <p><i className="fa-solid fa-water" style={{ marginRight: "10px" }}></i>{weatherData.main?.humidity}</p>
                             <p>HUMIDITY %</p>
                         </div>
                         <div className="details">
-                            <p><i className="fa-solid fa-temperature-three-quarters" style={{ marginRight: "10px"}}></i>{weatherData.main?.feels_like}</p>
+                            <p><i className="fa-solid fa-temperature-three-quarters" style={{ marginRight: "10px" }}></i>{weatherData.main?.feels_like}</p>
                             <p>Feels Like </p>
                         </div>
                         <div className="details">
-                            <p><i className="fa-solid fa-wind" style={{ marginRight: "10px"}}></i>{weatherData.wind?.speed} </p>
+                            <p><i className="fa-solid fa-wind" style={{ marginRight: "10px" }}></i>{weatherData.wind?.speed} </p>
                             <p>WIND MPH</p>
                         </div>
                     </div>
                 </div>
             ) :
                 <div className="weather-details">
-                <div className="temp">
-                    <img src={clear_icon} alt="clear-sky" />
-                </div>
-                <div className="location" style={{width: "100%", textAlign: "center"}}>
-                     <h3>{weatherData} Location</h3>
-                </div>
-                <div className="humid-wind-container">
-                    <div className="details">
-                        <p><i className="fa-solid fa-water" style={{ marginRight: "10px"}}></i>100</p>
-                         <p>HUMIDITY %</p>
+                    <div className="location">
+                        <p> Location | Sunny</p>
+                        <p>Temp &deg;F</p>
                     </div>
-                    <div className="details">
-                        <p><i className="fa-solid fa-temperature-three-quarters" style={{ marginRight: "10px"}}></i>100</p>
-                        <p>Feels Like </p>
+                    <div className="humid-wind-container">
+                        <div className="details">
+                            <p><i className="fa-solid fa-water" style={{ marginRight: "10px" }}></i>100</p>
+                            <p>HUMIDITY %</p>
+                        </div>
+                        <div className="details">
+                            <p><i className="fa-solid fa-temperature-three-quarters" style={{ marginRight: "10px" }}></i>100</p>
+                            <p>Feels Like </p>
+                        </div>
+                        <div className="details">
+                            <p><i className="fa-solid fa-wind" style={{ marginRight: "10px" }}></i>100</p>
+                            <p>WIND MPH</p>
+                        </div>
                     </div>
-                    <div className="details">
-                        <p><i className="fa-solid fa-wind" style={{ marginRight: "10px"}}></i>100</p>
-                        <p>WIND MPH</p>
-                    </div>
-                </div>
                 </div>
             }
         </div>

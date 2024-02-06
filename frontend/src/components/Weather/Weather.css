@@ -1,8 +1,9 @@
 .weather-container {
+    font-size: 20px;
     color: #313c67cd;
     width: 550px;
     height: fit-content;
-    margin-top: 30px;
+    margin-top: 100px;
     margin-right: 20px;
     margin-left: 10px;
     padding: 25px 15px;
@@ -27,8 +28,8 @@
 .search-bar input {
     width: 250px;
     padding: 5px;
-
 }
+
 
 .weather-details {
     width: 100%;
@@ -38,7 +39,20 @@
 
 }
 
+.location {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.location img{
+    width: 50px;
+    height: 50px;
+}
+
 .humid-wind-container {
+    font-size: 15px;
     width: 100%;
     display: flex;
     justify-content: space-evenly;
@@ -50,6 +64,6 @@
 }
 
 .humid-wind-container img {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
 }
