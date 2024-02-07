@@ -11,22 +11,33 @@ const Weather = () => {
     const [lng, setLng] = useState([])
 
 
-    // useEffect(() => {
+    useEffect(() => {
 
-    //     if (navigator.geolocation) {
-    //         navigator.geolocation.getCurrentPosition((position) => {
-    //             setLat(position.coords.latitude)
-    //             setLng(position.coords.longitude)
+        const getUserlocation = async () => {
 
-    //             console.log("Latitude is:", lat)
-    //             console.log("Longitude is:", lng)
-    //         })
-    //     }
-    //     (error) => {
-    //         console.error('Error getting user location:', error)
-    //     }
+            navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    setLat(position.coords.latitude)
+                    setLng(position.coords.longitude)
+            });
 
-    // }, [lng, lat])
+            let locationUrl = `${process.env.REACT_APP_API_URL}/weather?lat=${lat}&lon=${lng}&units=imperial&appid=${process.env.REACT_APP_API_KEY}`
+            // console.log("Latitude is:", lat)
+            // console.log("Longitude is:", lng)
+
+            await fetch(locationUrl)
+            //application render "return" before API is made
+                //checking res.ok too will make sure that respons is successfully receieved before proceed
+                .then((res) => res.ok && res.json())
+                .then((data) => {
+                    setWeatherdata(data)
+                    // console.log('location user data', data)
+                });
+        }
+
+        getUserlocation();
+
+    }, [lat, lng])
 
 
     const fetchWeahterData = async () => {
@@ -41,7 +52,7 @@ const Weather = () => {
                     console.log('data', data);
                     setWeatherdata(data)
                     setLocation("")
-                    // console.log('weatherData', weatherData)
+
                 })
 
         } catch (error) {
@@ -54,10 +65,10 @@ const Weather = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         fetchWeahterData();
-    }
+    };
 
     return (
-        <div className="weather-container">
+       <div className="weather-container">
             <div className="search-bar" onClick={handleSubmit}>
                     <input
                         type="text"
@@ -76,7 +87,7 @@ const Weather = () => {
                     <div className="location">
                         <p><span style={{ fontWeight: "bolder" }}>{weatherData.name}</span> | {weatherData.weather[0].description}</p>
                         <p style={{ display: "flex", alignItems: "center"}}>
-                            <img src={`${process.env.REACT_APP_ICON_URL}/${weatherData.weather[0].icon}.png`} alt="weather-img" style={{ marginRight: "5px"}}/>
+                            <img src={`${process.env.REACT_APP_ICON_URL}/${weatherData.weather[0]?.icon}.png`} alt="weather-img" style={{ marginRight: "5px"}}/>
                             {weatherData.main.temp} &deg;F
                         </p>
                     </div>
