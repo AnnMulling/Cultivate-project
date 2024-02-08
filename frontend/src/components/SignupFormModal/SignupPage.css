@@ -26,7 +26,9 @@
 }
 
 .signup-left {
-    display: block;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
     font-family: 'Montserrat', sans-serif;
     color: #ffffff;
     background-color: #324767;
@@ -42,18 +44,34 @@
     font-size: 40px ;
     width: 100%;
     margin-left: 10px;
+
 }
 
 .signup-left-img {
     position: absolute;
-    width: 550px;
-    height: 570px;
+    margin-left: 10%;
+    top: 25%;
+    width: 500px;
+    height: 500px;
     text-align: center;
-    top: 280px;
-    left: 12%;
 
 }
 
+.signup-lfe-img img {
+    width: 100%;
+    height: 100%;
+}
+/*headlines*/
+.signup-headline {
+    margin-left: 80px;
+    font-size: 60px;
+
+}
+
+.signup-sub-headline {
+    font-size: 45px;
+    margin-right: 10px;
+}
 
 .form-container {
     display: flex;
@@ -150,4 +168,40 @@
     &:hover {
         background-color: #40bd93;
     }
+}
+
+
+@media screen and (max-width: 650px){
+
+    .signup-page-inner {
+       flex-direction: column;
+       gap: 15px;
+       width: 100vw;
+       height: 100vh;
+
+    }
+
+    .signup-logo {
+       
+        margin: 0 auto;
+    }
+
+    .signup-left {
+       display: none;
+
+    }
+    /* .signup-headline {
+        font-size: 20px;
+    }
+    .signup-sub-headline {
+        font-size: 15px;
+    }
+    .signup-left-img {
+        width: 100px;
+        height: 100px;
+        margin-left: 20%;
+    } */
+
+
+
 }

@@ -24,7 +24,7 @@ function SignupPage() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [errors, setErrors] = useState({});
     const { closeModal } = useModal();
-    
+
     const handleSubmit = (e) => {
         e.preventDefault();
         if (password === confirmPassword) {
@@ -52,17 +52,18 @@ function SignupPage() {
     };
 
     return (
+        <>
         <div className="signup-page">
             <Link to="/" style={{ textDecoration: 'none' }}><img src={logo} alt="logo" className="signup-logo" /></Link>
             <div className="signup-page-inner">
                 <div className="signup-left">
                     <div className="signup-left-details">
-                        <p style={{ marginLeft: 80 }}>
-                            <span style={{fontSize: 60, fontFamily: 'Rubik', color: '#FC9228', marginRight: 10}}>More</span>
+                        <p className="signup-headline">
+                            <span className="signup-sub-headline" style={{fontFamily: 'Rubik', color: '#FC9228'}}>More</span>
                             Productivity
                         </p>
-                        <p style={{ marginLeft: 50 }}>
-                            <span  style={{fontSize: 45, fontFamily: 'Rubik', color: '#EE8F66', marginRight: 10 }}>Less</span>
+                        <p  className="signup-headline">
+                            <span  className="signup-sub-headline" style={{ fontFamily: 'Rubik', color: '#EE8F66'}}>Less</span>
                             Stress
                         </p>
                     </div>
@@ -154,8 +155,9 @@ function SignupPage() {
                     </div>
                 </div>
             </div>
-            <Footer />
         </div>
+            <Footer />
+        </>
     );
 }
 

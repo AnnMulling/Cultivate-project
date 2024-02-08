@@ -30,3 +30,19 @@
     padding: 50px;
     margin: 50px;
   }
+
+
+  @media screen and (max-width: 650px){
+
+    #modal {
+      position: absolute;
+      top: 0;
+      left: 15%;
+
+    }
+
+    #modal-content {
+      width: 60%;
+      height: max-content;
+    }
+}

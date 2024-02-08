@@ -217,3 +217,22 @@
 
   }
 }
+
+
+@media screen and (max-width: 650px){
+
+    .set-time-main-inner {
+        display: flex;
+        flex-direction: column;
+        margin-left: 10%;
+    }
+
+    .set-time-heading {
+        text-align: left;
+        margin-left: 20%;
+    }
+
+    .disabled-time-btn, .start-time-btn, .time-btn-delete {
+        width: 100px
+    }
+}

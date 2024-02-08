@@ -24,13 +24,17 @@
     background-color: #ffffff;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     width: 600px;
-    height: 400px;
+    height: 300px;
 
     border-radius: 12px;
     padding: 30px;
     margin-top: 30px;
     margin-left: 8%;
     color: #313c67;
+}
+
+.user-hello-inner {
+    padding-left: 20px;
 }
 
 .user-page-boards {
@@ -82,11 +86,12 @@
 
 .user-hello-kitty {
     position: absolute;
-    margin-left: 280px;
+    margin-left: 320px;
+    margin-top: 100px;
     width: 400px;
     height: 400px;
     z-index: 1000;
-    top: -55%;
+    top: 0%;
 }
 
 
@@ -111,7 +116,7 @@
     .user-page {
         display: flex;
         flex-direction: column;
-        gap: 15px;
+        gap: 10px;
         width: 100vw;
         height: 100vh;
         margin-left: 40px;
@@ -126,7 +131,7 @@
     }
     .user-hello-kitty {
         position: absolute;
-        top: 40%;
+        top: -40%;
         left: 40%;
         margin-left: 50px;
         width: 150px;
@@ -139,6 +144,7 @@
     }
 
     .user-page-boards {
+        margin-top: 20px;
         margin-left: 40px;
         display: flex;
         flex-direction: column;
@@ -146,8 +152,12 @@
         flex-wrap: nowrap;
         overflow: scroll;
         width: 200px;
-        height: 100vh;
-        padding: 10px;
+        height: max-content;
+        padding:10px;
+    }
+
+    .user-page-board {
+        margin-top: 20px;
     }
 
 }

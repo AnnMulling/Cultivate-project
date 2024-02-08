@@ -53,8 +53,8 @@ export default function HomePage() {
         <div className="homepage-main">
             <div className="about-container">
                 <div className="about-container-left">
-                    <p style={{ fontSize: 50, fontWeight: 800 }}>Want to get things done?</p>
-                    <p style={{ fontSize: 30 }}>We've got you covered!</p>
+                    <p  className="head-line">Want to get things done?</p>
+                    <p  id="sub-head-line">We've got you covered!</p>
                     {!user && (
                     <Link to="/signup" style={{ textDecoration: 'none' }}>
                         <div className="home-signup-btn">
@@ -78,7 +78,7 @@ export default function HomePage() {
             </div>
             <div className="features-container">
                 <div className="feature-heading">
-                    <p style={{ fontSize: 50, fontWeight: 800 }}>Our Special Features</p>
+                    <p className="head-line">Our Special Features</p>
                 </div>
                 <div className="feature-card-container">
                     <div className="feature-card">
@@ -111,9 +111,9 @@ export default function HomePage() {
                     </div>
                 </div>
             </div>
-            <div className="empty-box">
+            {/* <div className="empty-box">
 
-            </div>
+            </div> */}
             <Footer />
         </div>
 
