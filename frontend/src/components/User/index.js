@@ -40,8 +40,8 @@ export default function UserPage () {
             <div className="user-page">
                 {/* <div className="user-inner"> */}
                         <div className="user-hello">
-                            <h1 style={{ fontSize: "55px", fontWeight: "lighter" , marginLeft: "150px"}}>Hi, {user.firstName}!</h1>
-                            <p style={{ color: "#B4B4B4", fontSize: "30px"}}>How are you doing today?</p>
+                            <h1>Hi, {user.firstName}!</h1>
+                            <p style={{ color: "#B4B4B4"}}>How are you doing today?</p>
                             <DateTime/>
                             <div className="user-hello-kitty">
                                 <img src={kitty} alt="kitty" />
@@ -52,8 +52,6 @@ export default function UserPage () {
 
                     {/* <Weather /> */}
                     <div className="user-page-boards">
-
-
                     {boardsArr.map((board) =>
                         <Link to={`/boards/${board.id}`} style={{ textDecoration: 'none', color: '#313c67' }}>
                             <div className="user-page-board" key={board.id}>
