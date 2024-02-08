@@ -20,7 +20,7 @@
 }
 
 .user-hello {
-    display: block;
+    position: relative;
     background-color: #ffffff;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     width: 600px;
@@ -81,7 +81,7 @@
 
 
 .user-hello-kitty {
-    position: relative;
+    position: absolute;
     margin-left: 280px;
     width: 400px;
     height: 400px;
@@ -104,4 +104,50 @@
     &:hover {
         background-color: #40bd93;
     }
+}
+
+
+@media screen and (max-width: 650px){
+    .user-page {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 100vw;
+        height: 100vh;
+        margin-left: 40px;
+        overflow: scroll;
+    }
+
+    .user-hello {
+        position: relative;
+        width: 250px;
+        height: 100px;
+        font-size: 10px;
+    }
+    .user-hello-kitty {
+        position: absolute;
+        top: 40%;
+        left: 40%;
+        margin-left: 50px;
+        width: 150px;
+        height: 150px;
+        z-index: 1000;
+    }
+
+    .date-time-cont {
+        font-size: 10px;
+    }
+
+    .user-page-boards {
+        margin-left: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex-wrap: nowrap;
+        overflow: scroll;
+        width: 200px;
+        height: 100vh;
+        padding: 10px;
+    }
+
 }
