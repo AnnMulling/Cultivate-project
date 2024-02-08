@@ -26,3 +26,17 @@
     border-radius: 35px;
     padding: 9px;
 }
+
+
+@media screen and (max-width: 650px){
+
+    .inner-workspace {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .starred-heading {
+        text-align: left;
+        margin-left: 18%;
+    }
+}

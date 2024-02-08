@@ -80,20 +80,21 @@
 }
 
 
-@media screen and (max-width: 749px){
+@media screen and (max-width: 650px){
     .board-details-container {
         display: flex;
+        flex-direction: column;
         justify-content: flex-start;
         align-items: flex-start;
         flex-wrap: wrap;
-        margin-left: 15%;
+        margin-left: 25%;
     }
     .list-main-container {
         align-items: center;
     }
 }
 
-@media screen and (min-width: 750px) and (max-width: 1024px ) {
+/* @media screen and (min-width: 750px) and (max-width: 1024px ) {
     .board-details-container {
         display: flex;
         justify-content: flex-start;
@@ -104,4 +105,4 @@
     .list-main-container {
         align-items: center;
     }
-}
+} */

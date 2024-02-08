@@ -101,26 +101,30 @@ ul li {
  }
 
 
- @media screen and (max-width: 749px){
+ @media screen and (max-width: 650px){
     .nav-container {
         display: flex;
-        padding: 4px;
-
+        width: 90%;
+        padding-top: 45px;
+        background-color: #fbfbfe;
         justify-content: space-between;
     }
-    .workspace-btn {
-        margin-left: 20px;
-    }
+
     .profile-btn {
-        margin-right: 40px;
+        margin-right: 35px;
     }
+
     .profile-dropdown{
-        top: 7%;
+        top: 10%;
+    }
+
+    .logo {
+        margin-left: 0%;
     }
 
  }
 
- @media screen and (min-width: 750px) and (max-width: 1024px ) {
+ /* @media screen and (min-width: 750px) and (max-width: 1024px ) {
     .nav-container {
         display: flex;
         padding: 2px 0;
@@ -137,4 +141,4 @@ ul li {
         top: 7%;
     }
 
- }
+ } */
