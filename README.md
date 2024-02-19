@@ -1,8 +1,7 @@
 # Cultivate
 
-A task management website, drawing inspiration from Trello, incorporates Google API integration, calendar functionalities, and user sign-in. Additionally, it integrates with the Forest App. 
-The expanded features offer a user-friendly registration and sign-in process, efficient task management, and engaging interactive elements for added enjoyment.
-The site is visually tidy and easy for users to navigate around with an added navigation sidebar. 
+
+Our task management website, inspired by Trello, integrates various APIs, calendar functionalities, and user sign-in features, with additional elements drawn from the Forest App. The enhanced features provide a seamless registration and sign-in experience, streamline task management, and introduce engaging interactive elements for user enjoyment. With a visually clean design and user-friendly navigation sidebar, the site offers easy navigation for users.
 
 # Live Link
 https://cultivate-project.onrender.com
