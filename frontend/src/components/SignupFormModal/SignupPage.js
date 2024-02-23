@@ -155,8 +155,8 @@ function SignupPage() {
                     </div>
                 </div>
             </div>
-        </div>
             <Footer />
+        </div>
         </>
     );
 }

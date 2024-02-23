@@ -16,7 +16,7 @@ function ProfileButton({ user }) {
   const ulRef = useRef();
 
   const openMenu = () => {
-    gaEventTracker('Log-in')
+
     if (showMenu) return;
     setShowMenu(true);
   };
@@ -35,7 +35,10 @@ function ProfileButton({ user }) {
     return () => document.removeEventListener('click', closeMenu);
   }, [showMenu]);
 
-  const closeMenu = () => setShowMenu(false);
+  const closeMenu = () => {
+    gaEventTracker('log-in');
+    setShowMenu(false);
+  };
 
   const logout = (e) => {
     e.preventDefault();
