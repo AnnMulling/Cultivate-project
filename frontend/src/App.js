@@ -29,6 +29,10 @@ function App() {
   ReactGA.initialize(TRACKING_ID);
 
   useEffect(() => {
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
+
+  useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch]);
 
