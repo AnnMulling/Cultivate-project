@@ -25,22 +25,8 @@ function App() {
   const location = useLocation();
   const [isLoaded, setIsLoaded] = useState(false);
 
-  const TRACKING_ID = "G-8M315LJ301"
+  const TRACKING_ID = `${process.env.REACT_APP_API_TRACKING_ID}`
   ReactGA.initialize(TRACKING_ID);
-
-
-//Tract user creation event
-  ReactGA.event({
-    category: 'User',
-    action: 'Created an Account'
-  });
-
-//Catch exeptions
-  ReactGA.exception({
-    description: 'An error occurred',
-    fatal: true
-  });
-
 
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));

@@ -5,15 +5,18 @@ import * as sessionActions from '../../store/session';
 import OpenModalMenuItem from './OpenModalMenuItem';
 import LoginFormModal from '../LoginFormModal';
 import SignupFormModal from '../SignupFormModal';
+import useAnalyticsEventTracker from '../../Tracker';
 
 import './Navigation.css';
 
 function ProfileButton({ user }) {
   const dispatch = useDispatch();
   const [showMenu, setShowMenu] = useState(false);
+  const gaEventTracker = useAnalyticsEventTracker('Log-in');
   const ulRef = useRef();
 
   const openMenu = () => {
+    gaEventTracker('Log-in')
     if (showMenu) return;
     setShowMenu(true);
   };
