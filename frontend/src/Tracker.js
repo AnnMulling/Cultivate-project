@@ -1,19 +1,10 @@
 import React from "react";
+import ReactGA from "react-ga";
 
-
-//Goggle Analytics
-import ReactGA from 'react-ga';
-import { withRouter } from "react-router-dom";
-
-
-const RouteChangeTracker = ({ history }) => {
-
-    history.listen((location, action) => {
-        ReactGA.set( { page: location.pathname });
-        ReactGA.pageview(location.pathname);
-    });
-
-    return <div></div>;
+const useAnalyticsEventTracker = (category="Blog category") => {
+  const eventTracker = (action = "test action", label = "test label") => {
+    ReactGA.event({category, action, label});
+  }
+  return eventTracker;
 }
-
-export default withRouter(RouteChangeTracker)
+export default useAnalyticsEventTracker;
