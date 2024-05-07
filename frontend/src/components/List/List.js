@@ -3,13 +3,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import TextareaAutosize from "react-textarea-autosize";
 import { fetchEditList } from "../../store/list";
-import { fetchABoard } from '../../store/board';
 import DeleteListModal from '../ModalDelete/DeleteList';
 import OpenModalButton from '../OpenModalButton';
 import Card from '../Card/Card';
 
 import './List.css'
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
+import EditListModal from './EditList';
 
 
 export default function List({ boardId, list, isLoaded }) {
@@ -102,11 +102,18 @@ export default function List({ boardId, list, isLoaded }) {
 
             <div className="list-del-container">
                 {showDelete && (
-                    <OpenModalButton
-                        modalComponent={<DeleteListModal boardId={boardId} list={list} />}
-                        buttonText={<i className="fa-solid fa-trash"></i>}
-                        modalClasses={["list-btn-delete"]}
-                    />
+                        <>
+                            <OpenModalButton
+                                modalComponent={<DeleteListModal boardId={boardId} list={list} />}
+                                buttonText={<i className="fa-solid fa-trash"></i>}
+                                modalClasses={["list-btn-delete"]}
+                            />
+                            <OpenModalButton
+                                modalComponent={<EditListModal boardId={boardId} list={list} />}
+                                buttonText={<i class="fa-solid fa-pen-to-square"></i>}
+                                modalClasses={["list-btn-delete"]}
+                            />
+                        </>
                 )}
             </div>
         </div>
