@@ -20,8 +20,8 @@ export default function UserPage () {
     const history = useHistory();
     const dispatch = useDispatch();
 
-    console.log('all Boards', allBoards)
-    console.log('board Arr', boardsArr)
+    // console.log('all Boards', allBoards)
+    // console.log('board Arr', boardsArr)
 
     useEffect(() => {
         if (user ) {
@@ -51,7 +51,6 @@ export default function UserPage () {
 
                         </div>
                 {/* </div> */}
-
                     {/* <Weather /> */}
                     <div className="user-page-boards">
                     {boardsArr.map((board) =>
