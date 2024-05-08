@@ -6,8 +6,6 @@ import { useHistory } from 'react-router-dom';
 import { useModal } from "../../context/Modal";
 
 
-
-
 function EditListModal ({ boardId , list }) {
 
     const dispatch = useDispatch();
