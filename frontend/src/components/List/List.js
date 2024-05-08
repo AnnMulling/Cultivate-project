@@ -108,11 +108,11 @@ export default function List({ boardId, list, isLoaded }) {
                                 buttonText={<i className="fa-solid fa-trash"></i>}
                                 modalClasses={["list-btn-delete"]}
                             />
-                            <OpenModalButton
+                            {/* <OpenModalButton
                                 modalComponent={<EditListModal boardId={boardId} list={list} />}
                                 buttonText={<i class="fa-solid fa-pen-to-square"></i>}
-                                modalClasses={["list-btn-delete"]}
-                            />
+                                modalClasses={["list-btn-edit"]}
+                            /> */}
                         </>
                 )}
             </div>
