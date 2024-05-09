@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useHistory, Link } from 'react-router-dom';
 import Sidebar from '../Navigation/Sidebar_';
 import DateTime from './DateTime';
-import Weather from '../Weather/Weather';
+
 import { LOGGOUT_USER } from "../../store/session";
 import { fetchAllBoard } from '../../store/board';
 
